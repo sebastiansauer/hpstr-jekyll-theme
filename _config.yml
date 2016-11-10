@@ -1,5 +1,5 @@
-title:            Site Title
-description:      Describe your website here.
+title:            Sebastian Sauer Blog
+description:      A blog about research methods, with a focus on data analysis and psychology.
 disqus_shortname: 
 reading_time:     true
 words_per_minute: 200
@@ -9,15 +9,15 @@ url:
 
 # Owner/author information
 owner:
-  name:           Your Name
-  avatar:         avatar.jpg
-  bio:            "Your bio goes here. It shouldn't be super long but a good sentence or two should suffice."
-  email:          you@email.com
+  name:           Sebastian Sauer
+  avatar:         ses_201102_xsmall.jpg
+  bio:             "Professor at FOM University of Applied Sciences. Thinker on own peril."
+  email:          ssauer@posteo.de
   # Social networking links used in footer. Update and remove as you like.
-  twitter:        
+  twitter:      sauer_sebastian  
   facebook:       
-  github:         
-  stackexchange:  
+  github:         sebastiansauer
+  stackexchange:  http://stackoverflow.com/users/4434263/sebastian-sauer
   linkedin:       
   instagram:      
   flickr:         
@@ -26,7 +26,7 @@ owner:
   google_plus:
 
 # Background image to be tiled on all pages
-background: 
+background:  
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:   
@@ -36,7 +36,7 @@ bing_verify:
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    America/New_York
-future:      false  # publish future dated posts --  true, false (default) 
+future:      true  # publish future dated posts --  true, false (default) 
 highlighter: rouge
 markdown:    kramdown
 gems:
@@ -47,6 +47,9 @@ gems:
 sass:
   sass_dir: _sass
   style: compressed
+kramdown:
+  math_engine: mathjax  
+  
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /:categories/:title/

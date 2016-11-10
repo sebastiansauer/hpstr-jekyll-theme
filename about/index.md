@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About the Jekyll Theme
+title: About this blog
 image:
   feature: abstract-5.jpg
   credit: dargadgetz
@@ -9,24 +9,23 @@ comments: false
 modified: 2016-02-01
 ---
 
-They say three times the charm, so here is another free responsive Jekyll blog theme for you. I've learned a ton since open sourcing my first two themes [on Github](http://github.com/mmistakes), and wanted to try a few new things this time around. 
+test latex
+\\[ \frac{1}{n^{2}} \\]
 
-If you've used any of [my other themes](http://mademistakes.com/work/jekyll-themes/) most of this should be familiar territory...
 
-## HPSTR Features:
 
-* Compatible with Jekyll 3 and GitHub Pages.
-* Responsive templates for post, page, and post index `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrades in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.  
-* Sweet animated menu.
-* Background image support.
-* Support for large images to call out your favorite posts.
-* Optional [Disqus](http://disqus.com) comments.
-* Simple and clear permalink structure[^1].
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* [Custom 404 page]({{ site.url }}/404.html) to get you started.
-* [Syntax highlighting]({{ site.url }}/code-highlighting-post/) stylesheets to make your code examples look snazzy.
+I blog about research methods, particularly for psychology, and particularly with regard to data analysis.
 
-<div markdown="0"><a href="{{ site.url }}/theme-setup/" class="btn btn-info">Theme Setup</a> <a href="https://github.com/mmistakes/hpstr-jekyll-theme" class="btn btn-success">Download HPSTR</a></div>
+As a non-virtual person, I work as a professor at [FOM University of Applied Sciences](https://www.fom.de/die-fom-englisch/the-university-for-the-professionals.html). 
 
-[^1]: Example: *domain.com/category-name/post-title*
+Posts reflect mostly my current thinking; and posts are not immune to thought updates. With luck things get less wrong in the course of time.
+
+
+## Follow the blog
+
+To receive updates for this blog, follow me on [Twitter](https://twitter.com/sauer_sebastian), or subscribe to the [RSS feed](https://sebastiansauer.github.io/feed.xml).
+
+
+## Licence
+
+Own work is distributed under the terms of the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and redistribution in any medium, provided that the original author and source are credited.
