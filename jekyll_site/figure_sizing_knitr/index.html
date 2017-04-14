@@ -1,0 +1,348 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Different ways to set figure size in RMarkdown &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="markdown">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="Different ways to set figure size in RMarkdown">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Different ways to set figure size in RMarkdown">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/figure_sizing_knitr/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/figure_sizing_knitr/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/figure_sizing_knitr/" rel="bookmark" title="Different ways to set figure size in RMarkdown">Different ways to set figure size in RMarkdown</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-11-02T00:00:00-04:00">November 02, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~5 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>Markdown is thought as a “lightweight” markup language, hence the name
+<code class="highlighter-rouge">markdown</code>. That’s why formatting options are scarce. However, there are some
+extensions, for instance brought by RMarkdown.</p>
+
+<p>One point of particular interest is the sizing of figures. Let’s look at some
+ways how to size a figure with RMarkdown.</p>
+
+<p>We take some data first:</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span><span class="w"> 
+</span><span class="nf">names</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+## [11] "carb"
+</code></pre>
+</div>
+
+<p>Not let’s plot.</p>
+
+<h2 id="define-size-in-yaml-header">Define size in YAML header</h2>
+
+<p>We can define the size of figures globally in the YAML part, like this for
+example.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="gd">--- 
+</span>title: "My Document" 
+output: html_document: 
+fig_width: 6 
+fig_height: 4 
+<span class="gd">--- 
+</span></code></pre>
+</div>
+
+<h1 id="defining-figures-size-for-r-plots">Defining figures size for R plots</h1>
+
+<h2 id="define-figure-size-as-global-chunk-option">Define figure size as global chunk option</h2>
+
+<p>As a first R-chunk in your RMD document, define the general chunk settings like
+this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>knitr::opts_chunk$set(fig.width=12, fig.height=8) 
+</code></pre>
+</div>
+
+<h2 id="chunk-options">Chunk options</h2>
+
+<p>We can set the chunk options for each chunk too. With <code class="highlighter-rouge">figh.height</code> and
+<code class="highlighter-rouge">fig.width</code> we can define the size. Note that the numbers default to inches as
+unit: <code class="highlighter-rouge"><span class="p">{</span><span class="err">r</span><span class="w"> </span><span class="err">fig1,</span><span class="w"> </span><span class="err">fig.height</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">3,</span><span class="w"> </span><span class="err">fig.width</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">5</span><span class="p">}</span></code>.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-02/figure/fig1-1.png" alt="plot of chunk fig1" /></p>
+
+<p>For a plot of different size, change simple the numbers: <code class="highlighter-rouge"><span class="p">{</span><span class="err">r</span><span class="w"> </span><span class="err">fig2,</span><span class="w"> </span><span class="err">fig.height</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">3,</span><span class="w"> </span><span class="err">fig.width</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">3,</span><span class="w"> </span><span class="err">fig.align</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="nt">"center"</span><span class="err">}</span></code>.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-02/figure/fig2-1.png" title="plot of chunk fig2" alt="plot of chunk fig2" style="display: block; margin: auto;" /></p>
+
+<p>Alternatively, you may change the aspect ratio of the image: <code class="highlighter-rouge"><span class="p">{</span><span class="err">r</span><span class="w"> </span><span class="err">fig3,</span><span class="w"> </span><span class="err">fig.width</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">5,</span><span class="w"> </span><span class="err">fig.asp</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">.62</span><span class="p">}</span></code>.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-02/figure/fig3-1.png" alt="plot of chunk fig3" /></p>
+
+<p>Note that the aspect ratio is based on the <code class="highlighter-rouge">fig.width</code> specified by you. See
+<a href="http://yihui.name/knitr/options/">here</a>.</p>
+
+<h2 id="different-options-for-different-output-formats">Different options for different output formats</h2>
+<p>The options for figure sizing also depend on the output format (HTML vs. Latex, we do not mention Word here). For instance, in Latex percentage is allowed, as is specified on the <a href="http://yihui.name/knitr/options/">options
+page</a>: <code class="highlighter-rouge"><span class="p">{</span><span class="err">r</span><span class="w"> </span><span class="err">fig4,</span><span class="w"> </span><span class="err">out.width</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">'40%'</span><span class="p">}</span></code>.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">plot</span><span class="p">(</span><span class="n">pressure</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-02/figure/fig4-1.png" title="plot of chunk fig4" alt="plot of chunk fig4" width="40%" /></p>
+
+<p>But note that it appears to work in HTML too.</p>
+
+<h2 id="differnce-between-figure-size-and-output-size">Differnce between figure size and output size</h2>
+<p>We are allowed to specify the
+figure size, and secondly the size of the figure as to appear in the output. For
+example, if you set the size of a <code class="highlighter-rouge">ggplot</code> figure to large, then fonts etc. will
+appear tiny. Better do <em>not</em> scale up <code class="highlighter-rouge">fig.height</code>, but set <code class="highlighter-rouge">out.width</code>
+accordingly, eg., like this <code class="highlighter-rouge">out.width = "70%"</code>.</p>
+
+<h1 id="using-pandocs-markdown-for-figure-sizing">Using Pandoc’s Markdown for figure sizing</h1>
+<p>Alternatively, instead of using R
+for plotting, you can just load an image. Of course, it is possible to just use
+markdown for that: <code class="highlighter-rouge">![](path/to/figure/figure.png)</code>.</p>
+
+<p>Change the figure size like this: <code class="highlighter-rouge">![](file.jpg){ width=50% }</code>. Note that no
+space are allowed around the <code class="highlighter-rouge">=</code> (equal sign), and the curly brace <code class="highlighter-rouge"><span class="p">{</span></code> needs to
+come right after the <code class="highlighter-rouge">)</code> brace; no space allowed.</p>
+
+<p>Similarly, with path to local folder:</p>
+
+<p><code class="highlighter-rouge">![](../../sebastiansauer.github.io/images/2016-10-17/unnamed-chunk-5-1.png.png)</code></p>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-10-17/unnamed-chunk-5-1.png" alt="" />{
+width=20% }</p>
+
+<p>Centering is not really part of markdown. But there are some workarounds. See:</p>
+
+<center>
+![](https://sebastiansauer.github.io/images/2016-10-17/unnamed-chunk-5-1.png){
+width=20% }
+</center>
+
+<p>I used this code:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;center&gt;
+![](https://sebastiansauer.github.io/images/2016-10-17/unnamed-chunk-5-1.png){
+width=20% }
+&lt;/center&gt;
+</code></pre>
+</div>
+
+<h1 id="using-the-knitr-function-includegraphics">Using the <code class="highlighter-rouge">knitr</code> function <code class="highlighter-rouge">include_graphics</code></h1>
+
+<p>We can use the knitr function <code class="highlighter-rouge">include_graphics</code> which is convenient, as it takes care for the different output formats and provides some more features (see
+<a href="https://rforge.net/doc/packages/knitr/include_graphics.html">here</a> the help
+file).</p>
+
+<p><img src="https://sebastiansauer.github.io/images/affairs.png" title="plot of chunk fig5" alt="plot of chunk fig5" width="50%" style="display: block; margin: auto;" /></p>
+
+<p>Note that online sources are allowed. Don`t forget to load knitr previously.</p>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-10-17/unnamed-chunk-5-1.png" title="plot of chunk }{r fig6" alt="plot of chunk }{r fig6" width="50%" style="display: block; margin: auto;" /></p>
+
+<h1 id="if-all-fails">If all fails</h1>
+<p>Just resize the image with your favorite photo/image manager such as Gimp, Photoshop, Preview App etc.</p>
+
+<h1 id="further-reading-finde-good-advice-on-yihuis-option-page">Further reading Finde good advice on Yihui’s option page</h1>
+<p><a href="http://yihui.name/knitr/options/">here</a>. The Book “R for Data Science” by
+Hadley Wickham and Garrett Grolemund (read <a href="http://r4ds.had.co.nz">here</a>) is a
+great resource too. Read chapter 28 on diagrams
+<a href="http://r4ds.had.co.nz/graphics-for-communication.html#saving-your-plots">here</a>.
+Pandoc’s user guide has some helpful comments on figures sizing with <a href="http://pandoc.org/MANUAL.html#images">Pandoc’s
+markdown </a>.</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#markdown" title="Pages tagged markdown" class="tag"><span class="term">markdown</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/figure_sizing_knitr/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/figure_sizing_knitr/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/figure_sizing_knitr/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/CLES-plot/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

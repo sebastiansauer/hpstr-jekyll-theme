@@ -1,0 +1,393 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Bind lists to data frame for aggregating linear models results &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="rstats">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="Bind lists to data frame for aggregating linear models results">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bind lists to data frame for aggregating linear models results">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/bind_list_to_dataframe_lm/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/bind_list_to_dataframe_lm/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/bind_list_to_dataframe_lm/" rel="bookmark" title="Bind lists to data frame for aggregating linear models results">Bind lists to data frame for aggregating linear models results</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-11-04T00:00:00-04:00">November 04, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~9 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>I found myself doing the following: I had a bunch of predictors, one (numeric) outcome, and wanted to run I simple regression for each of the predictors. Having a bunch of model results, I would like to have them bundled in one data frame.</p>
+
+<p>So, here is one way to do it.</p>
+
+<p>First, load some data.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span><span class="w">
+</span><span class="n">str</span><span class="p">(</span><span class="n">mtcars</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## 'data.frame':	32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+</code></pre>
+</div>
+
+<p>Say, <code class="highlighter-rouge">mpg</code> is our outcome/ criterion. The rest of the variables are predictors.</p>
+
+<p>Then, some packages.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">purrr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tibble</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">stringr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">broom</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">scales</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>For illustration, let’s run a regression with each and all of the predictors as a preliminary step.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">lm</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">glance</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##   r.squared adj.r.squared    sigma statistic      p.value df    logLik
+## 1 0.8690158     0.8066423 2.650197  13.93246 3.793152e-07 11 -69.85491
+##        AIC      BIC deviance df.residual
+## 1 163.7098 181.2986 147.4944          21
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">lm</span><span class="p">(</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">summary</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">tidy</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##           term    estimate   std.error  statistic    p.value
+## 1  (Intercept) 12.30337416 18.71788443  0.6573058 0.51812440
+## 2          cyl -0.11144048  1.04502336 -0.1066392 0.91608738
+## 3         disp  0.01333524  0.01785750  0.7467585 0.46348865
+## 4           hp -0.02148212  0.02176858 -0.9868407 0.33495531
+## 5         drat  0.78711097  1.63537307  0.4813036 0.63527790
+## 6           wt -3.71530393  1.89441430 -1.9611887 0.06325215
+## 7         qsec  0.82104075  0.73084480  1.1234133 0.27394127
+## 8           vs  0.31776281  2.10450861  0.1509915 0.88142347
+## 9           am  2.52022689  2.05665055  1.2254035 0.23398971
+## 10        gear  0.65541302  1.49325996  0.4389142 0.66520643
+## 11        carb -0.19941925  0.82875250 -0.2406258 0.81217871
+</code></pre>
+</div>
+
+<p>Of interest, no p-value is below .05.</p>
+
+<p>Now come the main part, let’s run multiple regression and then combine the results.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">lm</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="s2">"coefficients"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind.data.frame</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rownames_to_column</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">as_tibble</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">setNames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"predictor"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"t"</span><span class="p">,</span><span class="w"> </span><span class="s2">"p"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">arrange</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="n">str_detect</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span><span class="w"> </span><span class="s2">"(Intercept)"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">predictor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_sub</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_length</span><span class="p">(</span><span class="n">predictor</span><span class="p">)</span><span class="m">-3</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## # A tibble: 10 × 5
+##    predictor           b          SE         t            p
+##        &lt;chr&gt;       &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt;
+## 1         wt -5.34447157 0.559101045 -9.559044 1.293959e-10
+## 2        cyl -2.87579014 0.322408883 -8.919699 6.112687e-10
+## 3       disp -0.04121512 0.004711833 -8.747152 9.380327e-10
+## 4         hp -0.06822828 0.010119304 -6.742389 1.787835e-07
+## 5       drat  7.67823260 1.506705108  5.096042 1.776240e-05
+## 6         vs  7.94047619 1.632370025  4.864385 3.415937e-05
+## 7         am  7.24493927 1.764421632  4.106127 2.850207e-04
+## 8       carb -2.05571870 0.568545640 -3.615750 1.084446e-03
+## 9       gear  3.92333333 1.308130699  2.999191 5.400948e-03
+## 10      qsec  1.41212484 0.559210130  2.525213 1.708199e-02
+</code></pre>
+</div>
+
+<p>Some explanation:</p>
+
+<ul>
+  <li>l2: deselect the outcome variable, so that we can address “all” variables in the next lines</li>
+  <li>l3: map each list element to <code class="highlighter-rouge">lm</code>; <code class="highlighter-rouge">.x</code> is a placeholder for all the list elements (here predictors)</li>
+  <li>l4: now get the summary of each lm. More specifically, we have a number of lm models, which are stored as list elements. Now we apply the <code class="highlighter-rouge">summary</code> function to each of those list elements (lm results).</li>
+  <li>l5: address (extract) the <code class="highlighter-rouge">coefficients</code> subelement from each list element</li>
+  <li>l6: rownames should be their own column</li>
+  <li>l7: tibbles are nic</li>
+  <li>l8: make the col names typing-friendly</li>
+  <li>l9: filter those lines, where <code class="highlighter-rouge">predictor</code> is <em>not</em> equal to “(Intercept)”.</li>
+  <li>l10: change the values of <code class="highlighter-rouge">predictor</code> such that the strange end part “..x” is removed</li>
+</ul>
+
+<p>Puh, quite some hassle.</p>
+
+<p>Now, for completeness, let’s look at the $R^2$.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">lm</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="n">glance</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind.data.frame</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rownames_to_column</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">as_tibble</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## # A tibble: 10 × 12
+##    rowname r.squared adj.r.squared    sigma statistic      p.value    df
+##      &lt;chr&gt;     &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt; &lt;int&gt;
+## 1      cyl 0.7261800     0.7170527 3.205902 79.561028 6.112687e-10     2
+## 2     disp 0.7183433     0.7089548 3.251454 76.512660 9.380327e-10     2
+## 3       hp 0.6024373     0.5891853 3.862962 45.459803 1.787835e-07     2
+## 4     drat 0.4639952     0.4461283 4.485409 25.969645 1.776240e-05     2
+## 5       wt 0.7528328     0.7445939 3.045882 91.375325 1.293959e-10     2
+## 6     qsec 0.1752963     0.1478062 5.563738  6.376702 1.708199e-02     2
+## 7       vs 0.4409477     0.4223126 4.580827 23.662241 3.415937e-05     2
+## 8       am 0.3597989     0.3384589 4.902029 16.860279 2.850207e-04     2
+## 9     gear 0.2306734     0.2050292 5.373695  8.995144 5.400948e-03     2
+## 10    carb 0.3035184     0.2803024 5.112961 13.073646 1.084446e-03     2
+## # ... with 5 more variables: logLik &lt;dbl&gt;, AIC &lt;dbl&gt;, BIC &lt;dbl&gt;,
+## #   deviance &lt;dbl&gt;, df.residual &lt;int&gt;
+</code></pre>
+</div>
+
+<p>Ok, I admit, I like plotting, particularly with <code class="highlighter-rouge">ggplot2</code>.</p>
+
+<p>First, the $R^2$ for all models:</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">lm</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="n">glance</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind.data.frame</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rownames_to_column</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">as_tibble</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">rowname</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">adj.r.squared</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">adj.r.squared</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-04/p1-1.png" alt="plot of chunk p1" /></p>
+
+<p>Last, the p-values of each predictor (OMG).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">mtcars</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">mpg</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">lm</span><span class="p">(</span><span class="n">mtcars</span><span class="o">$</span><span class="n">mpg</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.x</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mtcars</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="n">summary</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="s2">"coefficients"</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind.data.frame</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rownames_to_column</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">as_tibble</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">setNames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"predictor"</span><span class="p">,</span><span class="w"> </span><span class="s2">"b"</span><span class="p">,</span><span class="w"> </span><span class="s2">"SE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"t"</span><span class="p">,</span><span class="w"> </span><span class="s2">"p"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">arrange</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="n">str_detect</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span><span class="w"> </span><span class="s2">"(Intercept)"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">predictor</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_sub</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">str_length</span><span class="p">(</span><span class="n">predictor</span><span class="p">)</span><span class="m">-3</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">predictor</span><span class="p">,</span><span class="n">p</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.05</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-04/p2-1.png" alt="plot of chunk p2" /></p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#rstats" title="Pages tagged rstats" class="tag"><span class="term">rstats</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/bind_list_to_dataframe_lm/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/bind_list_to_dataframe_lm/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/bind_list_to_dataframe_lm/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/percentage_plot_ggplot2_V2/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

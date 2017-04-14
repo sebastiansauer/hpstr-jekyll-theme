@@ -1,13 +1,14 @@
 ---
 title: "Running multiple simple regressions with purrr"
 layout: post
+tags: [rstats, tidyverse]
 ---
 
-*reading time: 10 min.*
 
-Hadley Wickham's `purrr` has given a new look at handling data structures to the typical R user (some reasoning suggests that average users doesn't exist, but that's a different story).
+Hadley Wickham's `purrr` has given a new look at handling data structures to the typical R user (some reasoning suggests that average users don't exist, but that's a different story).
 
 I just tried the following with purrr:
+
 - Meditate about the running a simple regression, FWIW
 - Take a dataframe with candidate predictors and an outcome
 - Throw one predictor at a time into the regression, where the outcome variable remains the same (i.,e multiple simple regressions (one predictor) where the predictor is changed at each run but the outcome remains the same)

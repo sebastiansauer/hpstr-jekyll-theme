@@ -1,11 +1,9 @@
 ---
 title: "Why Likert scales are (in general) not metric"
 layout: post
+tags: [measurement]
 ---
 
-
-
-*reading time: 10-15 min.*
 
 Likert scales are psychologists' bread-and-butter tool. Literally, thousands (!) of such "scales" (as they are called, rightfully or not) do exist. To get a feeling: The [APA](http://www.apa.org/science/programs/testing/find-tests.aspx) links to [this database](https://www.ets.org/test_link/about) where *25,000* tests are listed (as stated by the website)! That is indeed an enormous number.
 

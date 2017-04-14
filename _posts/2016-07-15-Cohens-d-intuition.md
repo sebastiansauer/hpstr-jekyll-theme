@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Intuition on Cohen's d
+tags: [stats, intuition]
 ---
 
 

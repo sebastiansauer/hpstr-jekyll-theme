@@ -1,6 +1,7 @@
 ---
 title: "Multiple t-Tests with dplyr"
 layout: post
+tags: [stats, rstats]
 ---
 
 

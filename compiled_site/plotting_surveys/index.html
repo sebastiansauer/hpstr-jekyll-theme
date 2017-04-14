@@ -1,0 +1,1167 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Preparing and plotting survey results &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="plotting, rstats, survey">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="Preparing and plotting survey results">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Preparing and plotting survey results">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/plotting_surveys/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/plotting_surveys/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/plotting_surveys/" rel="bookmark" title="Preparing and plotting survey results">Preparing and plotting survey results</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-11-10T11:00:00-05:00">November 10, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~29 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>Plotting (and more generally, analyzing) survey results is a frequent endeavor. Let’s not think about arguments whether and when surveys are useful (for some recent criticism see the <a href="http://www.springer.com/de/book/9783319397559">Briggs’ book</a>.</p>
+
+<p>Typically, respondents circle some option ranging from “don’t agree at all” to “completely agree” for each question (or “item”). Typically, four to six boxes are given where one is expected to tick one.</p>
+
+<p>In this tutorial, I will discuss some barplot type visualizations. Sure, much more can be done, but we will stick to this one plot for this post.</p>
+
+<p>Some needed packages.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">forcats</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<h1 id="prepare-data">Prepare data</h1>
+
+<p>So, first, let’s load some data. That’s a data set of a survey on extraversion. Folks were asked a bunch of questions tapping at their “psychometric extraversion”, and some related behavior, that is, behavior <em>supposed to</em> be related such as “number of Facebook friends”, “how often at a party” etc. Note that college students form the sample.</p>
+
+<p>Data are available only (free as in free and free as in beer).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read.csv</span><span class="p">(</span><span class="s2">"https://sebastiansauer.github.io/data/extra_raw_WS16.csv"</span><span class="p">)</span><span class="w">
+
+</span><span class="n">data_raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">data</span><span class="w">  </span><span class="c1"># backup just in case
+</span></code></pre>
+</div>
+
+<p>OK, we got ‘em; a dataset of dimension 501, 24. Let’s glimpse at the data:</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">glimpse</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Observations: 501
+## Variables: 24
+## $ Zeitstempel                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            &lt;fctr&gt; ...
+## $ Bitte.geben.Sie.Ihren.dreistellen.anonymen.Code.ein..1...Anfangsbuchstabe.des.Vornamens.Ihres.Vaters..2...Anfangsbuchstabe.des.Mädchennamens.Ihrer.Mutter..3..Anfangsbuchstabe.Ihres.Geburstsorts.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     &lt;fctr&gt; ...
+## $ Ich.bin.gerne.mit.anderen.Menschen.zusammen.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           &lt;int&gt; ...
+## $ Ich.bin.ein.Einzelgänger.....                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          &lt;int&gt; ...
+## $ Ich.bin.in.vielen.Vereinen.aktiv.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      &lt;int&gt; ...
+## $ Ich.bin.ein.gesprächiger.und.kommunikativer.Mensch.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    &lt;int&gt; ...
+## $ Ich.bin.sehr.kontaktfreudig.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           &lt;int&gt; ...
+## $ Im.Grunde.bin.ich.oft.lieber.für.mich.allein.....                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      &lt;int&gt; ...
+## $ Ich.kann.schnell.gute.Stimmung.verbreiten.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             &lt;int&gt; ...
+## $ Ich.gehe.gerne.auf.Partys.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             &lt;int&gt; ...
+## $ Ich.bin.unternehmungslustig.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           &lt;int&gt; ...
+## $ Ich.stehe.gerne.im.Mittelpunkt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;int&gt; ...
+## $ Wie.viele.Facebook.Freunde..Kontakte..haben.Sie..wenn.Sie.nicht.bei.Facebook.sind..bitte.LEER.lassen..                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 &lt;int&gt; ...
+## $ Wie.viele..Kater...überreichlicher.Alkoholkonsum..hatten.Sie.in.den.letzten12.Monaten.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 &lt;fctr&gt; ...
+## $ Wie.alt.sind.Sie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      &lt;int&gt; ...
+## $ Bitte.geben.Sie.Ihr.Geschlecht.an.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     &lt;fctr&gt; ...
+## $ Ich.würde.sagen..ich.bin.extrovertiert.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                &lt;int&gt; ...
+## $ Sie.gehen.alleine.auf.eine.Party..Nach.wie.viel.Minuten.sind.Sie.im.Gespräch.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          &lt;fctr&gt; ...
+## $ Es.wird.ein.Mitarbeiter..m.w..für.eine.Präsentation..Messe..gesucht..Melden.Sie.sich.freiwillig.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       &lt;fctr&gt; ...
+## $ Wie.häufig.waren.Sie.in.den.letzten.12.Monaten.auf.einer.Party.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        &lt;fctr&gt; ...
+## $ Wie.oft.haben.Sie.Kundenkontakt.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       &lt;fctr&gt; ...
+## $ Passt.die.folgende.Beschreibung.auf.Sie...........Eine.extravertierte.Person.ist.jemand..der.seine.Energie.eher.nach.außen.richtet.und.weniger.in.die.innere.Welt.der.Gedanken..Ideen.oder.Vorstellungen..Daher.neigen.extravertierte.Menschen.dazu..in.neuen.Situationen.ohne.zu.zögern.sich.in.die.neue.Situationen.zu.begeben..Zum.Beispiel.würde.eine.extravertierte.Person..die.zum.ersten.Mal.einen.Yogakurs.besucht..sich.nicht.scheuen..direkt.bei.den.Übungen.mitzumachen..Oder.wenn.eine.extravertierte.Person.eine.Kneipe.zum.ersten.besucht..würde.sie.sich.nicht.unbehaglich.fühlen..Man.kann.daher.sagen..dass.extravertierte.Personen.als.aktiv.wahrgenommen.werden.und.sich.zu.Unternehmungen.hingezogen.fühlen..bei.denen.sie.mit.anderen.Personen.in.Kontakt.kommen. &lt;fctr&gt; ...
+## $ X                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      &lt;lgl&gt; ...
+## $ Wie.sehr.treffen.die.folgenden.Aussagen.auf.Sie.zu..Bitte.denken.Sie.dabei.nicht.an.spezifische.Situationen..sondern.ganz.allgemein..wie.sehr.die.Aussagen.Sie.selbst.in.den.meisten.Bereichen.und.Situationen.in.Ihrem.Leben.beschreiben.Allgemein.wirke.ich.tendenziell.eher.wie.eine.Person..die......                                                                                                                                                                                                                                                                                                                                                                                                                                                                              &lt;int&gt; ...
+</code></pre>
+</div>
+
+<h2 id="renaming">Renaming</h2>
+<p>Looks like a jungle. Now what? Let’s start with renaming the columns (variables).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">extra_colnames</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w">  </span><span class="c1"># save names in this vector
+</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">3</span><span class="o">:</span><span class="m">12</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">paste</span><span class="p">(</span><span class="s2">"i"</span><span class="p">,</span><span class="w"> </span><span class="n">formatC</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">width</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"0"</span><span class="p">),</span><span class="w"> </span><span class="n">sep</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">""</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<p>Now columns 3 to 12 are now named “i1”, “i2”, etc. These columns reflect the items of a extraversion questionnaire.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">1</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"timestamp"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">2</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"code"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">13</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"n_facebook_friends"</span><span class="w"> 
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">14</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"n_hangover"</span><span class="w"> 
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">15</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"age"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">16</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"sex"</span><span class="w"> 
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">17</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"extra_single_item"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">18</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"time_conversation"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">19</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"presentation"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">20</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"n_party"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">21</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"clients"</span><span class="w">
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">22</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"extra_vignette"</span><span class="w"> 
+</span><span class="nf">names</span><span class="p">(</span><span class="n">data</span><span class="p">)[</span><span class="m">24</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"extra_description"</span><span class="w"> 
+</span><span class="n">data</span><span class="o">$</span><span class="n">X</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kc">NULL</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="recoding">Recoding</h2>
+<p>Importantly, two items are negatively coded; we need to recode them (ie., “yes” gets “no”, and vice versa).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">rename</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> 
+       </span><span class="n">i</span><span class="m">04</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="m">04</span><span class="p">,</span><span class="w">
+       </span><span class="n">i</span><span class="m">08</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="m">08</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data</span><span class="w">
+
+</span><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">i</span><span class="m">04</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recode</span><span class="p">(</span><span class="n">i</span><span class="m">04</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">`1`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4L</span><span class="p">,</span><span class="w"> </span><span class="n">`2`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3L</span><span class="p">,</span><span class="w"> </span><span class="n">`3`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2L</span><span class="p">,</span><span class="w"> </span><span class="n">`4`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1L</span><span class="p">),</span><span class="w">
+         </span><span class="n">i</span><span class="m">08</span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">recode</span><span class="p">(</span><span class="n">i</span><span class="m">08</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">`1`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4L</span><span class="p">,</span><span class="w"> </span><span class="n">`2`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3L</span><span class="p">,</span><span class="w"> </span><span class="n">`3`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2L</span><span class="p">,</span><span class="w"> </span><span class="n">`4`</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1L</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>I suspect there are rows with <em>no</em> values at, complete blank. Let’s compute the proportion of NAs per row.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">rowSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##   [1]  1  1  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  2  1  1  1  1  1
+##  [24]  2  1  2  2  1  1  1  1  1  1  1  1  1  1  2  1  2  1  1  1  1  1  1
+##  [47]  1  1  2  1  1  3  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1  1
+##  [70]  1  1  1  1  1  1  1  2  1  1  1  1  1  1  1  1  1  1  1  1  2  2  1
+##  [93]  1  2  1  1  1  2  2  1  1  2  1  1  3  1  1  1  1  2  1  2  1  1  1
+## [116]  0  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  1  0  0  1  0  1  0
+## [139]  1  0  0  1  0  0  0  0  0  0  1  0  0  0  0  0  0  0  0  1  0  0  2
+## [162]  0  0  0  0  0  1  1  0  0  0  0  0  0  1  0  1  0  1  0  0  1  1  1
+## [185]  1  0  3  0  2  0  0  0  0  0  0  1  1  0  0  0  0  1  1  0  0  0  0
+## [208]  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  1  1
+## [231]  1  1  0  1  1  0  1  1  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0
+## [254]  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  1  0  0  0  0  0  0  0
+## [277]  0  1  0  1  0  0  0  1  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0
+## [300]  0  0  0  0  0  0  1  0  0  1  0  0  0  0  0  0  2  0  0  0  0  0  0
+## [323]  1  0  0  1  0  0  0  0  0  0  0  1  0  0  0  0  0  0  1  1  0  0  0
+## [346]  0  0  0  1  0  0  2  0  0  0  0  1  1  0  0  0  0  0  0  0  0  1  0
+## [369]  0  0  1  0  0  0  0  0  0  0  1  1  0  0  0  0  1  0  0  0  0  0  1
+## [392]  0  1  0  1  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0
+## [415]  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  0  0  0  1  0  0  0
+## [438]  0  0  0  1  1  0  1  0  0  0  0  0  0  0  0 14  1  1  0  1  0  1  0
+## [461]  0  0  0  0  0 11  0  0  0  1  0  0  0  1  1  0  1  1  0  0  0  0  0
+## [484]  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  1  0
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">table</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">extra_description</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## 
+##   1   2   3   4   5   6   7   8  10 
+##  31 118  98  68  44  12   5   1   1
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">prop_na_per_row</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowSums</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="o">/</span><span class="n">ncol</span><span class="p">(</span><span class="n">data</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data</span><span class="w">
+
+</span><span class="n">count</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">prop_na_per_row</span><span class="p">)</span><span class="w"> 
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## # A tibble: 6 × 2
+##   prop_na_per_row     n
+##             &lt;dbl&gt; &lt;int&gt;
+## 1      0.00000000   304
+## 2      0.04347826   171
+## 3      0.08695652    21
+## 4      0.13043478     3
+## 5      0.47826087     1
+## 6      0.60869565     1
+</code></pre>
+</div>
+
+<h2 id="rowwise-means-for-survey-etc">Rowwise means for survey etc.</h2>
+<p>Let’s compute the mean and the median extraversion.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">extra_mean</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowMeans</span><span class="p">(</span><span class="n">.</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="m">12</span><span class="p">],</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w">
+         </span><span class="n">extra_median</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">apply</span><span class="p">(</span><span class="n">.</span><span class="p">[</span><span class="m">3</span><span class="o">:</span><span class="m">12</span><span class="p">],</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">median</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data</span><span class="w">
+</span></code></pre>
+</div>
+
+<h2 id="cleaning-data">Cleaning data</h2>
+<p>The number of hangovers should be numeric, but it isn’t. Let’s see.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">count</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">n_hangover</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">kable</span><span class="w">
+</span></code></pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">n_hangover</th>
+      <th style="text-align: right">n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"> </td>
+      <td style="text-align: right">13</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">0</td>
+      <td style="text-align: right">98</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">1</td>
+      <td style="text-align: right">59</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">10</td>
+      <td style="text-align: right">38</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">100</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">106</td>
+      <td style="text-align: right">4</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">12</td>
+      <td style="text-align: right">18</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">15</td>
+      <td style="text-align: right">10</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">153</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">18</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">2</td>
+      <td style="text-align: right">63</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">20</td>
+      <td style="text-align: right">14</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">200</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">24</td>
+      <td style="text-align: right">8</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">25</td>
+      <td style="text-align: right">5</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">28</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">3</td>
+      <td style="text-align: right">42</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">30</td>
+      <td style="text-align: right">11</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">35</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">4</td>
+      <td style="text-align: right">25</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">40</td>
+      <td style="text-align: right">9</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">48</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">5</td>
+      <td style="text-align: right">38</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">50</td>
+      <td style="text-align: right">6</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">6</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">7</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">70</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">8</td>
+      <td style="text-align: right">7</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">80</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">9</td>
+      <td style="text-align: right">2</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">98</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">ca. 18-23</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Keinen</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>OK, let’s parse the numbers only; a typical problem in surveys is that respondent do not give numbers where you would like them to give numbers (some survey tools allow you to control what the respondent may put in the field).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="o">$</span><span class="n">n_hangover</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">parse_number</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">n_hangover</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Warning: 2 parsing failures.
+## row col expected actual
+## 132  -- a number       
+## 425  -- a number      .
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="o">$</span><span class="n">time_conversation</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">parse_number</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">time_conversation</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Warning: 1 parsing failure.
+## row col expected actual
+## 153  -- a number
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="o">$</span><span class="n">n_party</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">parse_number</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">n_party</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Warning: 1 parsing failure.
+## row col expected actual
+## 270  -- a number
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="o">$</span><span class="n">n_clients</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">parse_number</span><span class="p">(</span><span class="n">data</span><span class="o">$</span><span class="n">clients</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Warning: 234 parsing failures.
+## row col expected actual
+##  34  -- a number       
+##  37  -- a number       
+##  38  -- a number       
+##  39  -- a number       
+##  42  -- a number       
+## ... ... ........ ......
+## See problems(...) for more details.
+</code></pre>
+</div>
+
+<h2 id="checking-nas-for-items">Checking NA’s for items</h2>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">i</span><span class="m">01</span><span class="o">:</span><span class="n">i</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">
+  </span><span class="n">gather</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">filter</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">value</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">count</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## # A tibble: 1 × 1
+##       n
+##   &lt;int&gt;
+## 1    24
+</code></pre>
+</div>
+
+<p>Hm, let’s see in more detail.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">i</span><span class="m">01</span><span class="o">:</span><span class="n">i</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">filter</span><span class="p">(</span><span class="o">!</span><span class="n">complete.cases</span><span class="p">(</span><span class="n">.</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>##   i01 i02 i03 i04r i05 i06 i07 i08r i09 i10
+## 1   4   1   3   NA   4   2   3    2   3   2
+## 2   4   2   3    2   2   1  NA    1   4   3
+## 3   3   2   1    3   3   2   2    4   3  NA
+## 4   3   2   1   NA   3   3   3    3   3   1
+## 5   4   4   1    1  NA   4   4    2   3   2
+## 6   3  NA   2    2   2   1   2    3   4   2
+## 7  NA  NA  NA   NA  NA  NA  NA   NA  NA  NA
+## 8  NA  NA   2    3  NA  NA  NA   NA  NA  NA
+</code></pre>
+</div>
+
+<p>Hm, not so many cases have NAs. Let’s just exclude them, that’s the easiest, and we will not lose much (many cases, that is).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">i</span><span class="m">01</span><span class="o">:</span><span class="n">i</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">complete.cases</span><span class="p">(</span><span class="n">.</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">nrow</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## [1] 493
+</code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">i</span><span class="m">01</span><span class="o">:</span><span class="n">i</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">na.omit</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data_items</span><span class="w">
+</span></code></pre>
+</div>
+
+<h1 id="plotting-item-distribution">Plotting item distribution</h1>
+
+<h2 id="typical-stacked-bar-plot">Typical stacked bar plot</h2>
+<p>The most obvious thing is to plot the distribution of the items (here: 10) of the survey. So let’s do that with <code class="highlighter-rouge">ggplot</code>.</p>
+
+<p>On the x-axis we would like to have each item (i1, i2, …), and on the y-axis the frequency of each answer, in some stapled bar fashion. That means, on the x-axis is <em>one</em> variable only. That’s why we need to “melt” the items to one “long” variable.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data_items</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w">  
+  </span><span class="n">gather</span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">),</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fill"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">1</span><span class="w">
+</span><span class="n">p</span><span class="m">1</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-10-1.png" alt="plot of chunk unnamed-chunk-10" /></p>
+
+<p>Maybe nicer to turn it 90 degrees:</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-11-1.png" alt="plot of chunk unnamed-chunk-11" /></p>
+
+<p>And reverse the order of the items, so that <code class="highlighter-rouge">i01</code> is at the top.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data_items</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">gather</span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">answer</span><span class="p">),</span><span class="w">
+         </span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">items</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data2</span><span class="w">
+  
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data2</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">),</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fill"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_discrete</span><span class="p">(</span><span class="n">limits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rev</span><span class="p">(</span><span class="n">levels</span><span class="p">(</span><span class="n">data2</span><span class="o">$</span><span class="n">items</span><span class="p">)))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">2</span><span class="w">
+</span><span class="n">p</span><span class="m">2</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-12-1.png" alt="plot of chunk unnamed-chunk-12" /></p>
+
+<h2 id="colors">Colors</h2>
+
+<p>The beauty of the colors lie in the eye of the beholder… Let’s try a different palette.</p>
+
+<p>Sequential color palettes.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Blues"</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-13-1.png" alt="plot of chunk unnamed-chunk-13" /></p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"BuGn"</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-13-2.png" alt="plot of chunk unnamed-chunk-13" /></p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-13-3.png" alt="plot of chunk unnamed-chunk-13" /></p>
+
+<p>Diverging palettes.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"RdYlGn"</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-14-1.png" alt="plot of chunk unnamed-chunk-14" /></p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_brewer</span><span class="p">(</span><span class="n">palette</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"RdYlBu"</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-14-2.png" alt="plot of chunk unnamed-chunk-14" /></p>
+
+<p>The divering palettes are useful because we have two “poles” - “do not agree” on one side, and “do agree” on the other side.</p>
+
+<p>See <a href="https://www.r-bloggers.com/choosing-colour-palettes-part-ii-educated-choices/">here</a> for an overview on Brewer palettes.</p>
+
+<p>Or maybe just grey tones.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_grey</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-15-1.png" alt="plot of chunk unnamed-chunk-15" /></p>
+
+<p>My own favorite-cherished color.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">colours</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"#2121D9"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#9999FF"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#D92121"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#21D921"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#FFFF4D"</span><span class="p">,</span><span class="w"> </span><span class="s2">"#FF9326"</span><span class="p">)</span><span class="w">
+</span><span class="n">p</span><span class="m">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_fill_manual</span><span class="p">(</span><span class="n">values</span><span class="o">=</span><span class="n">colours</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-16-1.png" alt="plot of chunk unnamed-chunk-16" /></p>
+
+<h2 id="numbers-count-on-bars">Numbers (count) on bars</h2>
+
+<p>It might be helpful to print the exact numbers on the bars.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data2</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">count</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">answer</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">y_pos</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cumsum</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">/</span><span class="n">nrow</span><span class="p">(</span><span class="n">data_items</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="m">0.5</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="o">/</span><span class="n">nrow</span><span class="p">(</span><span class="n">data_items</span><span class="p">)),</span><span class="w">
+         </span><span class="n">y_cumsum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">cumsum</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">items_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_number</span><span class="p">(</span><span class="n">items</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data3</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data3</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">),</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fill"</span><span class="p">,</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_pos</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">),</span><span class="w">  </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">3</span><span class="w">
+
+</span><span class="n">p</span><span class="m">3</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-17-1.png" alt="plot of chunk unnamed-chunk-17" /></p>
+
+<p>Flip coordinate system, and with “%” labels.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_y_continuous</span><span class="p">(</span><span class="n">labels</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scales</span><span class="o">::</span><span class="n">percent</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"proportion of respondents"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">4</span><span class="w">
+</span><span class="n">p</span><span class="m">4</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-18-1.png" alt="plot of chunk unnamed-chunk-18" /></p>
+
+<h2 id="highlight-main-category">Highlight main category</h2>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data3</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">answer</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">max_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">max_cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">which</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">max_n</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">fit_cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">max_cat</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ungroup</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data4</span><span class="w">
+
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data4</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_bar</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">answer</span><span class="p">),</span><span class="w">
+               </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fit_cat</span><span class="p">),</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"fill"</span><span class="p">,</span><span class="w"> </span><span class="n">stat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"identity"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_pos</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">),</span><span class="w">  </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_color_manual</span><span class="p">(</span><span class="n">values</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s2">"NA"</span><span class="p">,</span><span class="w"> </span><span class="s2">"red"</span><span class="p">),</span><span class="w"> </span><span class="n">guide</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"none"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_fill_grey</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-19-1.png" alt="plot of chunk unnamed-chunk-19" /></p>
+
+<p>To be honest, does really look nice. Let’s try something different later.</p>
+
+<h2 id="barplot-with-geomrect">Barplot with <code class="highlighter-rouge">geom_rect</code></h2>
+
+<p>This section and code is inspired by <a href="http://rnotr.com/likert/ggplot/barometer/likert-plotly/">this post</a>.</p>
+
+<p>The goal is to produce a more flexible bar plot, such as a “waterfall plot”, where y= 0 is centered at the middle bar height, we need to change the <code class="highlighter-rouge">geom</code>. No more <code class="highlighter-rouge">geom_bar</code> but the more versatile <code class="highlighter-rouge">geom_rect</code>. This geom plots, surprisingly, rectangles. Hence, we need to know the start and the end value (for the y-axis, the width of the bar is just 1).</p>
+
+<p>First, we need to prepare the dataset for that task.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data4</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">answer</span><span class="p">,</span><span class="w"> </span><span class="n">y_cumsum</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">spread</span><span class="p">(</span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_cumsum</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">data_items</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">zero</span><span class="p">,</span><span class="w"> </span><span class="n">`1`</span><span class="p">,</span><span class="w"> </span><span class="n">`2`</span><span class="p">,</span><span class="w"> </span><span class="n">`3`</span><span class="p">,</span><span class="w"> </span><span class="n">`4`</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ungroup</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">items_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data5</span><span class="w">
+
+
+
+</span><span class="n">data5</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rename</span><span class="p">(</span><span class="n">start_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">end_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`1`</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">start_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`1`</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">end_2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`2`</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">start_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`2`</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">end_3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`3`</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">start_4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">`3`</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">end_4</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">start_1</span><span class="p">,</span><span class="w"> </span><span class="n">end_1</span><span class="p">,</span><span class="w"> </span><span class="n">start_2</span><span class="p">,</span><span class="w"> </span><span class="n">end_2</span><span class="p">,</span><span class="w"> </span><span class="n">start_3</span><span class="p">,</span><span class="w"> </span><span class="n">end_3</span><span class="p">,</span><span class="w"> </span><span class="n">start_4</span><span class="p">,</span><span class="w"> </span><span class="n">end_4</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data6</span><span class="w">
+
+</span><span class="n">head</span><span class="p">(</span><span class="n">data6</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">kable</span><span class="w">
+</span></code></pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">items_num</th>
+      <th style="text-align: right">start_1</th>
+      <th style="text-align: right">end_1</th>
+      <th style="text-align: right">start_2</th>
+      <th style="text-align: right">end_2</th>
+      <th style="text-align: right">start_3</th>
+      <th style="text-align: right">end_3</th>
+      <th style="text-align: right">start_4</th>
+      <th style="text-align: right">end_4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">46</td>
+      <td style="text-align: right">46</td>
+      <td style="text-align: right">273</td>
+      <td style="text-align: right">273</td>
+      <td style="text-align: right">493</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">175</td>
+      <td style="text-align: right">175</td>
+      <td style="text-align: right">396</td>
+      <td style="text-align: right">396</td>
+      <td style="text-align: right">476</td>
+      <td style="text-align: right">476</td>
+      <td style="text-align: right">493</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">203</td>
+      <td style="text-align: right">203</td>
+      <td style="text-align: right">366</td>
+      <td style="text-align: right">366</td>
+      <td style="text-align: right">461</td>
+      <td style="text-align: right">461</td>
+      <td style="text-align: right">493</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">203</td>
+      <td style="text-align: right">203</td>
+      <td style="text-align: right">414</td>
+      <td style="text-align: right">414</td>
+      <td style="text-align: right">490</td>
+      <td style="text-align: right">490</td>
+      <td style="text-align: right">493</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">110</td>
+      <td style="text-align: right">110</td>
+      <td style="text-align: right">344</td>
+      <td style="text-align: right">344</td>
+      <td style="text-align: right">493</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">110</td>
+      <td style="text-align: right">110</td>
+      <td style="text-align: right">379</td>
+      <td style="text-align: right">379</td>
+      <td style="text-align: right">470</td>
+      <td style="text-align: right">470</td>
+      <td style="text-align: right">493</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>OK, we have that, pooh, quite a mess.</p>
+
+<p>So, now we need it in long form. Here come a not so elegant, but rather simple, solution for that.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data_cat1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">data6</span><span class="p">,</span><span class="w"> </span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">start_1</span><span class="p">,</span><span class="w"> </span><span class="n">end_1</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">setNames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"items"</span><span class="p">,</span><span class="w"> </span><span class="s2">"start"</span><span class="p">,</span><span class="w"> </span><span class="s2">"end"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+</span><span class="n">data_cat2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">data6</span><span class="p">,</span><span class="w"> </span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">start_2</span><span class="p">,</span><span class="w"> </span><span class="n">end_2</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">setNames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"items"</span><span class="p">,</span><span class="s2">"start"</span><span class="p">,</span><span class="w"> </span><span class="s2">"end"</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+</span><span class="n">data_cat3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">data6</span><span class="p">,</span><span class="w"> </span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">start_3</span><span class="p">,</span><span class="w"> </span><span class="n">end_3</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">setNames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"items"</span><span class="p">,</span><span class="s2">"start"</span><span class="p">,</span><span class="w"> </span><span class="s2">"end"</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">)</span><span class="w">
+</span><span class="n">data_cat4</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">select</span><span class="p">(</span><span class="n">data6</span><span class="p">,</span><span class="w"> </span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">start_4</span><span class="p">,</span><span class="w"> </span><span class="n">end_4</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">setNames</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="s2">"items"</span><span class="p">,</span><span class="s2">"start"</span><span class="p">,</span><span class="w"> </span><span class="s2">"end"</span><span class="p">))</span><span class="w">  </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">mutate</span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="p">)</span><span class="w">
+
+   
+</span><span class="n">data7</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bind_rows</span><span class="p">(</span><span class="n">data_cat1</span><span class="p">,</span><span class="w"> </span><span class="n">data_cat2</span><span class="p">,</span><span class="w"> </span><span class="n">data_cat3</span><span class="p">,</span><span class="w"> </span><span class="n">data_cat4</span><span class="p">)</span><span class="w"> 
+
+</span><span class="n">data7</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">head</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> </span><span class="n">kable</span><span class="w">
+</span></code></pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">items</th>
+      <th style="text-align: right">start</th>
+      <th style="text-align: right">end</th>
+      <th style="text-align: right">answer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">7</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">2</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">175</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">3</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">203</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">4</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">203</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">11</td>
+      <td style="text-align: right">1</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">6</td>
+      <td style="text-align: right">0</td>
+      <td style="text-align: right">110</td>
+      <td style="text-align: right">1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Now let’s plot the bar graph with the rectangle plot.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data7</span><span class="o">$</span><span class="n">answer</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">data7</span><span class="o">$</span><span class="n">answer</span><span class="p">)</span><span class="w">
+
+</span><span class="n">ggplot</span><span class="p">(</span><span class="n">data7</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">aes</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_rect</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w">
+                </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"items"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">5</span><span class="w">
+
+</span><span class="n">p</span><span class="m">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_text</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data3</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_pos</span><span class="o">*</span><span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">6</span><span class="w">
+
+</span><span class="n">p</span><span class="m">6</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-22-1.png" alt="plot of chunk unnamed-chunk-22" /></p>
+
+<p>Compare that to the <code class="highlighter-rouge">geom_bar</code> solution.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">3</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-23-1.png" alt="plot of chunk unnamed-chunk-23" /></p>
+
+<p>Basically identical (never mind the bar width).</p>
+
+<p>Now flip the coordinates again (and compare to previous solution with <code class="highlighter-rouge">geom_bar</code>).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">6</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-24-1.png" alt="plot of chunk unnamed-chunk-24" /></p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">4</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-24-2.png" alt="plot of chunk unnamed-chunk-24" /></p>
+
+<p>Let’s try to highlight the most frequent answer category for each item.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data7</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">start</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">max_n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">max</span><span class="p">(</span><span class="n">n</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">max_cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="p">(</span><span class="n">which</span><span class="p">(</span><span class="n">n</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">max_n</span><span class="p">)))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">fit_cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">answer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">max_cat</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ungroup</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data8</span><span class="w">
+
+</span><span class="n">data8</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">filter</span><span class="p">(</span><span class="n">fit_cat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data8a</span><span class="w">
+
+
+</span><span class="n">data7</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">aes</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_rect</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w">
+                </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"items"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_fill_grey</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.4</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.8</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">8</span><span class="w">
+
+    
+</span><span class="n">p</span><span class="m">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">geom_rect</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data8a</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.4</span><span class="p">),</span><span class="w"> </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w">  </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data3</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items_num</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_pos</span><span class="o">*</span><span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">),</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">8</span><span class="w">
+
+</span><span class="n">p</span><span class="m">8</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-25-1.png" alt="plot of chunk unnamed-chunk-25" /></p>
+
+<p><a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf">Here’s</a> a cheat sheet on colors and palettes; and <a href="https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf">here</a> you’ll find an overview on colors (with names and hex codes).</p>
+
+<p>Mrs. Brewer <a href="http://colorbrewer2.org/#type=sequential&amp;scheme=BuGn&amp;n=3">site</a> is a great place to come up with your own palette and learn more about colors.</p>
+
+<h1 id="rainbow-diagram">Rainbow diagram</h1>
+<p>Let’s try to “move” the bars to our wishes. Precisely, it would be nice if the bars were aligned at the “Rubicon” between “do <em>not</em> agree” and “<em>do</em> agree”. Then we could see better how many persons agree and not.</p>
+
+<p>More practically, if we knew that 104+212 = 316 persons basically disagree, then 316 could be our “zero line” (item 10). Repeat that for each item.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data8</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">n_disagree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)]),</span><span class="w">
+         </span><span class="n">n_agree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">sum</span><span class="p">(</span><span class="n">n</span><span class="p">[</span><span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">)]),</span><span class="w">
+         </span><span class="n">start_adj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">n_disagree</span><span class="p">,</span><span class="w">
+         </span><span class="n">end_adj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">n_disagree</span><span class="w">
+         </span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ungroup</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data9</span><span class="w">
+
+
+</span><span class="n">data9</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">aes</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_rect</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_adj</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end_adj</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w">
+                </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"items"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">scale_fill_grey</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.4</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.8</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">9</span><span class="w">
+
+</span><span class="n">p</span><span class="m">9</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-26-1.png" alt="plot of chunk unnamed-chunk-26" /></p>
+
+<p>Looks quite cool.</p>
+
+<p>Now let’s add the numbers to that plot.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data4</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">items_num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">parse_number</span><span class="p">(</span><span class="n">items</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="o">-</span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rename</span><span class="p">(</span><span class="n">items</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items_num</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select</span><span class="p">(</span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">everything</span><span class="p">())</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">arrange</span><span class="p">(</span><span class="n">answer</span><span class="p">,</span><span class="w"> </span><span class="n">items</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ungroup</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data10</span><span class="w">
+
+
+</span><span class="n">data9</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">y_pos_adj</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data10</span><span class="o">$</span><span class="n">y_pos</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">n_disagree</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">data11</span><span class="w">
+
+
+
+</span><span class="n">p</span><span class="m">9</span><span class="w"> </span><span class="o">+</span><span class="w">  
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data11</span><span class="p">,</span><span class="w"> </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_pos_adj</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">11</span><span class="w">
+
+</span><span class="n">p</span><span class="m">11</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-27-1.png" alt="plot of chunk unnamed-chunk-27" /></p>
+
+<p>And now let’s highlight the most frequent answer category.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">ggrepel</span><span class="p">)</span><span class="w">
+
+</span><span class="n">data11</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">aes</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_rect</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w">
+                </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_adj</span><span class="p">,</span><span class="w">
+                </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end_adj</span><span class="p">,</span><span class="w">
+                </span><span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w">
+                </span><span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w">
+                </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">answer</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_fill_grey</span><span class="p">(</span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.4</span><span class="p">,</span><span class="w"> </span><span class="n">end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.8</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_rect</span><span class="p">(</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">filter</span><span class="p">(</span><span class="n">data11</span><span class="p">,</span><span class="w"> </span><span class="n">fit_cat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">),</span><span class="w"> 
+            </span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">start_adj</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">ymax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">end_adj</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmin</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="m">0.4</span><span class="p">,</span><span class="w"> 
+                </span><span class="n">xmax</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.4</span><span class="p">),</span><span class="w">
+            </span><span class="n">fill</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"red"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">items</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y_pos_adj</span><span class="p">,</span><span class="w"> </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="p">),</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">scale_x_continuous</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"n"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">p</span><span class="m">12</span><span class="w">
+</span><span class="n">p</span><span class="m">12</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-28-1.png" alt="plot of chunk unnamed-chunk-28" /></p>
+
+<p>OK, that’s about it for today. May turn the waterfall by 90°.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-29-1.png" alt="plot of chunk unnamed-chunk-29" /></p>
+
+<p>And change the direction of the now numeric items-axis.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">p</span><span class="m">12</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">scale_x_reverse</span><span class="p">(</span><span class="n">breaks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>## Scale for 'x' is already present. Adding another scale for 'x', which
+## will replace the existing scale.
+</code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-11-12/unnamed-chunk-30-1.png" alt="plot of chunk unnamed-chunk-30" /></p>
+
+<p>Happy plotting!</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#plotting" title="Pages tagged plotting" class="tag"><span class="term">plotting</span></a><a href="https://sebastiansauer.github.io/tags/#rstats" title="Pages tagged rstats" class="tag"><span class="term">rstats</span></a><a href="https://sebastiansauer.github.io/tags/#survey" title="Pages tagged survey" class="tag"><span class="term">survey</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/plotting_surveys/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/plotting_surveys/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/plotting_surveys/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/Horoskop-Studie/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

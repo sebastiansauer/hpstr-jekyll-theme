@@ -1,6 +1,7 @@
 ---
 title: Why metric scale level cannot be taken for granted
 layout: post
+tags: [measurement, stats]
 ---
 
 

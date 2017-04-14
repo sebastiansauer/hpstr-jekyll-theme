@@ -1,6 +1,7 @@
 ---
 title: 'What to read in summer (German)'
 layout: post
+tags: [read, German]
 ---
 
 Below some consideration on what to read in summer times. In German language.

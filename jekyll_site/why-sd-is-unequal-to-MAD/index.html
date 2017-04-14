@@ -1,0 +1,304 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Why is SD(X) unequal to MAD(X)? &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="stats, intuition">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="Why is SD(X) unequal to MAD(X)?">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why is SD(X) unequal to MAD(X)?">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/why-sd-is-unequal-to-MAD/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/why-sd-is-unequal-to-MAD/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/why-sd-is-unequal-to-MAD/" rel="bookmark" title="Why is SD(X) unequal to MAD(X)?">Why is SD(X) unequal to MAD(X)?</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-08-31T00:00:00-04:00">August 31, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~8 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>It may seem bewildering that the standard deviation (sd) of a vector X is 
+(generally) <em>unequal</em> to the mean absolute deviation from the mean (MAD) of X, ie.</p>
+
+<p><script type="math/tex">sd(X) \ne MAD(X)</script>.</p>
+
+<p>One could now argue this way: well, sd(X) involves computing the mean of the squared 
+<script type="math/tex">x_i</script>, then taking the square root of this mean, thereby “coming back” to the initial size 
+or dimension of x (i.e, first squaring, then taking the square root). And, MAD(X)
+is nothing else then the mean deviation from the mean. So both quantities are 
+very similar, right? So one could expect that both statistics yield the same number, given they operate on the same input vector X.</p>
+
+<p>However, this reasoning if flawed. As a matter of fact, sd(X) will almost 
+certainly differ from MAD(X).</p>
+
+<p>This post tries to give some intuitive understanding to this matter.</p>
+
+<p>Well, we could of course lay back and state that why for heaven’s sake <em>should</em> 
+the two formulas (sd and MAD) yield the same number? Different computations are 
+involved, so different numbers should pop out. This would cast the burden of 
+proof to the opposite party (showing that there are no differences). However, this answer does not really appeal if one 
+tries to understand <em>why</em> it things are the way they are. So let’s try to develop some sense out of it.</p>
+
+<h2 id="looking-at-the-formulas">Looking at the formulas</h2>
+
+<p>The formula above can be written out as</p>
+
+<script type="math/tex; mode=display">\sqrt{\frac{1}{n} \sum{x^2_i}} \ne \frac{1}{n} \sum{x_i}</script>
+
+<p>where <script type="math/tex">X</script> is a vector of some numeric values. For the sake of simplicity 
+<script type="math/tex">x_i</script> refers to the difference of some value to its mean.</p>
+
+<p>Looking at the formula above, our question may be more poignantly formulated as 
+“why does the left hand side where we first square and then take the opposite 
+operation, square root, does <em>not</em> yield the same number as the right hand side?”.
+Or similarly, why does the square root not “neutralize” or “un-do” the squaring?</p>
+
+<p>If we suspect that the squaring-square-rooting is the culprit, let’s simplify the last equation a bit, and kick-out the <script type="math/tex">\frac{1}{n}</script> part. But note that we are in fact changing the equation here.</p>
+
+<p>For generality, let’s drop the notion that <script type="math/tex">x_i</script> necessarily stands for the 
+difference of some value of a vector to the mean of the vector. We just say now 
+that <script type="math/tex">x_i</script> is some numeric value whatsoever (but positive and real, to make 
+life easier).</p>
+
+<p>Then we have:</p>
+
+<script type="math/tex; mode=display">\sqrt{ \sum{x^2_i}} \ne \sum{x_i}</script>
+
+<p>This equation is much nicer in the sense it shows the problem clearer. It 
+is instructive to now square both sides:</p>
+
+<script type="math/tex; mode=display">\sum{x^2_i} \ne (\sum{x_i})^2</script>
+
+<p>In words, our problem is now “Why is the <em>sum of squares</em> different to the <em>square of the sum</em>?”. This problem may sound familiar and can be found in a number of application (eg., some transformation of the 
+<a href="https://en.wikipedia.org/wiki/Algebraic_formula_for_the_variance">variance</a>).</p>
+
+<p>Let’s further simplify (but without breaking rules at this point), and limit our
+reasoning to a vector X of two values only, <em>a</em> and <em>b</em>:</p>
+
+<script type="math/tex; mode=display">a^2 + b^2 \ne (a+b)^2</script>
+
+<p>Oh, even more familiar. We clearly see a binomial expression here. And clearly:</p>
+
+<script type="math/tex; mode=display">a^2 + b^2 \ne (a+b)^2 = a^2 + 2ab + b^2</script>
+
+<h2 id="visualization">Visualization</h2>
+
+<p>A helpful visualization is this:</p>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-08-31-01.png" alt="visulization of binomial theorem" />.</p>
+
+<p>This scheme makes clear that the difference between the left hand side and the 
+right hand side are the two green marked areas. Both are <script type="math/tex">ab</script>, so <script type="math/tex">2ab</script> in 
+total. <script type="math/tex">2ab</script> is the difference between the two sides of the equation.</p>
+
+<h2 id="going-back-to-the-average-1n">Going back to the average (1/n)</h2>
+
+<p>Remember that above, we deliberately changed the initial equation (the initial 
+problem). That is, we changed the equation in a non-admissible way in order to 
+render the problem more comprehensible and more focused. Some may argue that we should come back to the initial problem, where not sums but averages are to be computed. This yields a similar, but slightly more complicated reasoning.</p>
+
+<p>Let us again stick to a vector X with two values (<em>a</em> and <em>b</em>) only. Then, the 
+initial equation becomes:</p>
+
+<script type="math/tex; mode=display">\sqrt{ \frac{a^2}{2} + \frac{b^2}{2}} \ne \frac{a}{2} + \frac{b}{2}</script>
+
+<p>Squaring both sides yields</p>
+
+<script type="math/tex; mode=display">\frac{a^2}{2} + \frac{b^2}{2} \ne (\frac{a}{2} + \frac{b}{2})^2</script>
+
+<p>This can be simplified (factorized) as</p>
+
+<p><script type="math/tex">\frac{1}{2} (a^2 + b^2) \ne \frac{1}{2^2}(a^2 + 2ab + b^2)</script>.</p>
+
+<p>Now we have again a similar situation as above. The difference being that on the left hand side (1/2) if factored out; on the right hand side (1/4) is factored out. As the formulas are different (and similar to our reasoning above), we could stop and argue that is unlikely that both sides yield the same value.</p>
+
+<h2 id="visualization-2">Visualization 2</h2>
+
+<p>As a final step, let’s visualize the thoughts of the previous lines.</p>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-08-31-02.png" alt="" /></p>
+
+<p>What this amazing forest of crossing lines wants to tell you is the following. For the left hand side, the diagonal lines divide <script type="math/tex">a^2</script> and <script type="math/tex">b^2</script> in two parts of equal size, i.e., <script type="math/tex">a^2/2</script> and <script type="math/tex">b^2/2</script>.</p>
+
+<p>For the right hand side, a similar idea applies. But the double-crossed (“x-type”) lines indicate that each of the four forms is divided in <strong>4</strong> equal parts, ie., <script type="math/tex">a^2/4</script>, <script type="math/tex">b^2/4</script> and two times <script type="math/tex">ab/4</script>.</p>
+
+<p>From this sketch, again it appears unlikely that both sides would yield the same number. We have not proven that is impossible, but our reasoning suggests that it would be highly unlikely to see the same number on both sides of the equation.</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#stats" title="Pages tagged stats" class="tag"><span class="term">stats</span></a><a href="https://sebastiansauer.github.io/tags/#intuition" title="Pages tagged intuition" class="tag"><span class="term">intuition</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/why-sd-is-unequal-to-MAD/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/why-sd-is-unequal-to-MAD/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/why-sd-is-unequal-to-MAD/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/shade_Normal_curve/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

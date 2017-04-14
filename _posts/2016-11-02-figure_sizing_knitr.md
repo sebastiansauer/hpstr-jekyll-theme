@@ -1,6 +1,7 @@
 --- 
 title: "Different ways to set figure size in RMarkdown" 
 layout: post
+tags: [markdown]
 ---
 
 

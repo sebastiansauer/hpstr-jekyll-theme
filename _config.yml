@@ -1,11 +1,9 @@
-title:            Sebastian Sauer Blog
-description:      A blog about research methods, with a focus on data analysis and psychology.
-disqus_shortname: 
+title:            Sebastian Sauer Stats Blog
+description:      A blog about statistics including research methods, with a focus on data analysis using R and psychology.
+disqus_shortname: https-sebastiansauer-github-io
 reading_time:     true
-words_per_minute: 200
-# Your site's domain goes here (eg: https://mmistakes.github.io, http://yourdomain.com, etc)
-# When testing locally leave blank or use http://localhost:4000
-url:
+words_per_minute: 100
+url: https://sebastiansauer.github.io
 
 # Owner/author information
 owner:
@@ -13,20 +11,17 @@ owner:
   avatar:         ses_201102_xsmall.jpg
   bio:             "Professor at FOM University of Applied Sciences. Thinker on own peril."
   email:          ssauer@posteo.de
-  # Social networking links used in footer. Update and remove as you like.
   twitter:      sauer_sebastian  
-  facebook:       
   github:         sebastiansauer
-  stackexchange:  http://stackoverflow.com/users/4434263/sebastian-sauer
-  linkedin:       
-  instagram:      
-  flickr:         
-  tumblr:         
-  # google plus id, include the '+', eg +mmistakes
-  google_plus:
+  linkedin:       https://www.linkedin.com/in/dr-sebastian-sauer-4791762
 
-# Background image to be tiled on all pages
-background:  
+
+
+# BibTex Citation plugin
+citation:
+    citation_style: apa
+    citation_locale: en
+    
 
 # Analytics and webmaster tools stuff goes here
 google_analytics:   
@@ -47,9 +42,7 @@ gems:
 sass:
   sass_dir: _sass
   style: compressed
-kramdown:
-  math_engine: mathjax  
-  
+
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /:categories/:title/
@@ -64,6 +57,7 @@ kramdown:
   entity_output: as_char
   toc_levels: 1..6
   enable_coderay: false
+  math_engine: mathjax  
 
 include: 
   - .htaccess

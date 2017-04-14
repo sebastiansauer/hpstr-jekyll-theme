@@ -1,6 +1,7 @@
 ---
 title: "Shading multiple areas under normal curve"
 layout: post
+tags: [rstats, plotting]
 ---
 
 

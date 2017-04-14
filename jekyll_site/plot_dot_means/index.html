@@ -1,0 +1,236 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Plot of mean with exact numbers using ggplot2 &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="rstats, plotting">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="Plot of mean with exact numbers using ggplot2">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Plot of mean with exact numbers using ggplot2">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/plot_dot_means/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/plot_dot_means/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/plot_dot_means/" rel="bookmark" title="Plot of mean with exact numbers using ggplot2">Plot of mean with exact numbers using ggplot2</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-08-30T00:00:00-04:00">August 30, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~2 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>Often, both in academic research and more business-driven data analysis, we want to compare some (two in many cases) means. We will not discuss here that <a href="https://www.kickstarter.com/projects/1474588473/barbarplots">friends should not let friends plot barplots</a>. Following the advise of <a href="https://www.amazon.com/Visualizing-Data-William-S-Cleveland/dp/0963488406">Cleveland’s seminal book</a> we will plot the means using dots, not bars.</p>
+
+<p>However, at times we do not simply want the diagram, but we (or someone) is interested in the bare, plain, naked, exact numbers too. So we would like to put the numbers right into the diagram. One way to achieve this is the following:</p>
+
+<p>First, let’s load some data and some packages (in R):</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">data</span><span class="p">(</span><span class="n">tips</span><span class="p">,</span><span class="w"> </span><span class="n">package</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"reshape2"</span><span class="p">)</span><span class="w">  </span><span class="c1"># load some data
+</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">dplyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">tidyr</span><span class="p">)</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Then, summarize the variables (ie., compute means per group). Note that for <code class="highlighter-rouge">ggplot</code> (and many other graphing systems) it is necessary that the the variable depicted at (say) the X-axis conforms to one column in the data set. Thus, we often have to change the structure of the data set (but here not…).</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">tips</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">group_by</span><span class="p">(</span><span class="n">sex</span><span class="p">,</span><span class="w"> </span><span class="n">smoker</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">summarise</span><span class="p">(</span><span class="n">mean_group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean</span><span class="p">(</span><span class="n">tip</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">tips2</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>OK; now let’s plot it with <code class="highlighter-rouge">ggplot2</code>:</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">tips2</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+    </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smoker</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean_group</span><span class="p">,</span><span class="w"> 
+             </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sex</span><span class="p">,</span><span class="w"> </span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smoker</span><span class="p">,</span><span class="w">
+             </span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sex</span><span class="p">,</span><span class="w">
+             </span><span class="n">label</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">round</span><span class="p">(</span><span class="n">mean_group</span><span class="p">,</span><span class="w"> </span><span class="m">2</span><span class="p">)))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_point</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_line</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_text</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">smoker</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">mean_group</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="m">0.03</span><span class="p">))</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-08-30-05.png" alt="" /></p>
+
+<p>The whole syntax can be accessed at <a href="https://gist.github.com/sebastiansauer/f555d57dfc91c1de0be04ac256928b58">Github</a>.</p>
+
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#rstats" title="Pages tagged rstats" class="tag"><span class="term">rstats</span></a><a href="https://sebastiansauer.github.io/tags/#plotting" title="Pages tagged plotting" class="tag"><span class="term">plotting</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/plot_dot_means/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/plot_dot_means/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/plot_dot_means/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/normal_curve_ggplot2/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

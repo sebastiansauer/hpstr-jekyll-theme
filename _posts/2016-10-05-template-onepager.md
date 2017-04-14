@@ -2,6 +2,7 @@
 title: "Simple (R-)Markdown template for 'Onepager-reports' etc. "
 author: "Sebastian Sauer"
 layout: post
+tags: [markdown]
 ---
 
 

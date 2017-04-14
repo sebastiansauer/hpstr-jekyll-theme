@@ -1,6 +1,7 @@
 ---
 title: "Code example for plotting boxplots instead of mean bars"
 layout: post
+tags: [plotting, rstats]
 ---
 
 

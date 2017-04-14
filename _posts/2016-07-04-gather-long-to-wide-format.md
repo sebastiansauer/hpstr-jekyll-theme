@@ -1,6 +1,7 @@
 ---
 title: "Long vs. wide format, and gather()"
 layout: post
+tags: [rstats]
 ---
 
 *reading time: 10 min.*

@@ -1,9 +1,8 @@
 ---
 title: "Summary for multiple variables using purrr"
 layout: post
+tags: [rstats]
 ---
-
-*reading time: 5 min.*
 
 
 A frequent task in data analysis is to get a summary of a bunch of variables. Often, graphical summaries (diagrams) are wanted. However, at times numerical summaries are in order. How to get that in R? That's the question of the present post.

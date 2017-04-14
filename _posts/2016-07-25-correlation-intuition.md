@@ -1,6 +1,7 @@
 ---
 title: Intuition on correlation
 layout: post
+tags: [stats, intuition]
 ---
 
 

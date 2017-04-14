@@ -1,6 +1,7 @@
 ---
 title: Simple way to plot a normal distribution with ggplot2
 layout: post
+tags: [rstats, plotting]
 ---
 
 

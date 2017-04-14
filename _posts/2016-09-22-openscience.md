@@ -1,9 +1,9 @@
 ---
 title: "How to promote open science? Some practical recommendations"
 layout: post
+tags: [research, open_science]
 ---
 
-*reading time: 5 min.*
 
 I just attended the biannual [conference of the German society of psychology (DPGs)](http://www.dgpskongress.de) in Leipzig; [open science](https://en.wikipedia.org/wiki/Open_science) was a central, albeit not undisputed topic; a lot of interesting related [twitter discussion](https://twitter.com/hashtag/DPGs2016?src=hash). 
 

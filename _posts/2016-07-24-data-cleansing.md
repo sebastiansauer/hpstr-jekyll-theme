@@ -1,12 +1,12 @@
 ---
 title: Practical data cleansing in R
 layout: post
+tags: [stats, rstats]
 ---
 
-*reading time: 10-15 min.*
  
 
-# What is “data cleansing” about?
+What is “data cleansing” about?
 
 Data analysis, in practice, consists typically of some different steps which can be subsumed as “preparing data” and “model data” (not considering communication here):
 

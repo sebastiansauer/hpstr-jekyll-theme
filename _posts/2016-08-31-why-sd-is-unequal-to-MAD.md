@@ -1,7 +1,18 @@
 --- 
 title: "Why is SD(X) unequal to MAD(X)?" 
 layout: post 
+tags: [stats, intuition]
 ---
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+
 
 
 

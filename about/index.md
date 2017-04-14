@@ -1,20 +1,17 @@
 ---
 layout: page
-title: About this blog
+title: About Sebastian Sauer Stats Blog
 image:
-  feature: abstract-5.jpg
-  credit: dargadgetz
-  creditlink: http://www.dargadgetz.com/ios-7-abstract-wallpaper-pack-for-iphone-5-and-ipod-touch-retina/
+  feature: wildblue.jpg
+  credit: Laurenz
 comments: false
-modified: 2016-02-01
+modified: 2017-01-18
 ---
 
-test latex
-\\[ \frac{1}{n^{2}} \\]
 
 
 
-I blog about research methods, particularly for psychology, and particularly with regard to data analysis.
+I blog about statistics including research methods, particularly for psychology, and particularly with regard to data analysis using R.
 
 As a non-virtual person, I work as a professor at [FOM University of Applied Sciences](https://www.fom.de/die-fom-englisch/the-university-for-the-professionals.html). 
 
@@ -24,6 +21,19 @@ Posts reflect mostly my current thinking; and posts are not immune to thought up
 ## Follow the blog
 
 To receive updates for this blog, follow me on [Twitter](https://twitter.com/sauer_sebastian), or subscribe to the [RSS feed](https://sebastiansauer.github.io/feed.xml).
+
+
+## Related stuff
+
+Some nice blogs:
+
+- R-Bloggers: <https://www.r-bloggers.com>
+
+- Richard Morey's blog: <https://richarddmorey.org>
+
+- Jan Vanhove's blog: <https://janhove.github.io>
+
+- Win Vector blog: <http://www.win-vector.com/blog/>
 
 
 ## Licence

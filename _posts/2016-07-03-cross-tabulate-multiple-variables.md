@@ -1,6 +1,7 @@
 ---
 title: "Cross-tabulate multiple variables"
 layout: post
+tags: [rstats]
 ---
 
 *reading time: 15-20 min.*

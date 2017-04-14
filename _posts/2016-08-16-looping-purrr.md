@@ -1,15 +1,12 @@
 ---
 layout: post
 title: Looping through dataframe columns using purrr::map()
+tags: [rstats]
 ---
 
 
-*reading time: 5-10 min.*
 
-# Let's get purrr
-
-
-Recently, I ran across this issue: A data frame with many columns; I wanted to select all numeric columns and submit them to a t-test with some grouping variables.
+Let's get purrr. Recently, I ran across this issue: A data frame with many columns; I wanted to select all numeric columns and submit them to a t-test with some grouping variables.
 
 As this is a quite common task, and the purrr-approach (package [purrr](https://github.com/hadley/purrr) by @HadleyWickham) is quite elegant, I present the approach in this post.
 

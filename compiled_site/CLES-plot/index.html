@@ -1,0 +1,305 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>CLES plot &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="plotting, rstats, stats">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="CLES plot">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CLES plot">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/CLES-plot/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/CLES-plot/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/CLES-plot/" rel="bookmark" title="CLES plot">CLES plot</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-10-17T00:00:00-04:00">October 17, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~9 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>In data analysis, we often ask “Do these two groups differ in the outcome variable”? Asking this question, a tacit assumption may be that the grouping variable is the cause of the difference in the outcome variable. For example, assume the two groups are “treatment group” and “control group”, and the outcome variable is “pain reduction”.</p>
+
+<p>A typical approach would be to report the strenght of the difference by help of Cohen’s d. Even better (probably, but this atttitude is not undebated) is to report confidence intervals for d.</p>
+
+<p>Although this approach is widely used, I think it is not ideal. One reason is that we (may) have tacitly changed our hypothesis. We are <em>not</em> asking anymore “Do individuals between the two groups differ?” but we ask now “Do the mean values differ?”, which is different. Although we are used to this approach, there are problems: Often, our theories do <em>not</em> state that e.g., some pill will change the mean of a group. Rather, the theory will (quite rightly, in principle) suggest that some chemical compound in <em>an organism</em> will change some molecules, thereby some cell metabolism products, and finally bringing about some biological and/or psychological change (to the better). This is complete different a theory. And the last theory makes sense (potentially) from a biological and logical perspective. The former does <em>not</em> make any sense. How can some chemical affect some group averages, some “average organism” which does not exist in reality? If we agre with that notion we would be forced, I believe, not to compare means.</p>
+
+<p>But what can we do instead? In fact, some new methods have been proposed; for example James Grice developed what he has dubbed <a href="http://store.elsevier.com/Observation-Oriented-Modeling/James-Grice/isbn-9780123851949/">Observation Oriented Moeling</a>. But maybe an easy, first step alternative could be using the “common language effect size” (CLES). CLES simply states “given the observed effect, how likely is it that if we draw two individuals, one from each of the two groups, that the individual from the experimental group will have a higher value in the variable of interest?” (see <a href="http://core.ecu.edu/psyc/wuenschk/docs30/CL.pdf">here</a>).</p>
+
+<p>The value of CLEs is observational, not a hypothetical parameter. It is quite straight-forward man-on-the-street logic. For example: “Draw 100 pairs from the two groups; in 83 cases the experimental group person will a higher value”. That makes sense from an observation or individual organism point of view.</p>
+
+<p>Practically, there are <a href="https://cran.r-project.org/web/packages/compute.es/compute.es.pdf">R packages out there</a> which help us computing CLES (or at least one package). The details of the computation are beyond the scope of this article; see <a href="http://core.ecu.edu/psyc/wuenschk/docs30/CL.pdf">here</a> for mathematical details.</p>
+
+<p>Rather, we will build a nice plot for displaying a number of CLES differences between two groups.</p>
+
+<p>First, let’s get some data, and load the needed packages.</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># library(readr)
+</span><span class="n">extra_file</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s2">"https://raw.github.com/sebastiansauer/Daten_Unterricht/master/extra.csv"</span><span class="w">
+
+</span><span class="n">extra_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">read_csv</span><span class="p">(</span><span class="n">extra_file</span><span class="p">)</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>This dataset <code class="highlighter-rouge">extra</code> comprises answers to a survey tapping into extraversion as a psychometric variable plus some related behavior (e.g., binge drinking). The real-word details are not so much of interest here.</p>
+
+<p>So, let’s pick all numeric variables plus one grouping variable (say, sex):</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># library(dplyr)
+</span><span class="n">extra_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">na.omit</span><span class="p">()</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">select_if</span><span class="p">(</span><span class="n">is.numeric</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">names</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">extra_num_vars</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>First, we compute a t-test for each numeric variable (using our grouping variable “sex”):</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># library(purrr)
+</span><span class="n">extra_df</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="n">one_of</span><span class="p">(</span><span class="n">extra_num_vars</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="c1"># na.omit() %&gt;% 
+</span><span class="w">  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">t.test</span><span class="p">(</span><span class="n">.</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">extra_df</span><span class="o">$</span><span class="n">Geschlecht</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">compute.es</span><span class="o">::</span><span class="n">tes</span><span class="p">(</span><span class="n">.</span><span class="o">$</span><span class="n">statistic</span><span class="p">,</span><span class="w">
+                       </span><span class="n">n</span><span class="m">.1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">(</span><span class="n">extra_df</span><span class="p">,</span><span class="w"> </span><span class="n">Geschlecht</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Frau"</span><span class="p">)),</span><span class="w">
+                       </span><span class="n">n</span><span class="m">.2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">dplyr</span><span class="o">::</span><span class="n">filter</span><span class="p">(</span><span class="n">extra_df</span><span class="p">,</span><span class="w"> </span><span class="n">Geschlecht</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"Mann"</span><span class="p">))))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">map</span><span class="p">(</span><span class="o">~</span><span class="n">do.call</span><span class="p">(</span><span class="n">rbind</span><span class="p">,</span><span class="w"> </span><span class="n">.</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">as.data.frame</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">t</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">data.frame</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rownames_to_column</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">rename</span><span class="p">(</span><span class="n">outcomes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rowname</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> 
+  </span><span class="n">extra_effsize</span><span class="w">
+</span></code></pre>
+</div>
+
+<hr />
+
+<p>Note: output hidden, tl;dr.</p>
+
+<hr />
+
+<p>Puh, that’s a bit confusing. So, what did we do?</p>
+
+<ol>
+  <li>We selected the numeric variables of the data frame; here <code class="highlighter-rouge">one_of</code> comes handy. This function gets the column names of a data frame as input, and allows to select all of them in the <code class="highlighter-rouge">select</code> function.</li>
+  <li>We mapped a t-test to each of those columns, where <code class="highlighter-rouge">extra_df$Geschlecht</code> was the grouping variable. Note that the dot <code class="highlighter-rouge">.</code> is used as a shortcut for the lefthand side of the equation, ie., whatever is handed over by the pipe ` %&gt;% ` in the previous line/step.</li>
+  <li>Next, we computed the effect size using <code class="highlighter-rouge">tes</code> from package <code class="highlighter-rouge">compute.es</code>.</li>
+  <li>For each variable submitted to a t-test, bind the results rowwise. Each t-test gives back a list of results. We want to bind those results in a list. As we have several list elements (for each t-test), we can use <code class="highlighter-rouge">do.call</code> to bind that all together in one go.</li>
+  <li>Convert to data frame.</li>
+  <li>Better turn matrix by 90° using <code class="highlighter-rouge">t</code>.</li>
+  <li>As <code class="highlighter-rouge">t</code> gives back a matrix, we need to convert to data frame again.</li>
+  <li>Rownames should be their own column with an appropriate name (<code class="highlighter-rouge">outcomes</code>).</li>
+  <li>Save that in an own data frame.</li>
+</ol>
+
+<p>And compute the differences in CLES, and plot it:</p>
+
+<div class="language-r highlighter-rouge"><pre class="highlight"><code><span class="c1"># library(ggplot2)
+</span><span class="n">extra_effsize</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">dplyr</span><span class="o">::</span><span class="n">select</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span><span class="w"> </span><span class="n">cl.d</span><span class="p">)</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">mutate</span><span class="p">(</span><span class="n">sign</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ifelse</span><span class="p">(</span><span class="n">cl.d</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="s2">"+"</span><span class="p">,</span><span class="w"> </span><span class="s2">"-"</span><span class="p">))</span><span class="w"> </span><span class="o">%&gt;%</span><span class="w"> 
+  </span><span class="n">ggplot</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">reorder</span><span class="p">(</span><span class="n">outcomes</span><span class="p">,</span><span class="w"> </span><span class="n">cl.d</span><span class="p">),</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cl.d</span><span class="p">,</span><span class="w"> </span><span class="n">color</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sign</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">geom_hline</span><span class="p">(</span><span class="n">yintercept</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">50</span><span class="p">,</span><span class="w"> </span><span class="n">alpha</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">.4</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">geom_point</span><span class="p">(</span><span class="n">aes</span><span class="p">(</span><span class="n">shape</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sign</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">coord_flip</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">ylab</span><span class="p">(</span><span class="s2">"effect size (Common Language Effect Size)"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w">
+  </span><span class="n">xlab</span><span class="p">(</span><span class="s2">"outcome variables"</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> 
+  </span><span class="n">ggtitle</span><span class="p">(</span><span class="s2">"CLES plot"</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">CLES_plot</span><span class="w">
+
+
+</span><span class="n">CLES_plot</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><img src="https://sebastiansauer.github.io/images/2016-10-17/unnamed-chunk-5-1.png" alt="" /></p>
+
+<p>The code above in more detail:</p>
+
+<ol>
+  <li>select columns <code class="highlighter-rouge">outcomes</code> and <code class="highlighter-rouge">cl.d</code>; note that <code class="highlighter-rouge">cl.d</code> stands for CLES (here: Common Language Cohen’s d, as CLES is derived from Cohen’s d).</li>
+  <li>Compute variable to tell in which direction the difference points, ie., whether it is greater or smaller than 50%, where 50% refers to ignorance towards the direction of difference.</li>
+  <li>Well, now plot, but sort the outcomes by their CLES value; for the purpose of sorting we use <code class="highlighter-rouge">reorder</code>.</li>
+  <li>Flip the axes because it is more beautiful here.</li>
+</ol>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#plotting" title="Pages tagged plotting" class="tag"><span class="term">plotting</span></a><a href="https://sebastiansauer.github.io/tags/#rstats" title="Pages tagged rstats" class="tag"><span class="term">rstats</span></a><a href="https://sebastiansauer.github.io/tags/#stats" title="Pages tagged stats" class="tag"><span class="term">stats</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/CLES-plot/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/CLES-plot/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/CLES-plot/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/NAs-with-dplyr/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

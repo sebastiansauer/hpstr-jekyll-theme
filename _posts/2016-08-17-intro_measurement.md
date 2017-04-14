@@ -1,14 +1,13 @@
 ---
 layout: post
 title: Introduction to the measurement theory, and conjoint measurement theory
+tags: [stats, measurement]
 ---
 
 
-*reading time: 10-15 min.*
 
+What is measurement? Why should I care? 
 
-
-## What is measurement? Why should I care?
 Measurement is a basis of an empirical science. Image a geometer (a person measuring distances on the earth) with a metering rul made of rubber! Poor guy! Without proper measurement, even the smartest theory cannot be expected to be found, precisely because it cannot be measured.
 
 So, what exactly is measurement? Measurement can be seen as tying numbers to empirical objects. But not in some arbritrary style. Measurement is achieved, if and only if the relations found in the empirical objects do also hold in the numbers. What does that mean? Suppose you have three rods: A, B and C. You hold them next to each other and find that A is longer than B and B longer than C. So you are entitled to give whatever numbers to the rods as long as the number of rod A is *greater* than the number of rod B, which in turn must be greater than the number assigned to rod C; in short: l(A) > l(B) > l(C), where `l` is the length of the rod. It goes without saying that if l(A) > l(B), and l(B) > l(C), then it must hold that l(A) > l(C) (transitivity). Given these relations hold for all objects, we have achieved something like an *ordinal scale*.

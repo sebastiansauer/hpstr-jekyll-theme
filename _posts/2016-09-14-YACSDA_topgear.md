@@ -1,7 +1,15 @@
 ---
-title: "Fallstudie zur explorative Datenanalyse beim Datensatz 'TopGear'"
-layout: "post"
+title: "Fallstudie zur explorative Datenanalyse (YACSDA) beim Datensatz 'TopGear'"
+layout: post
+tags: [YACSDA, rstats, German]
 ---
+
+
+___
+YADCSDA in German language.
+
+___
+
 
 In dieser Fallstudie (YACSDA: Yet another case study of data analysis) wird der Datensatz `TopGear` analysiert, vor allem mit grafischen Mitteln. Es handelt sich weniger um einen "Rundumschlag" zur Beantwortung aller möglichen interessanten Fragen (oder zur Demonstration aller möglichen Analysewerkzeuge), sondern eher um einen Einblick zu einfachen explorativen Verfahren.
 

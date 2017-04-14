@@ -2,6 +2,7 @@
 title: "Checking for NA with dplyr"
 output: github_document
 layout: post
+tags: [rstats]
 ---
 
 

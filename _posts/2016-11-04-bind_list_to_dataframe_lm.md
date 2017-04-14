@@ -1,6 +1,7 @@
 ---
 title: "Bind lists to data frame for aggregating linear models results"
 layout: post
+tags: [rstats]
 ---
 
 

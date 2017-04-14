@@ -1,6 +1,7 @@
 ---
 title: "How to plot a 'percentage plot' with ggplot2"
 layout: post
+tags: [plotting, rstats]
 ---
 
 At times it is convenient to draw a frequency bar plot; at times we prefer not the bare frequencies but the proportions or the percentages per category. There are lots of ways doing so; let's look at some `ggplot2` ways.

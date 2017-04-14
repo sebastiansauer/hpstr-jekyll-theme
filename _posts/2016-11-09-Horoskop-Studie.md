@@ -2,7 +2,7 @@
 title: "Horoskopstudie zum Barnumeffekt"
 layout: post
 description: "Planung und Datenanalyse für ein einfaches Experiment zum Barnum-Effekt anhand von Horoskopen"
-tags: [data_analysis, YACDSDA, research, tutorial]
+tags: [rstats, YACSDA, research]
 ---
 
 

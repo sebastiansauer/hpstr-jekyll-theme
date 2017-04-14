@@ -1,6 +1,7 @@
 ---
 title: "How to read Github files into R easily"
 layout: post
+tags: [rstats]
 ---
 
 ## Downloading a folder (repository) from Github as a whole

@@ -1,10 +1,9 @@
 ---
 title: "Using purrr to build a data frame of vectors (eg., from effect size statistics)"
 layout: "post"
+tags: [rstats]
 ---
 
-
-*reading time: 5 min.*
 
 
  I just tried to accomplish the following with R: Compute effect sizes for a variable between two groups. Actually, not one numeric variable but many. And compute not only one measure of effect size but several (d, lower/upper CI, CLES,...). 

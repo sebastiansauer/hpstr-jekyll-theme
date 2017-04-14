@@ -1,6 +1,7 @@
 ---
 title: How to add a logo to a slidify presentation
 layout: post
+tags: [markdown]
 ---
 
 *reading time: 15-20 min.*

@@ -1,11 +1,10 @@
 ---
 title: Why absolute correlation value (r) cannot exceed 1. An intuition.
 layout: post
+tags: [stats, intuition]
 ---
 
-*reading time: 15 min.*
-
-
+<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 
 
@@ -13,7 +12,7 @@ layout: post
 
 There a many formulas for correlation, but a short and easy one is this one:
 
-$$ r = \varnothing(z_x z_y)  $$.
+$$r = \varnothing(z_x z_y)$$.
 
 
 In words, $$r$$ can be seen as the average product of z-scores.

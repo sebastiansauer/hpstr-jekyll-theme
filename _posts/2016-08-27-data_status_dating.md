@@ -1,6 +1,7 @@
 ---
 title: "The effect of a status symbol on success in online dating: an experimental study (data paper)"
 layout: post
+tags: [data, research, publication]
 ---
 
 

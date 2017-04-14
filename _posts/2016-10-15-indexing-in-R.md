@@ -1,6 +1,7 @@
 ---
 title: "Multiple ways to subsetting data frames in R"
 layout: post
+tags: [rstats]
 ---
 
 Subsetting a data frame is an essential and frequently performed task. Here, some basic ideas are presented.

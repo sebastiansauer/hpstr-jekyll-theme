@@ -1,0 +1,240 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Why metric scale level cannot be taken for granted &#8211; Sebastian Sauer Blog</title>
+<meta name="description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="keywords" content="measurement, stats">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sebastiansauer.github.io/images/">
+<meta name="twitter:title" content="Why metric scale level cannot be taken for granted">
+<meta name="twitter:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta name="twitter:creator" content="@sauer_sebastian">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Why metric scale level cannot be taken for granted">
+<meta property="og:description" content="A blog about research methods, with a focus on data analysis and psychology.">
+<meta property="og:url" content="https://sebastiansauer.github.io/measurement-01/">
+<meta property="og:site_name" content="Sebastian Sauer Blog">
+
+
+
+
+
+<link rel="canonical" href="https://sebastiansauer.github.io/measurement-01/">
+<link href="https://sebastiansauer.github.io/feed.xml" type="application/atom+xml" rel="alternate" title="Sebastian Sauer Blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="https://sebastiansauer.github.io/assets/css/main.css">
+<!-- Webfonts -->
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic" rel="stylesheet" type="text/css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- Load Modernizr -->
+<script src="https://sebastiansauer.github.io/assets/js/vendor/modernizr-2.6.2.custom.min.js"></script>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="https://sebastiansauer.github.io/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="https://sebastiansauer.github.io/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://sebastiansauer.github.io/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://sebastiansauer.github.io/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://sebastiansauer.github.io/images/apple-touch-icon-144x144-precomposed.png">
+
+
+
+</head>
+
+<body id="post" >
+
+<!--[if lt IE 9]><div class="upgrade"><strong><a href="http://whatbrowser.org/">Your browser is quite old!</strong> Why not upgrade to a different browser to better enjoy this site?</a></div><![endif]-->
+<nav id="dl-menu" class="dl-menuwrapper" role="navigation">
+	<button class="dl-trigger">Open Menu</button>
+	<ul class="dl-menu">
+		<li><a href="https://sebastiansauer.github.io/">Home</a></li>
+		<li>
+			<a href="#">About</a>
+			<ul class="dl-submenu">
+				<li>
+					<img src="https://sebastiansauer.github.io/images/ses_201102_xsmall.jpg" alt="Sebastian Sauer photo" class="author-photo">
+					<h4>Sebastian Sauer</h4>
+					<p>Professor at FOM University of Applied Sciences. Thinker on own peril.</p>
+				</li>
+				<li><a href="https://sebastiansauer.github.io/about/"><span class="btn btn-inverse">Learn More</span></a></li>
+				<li>
+					<a href="mailto:ssauer@posteo.de"><i class="fa fa-fw fa-envelope"></i> Email</a>
+				</li>
+				<li>
+					<a href="https://twitter.com/sauer_sebastian"><i class="fa fa-fw fa-twitter"></i> Twitter</a>
+				</li>
+				
+				
+				<li>
+					<a href="https://linkedin.com/in/https://www.linkedin.com/in/dr-sebastian-sauer-4791762"><i class="fa fa-fw fa-linkedin"></i> LinkedIn</a>
+				</li>
+				<li>
+					<a href="https://github.com/sebastiansauer"><i class="fa fa-fw fa-github"></i> GitHub</a>
+				</li>
+				<li>
+					<a href="http://stackoverflow.com/users/4434263/sebastian-sauer"><i class="fa fa-fw fa-stack-exchange"></i> Stackexchange</a>
+				</li>
+				
+				
+				
+			</ul><!-- /.dl-submenu -->
+		</li>
+		<li>
+			<a href="#">Posts</a>
+			<ul class="dl-submenu">
+				<li><a href="https://sebastiansauer.github.io/posts/">All Posts</a></li>
+				<li><a href="https://sebastiansauer.github.io/tags/">All Tags</a></li>
+			</ul>
+		</li>
+		
+	</ul><!-- /.dl-menu -->
+</nav><!-- /.dl-menuwrapper -->
+
+
+
+
+<div id="main" role="main">
+  <article class="hentry">
+    <header class="header-title">
+      <div class="header-title-wrap">
+        
+          <h1 class="entry-title"><a href="https://sebastiansauer.github.io/measurement-01/" rel="bookmark" title="Why metric scale level cannot be taken for granted">Why metric scale level cannot be taken for granted</a></h1>
+        
+        <h2><span class="entry-date date published"><time datetime="2016-07-21T00:00:00-04:00">July 21, 2016</time></span></h2>
+        
+        <p class="entry-reading-time">
+          <i class="fa fa-clock-o"></i>
+          
+Reading time ~9 minutes
+        </p><!-- /.entry-reading-time -->
+        
+      </div><!-- /.header-title-wrap -->
+    </header>
+    <div class="entry-content">
+      <p>One main business for psychologists is to examine questionnaire data. Extraversion, intelligence, attitudes… That’s bread-and-butter job for (research) psychologists.</p>
+
+<p>Similarly, it is common to take the metric level of questionnaire data for granted. Well, not  for the item level, it is said. But for the aggregated level, oh yes, that’s OK.</p>
+
+<p>Despite its popularity, the measurement basics of such practice are less clear. On which grounds can this comfortable practice be defended?</p>
+
+<p>In psychology, the classical text book surely is <a href="https://books.google.de/books?id=0nkMX_MqEQ4C&amp;dq=Statistical+Theories+of+Mental+Test+Scores&amp;hl=de&amp;sa=X&amp;ved=0ahUKEwjo1LWVkpPOAhUdM8AKHYIHBE0Q6AEIHDAA">Lord and Novick’s text book</a> (1968) on classical test theory. There, the authors hold some quite lax view on the quantitative attribute of psychological data. Basically, they appear to follow S. S. Stephens theory, that <a href="https://en.wikipedia.org/wiki/Level_of_measurement">everything can be measured</a>. Stephen’s theory is surely the most liberal definition of measurement (and maybe counter-intuitive for most people). However, his idea makes sense viewed from the broad idea of mapping some empirical domain to a numerical one. The question remaining open is of course: Do the relations of the empirical domain hold in the numerical domain? This is no automatism (probably because in the measurement of length the relations do hold, we assume that they will always hold, which is mistaken).</p>
+
+<p>In measurement theory (particularly for psychology), a authoritative text book is the <a href="https://books.google.de/books?id=rdNFAAAAYAAJ&amp;q=foundations+of+measurement&amp;dq=foundations+of+measurement&amp;hl=de&amp;sa=X&amp;ved=0ahUKEwipgenOk5POAhVDDMAKHcojBTEQ6AEINDAD">Foundations of Measurement</a> by Krantz, Luce, Suppes, Tversky. While a definitive resource, it may be more of a resource than one would be happy with for a smooth couch evening :-)</p>
+
+<p>I found <a href="https://books.google.de/books?id=yOjJAgAAQBAJ&amp;printsec=frontcover&amp;dq=joel+michell+measurement&amp;hl=de&amp;sa=X&amp;ved=0ahUKEwjMldOKlJPOAhVKLsAKHXGEB3kQ6AEIJzAB#v=onepage&amp;q=joel%20michell%20measurement&amp;f=false">this book of Joel Michell</a> to be enlightening; Michell’s criticism on the current practice of measurement is the most pronounced, summarized eg in <a href="http://tap.sagepub.com/content/10/5/639.short">this paper</a> with the punchy title <em>Normal Science, Pathological Science and Psychometrics</em>. There, Michell argues against the resistance of taking the question of scale level as an empirical one. Surprisingly, psychologists paid little attention and interest to the empirical investigation whether a certain variable possesses metric level; a fact Michell calls a neglect and even a pathology.</p>
+
+<p>One reason of this posited neglect is that methodology is assumed to be missing, that there are no tools for checking whether (or not) a certain variable is metric. However, this view is not quite correct. Psychologist Duncan Luce and statistician John Tukey proposed a theory (<a href="https://en.wikipedia.org/wiki/Theory_of_conjoint_measurement">conjoint measurement</a>) which can be used for investigating whether a variable is quantitative or not (<a href="http://www.sciencedirect.com/science/article/pii/002224966490015X">see 1964 paper</a>).</p>
+
+<p>It is beyond the scope of this article to describe this theory; rather, I would like to demonstrate that metric level cannot be taken for granted. Again, example and intuition based!</p>
+
+<p><img src="https://sebastiansauer.github.io/images/scale1.png" alt="" /></p>
+
+<p>Imagine four students (Anna, Berta, Carla, Dora) probing some math test. Anna solves one item; Berta two; Carla three; Dora four. Thus, the math scores (X) range from 1 (Anna) to 4 (Dora). Let’s assume that higher scores (performance) implies higher math ability (latent psychometric variable, $\theta$. So, the order of ability would be Anna &lt; Berta &lt; Carla &lt; Dora, or, Dora &gt; Carla &gt; Berta &gt; Anna, respectively. Solving one more item translates down to a “gain” in the individual value of the latent variable. In a nutshell, we have established (or assumed) ordinal niveau.</p>
+
+<p>So, let’s look at metric level next. Let’s stick to interval level; ratio level appears out of question for many a psychological variable.</p>
+
+<p><img src="https://sebastiansauer.github.io/images/scale2.png" alt="" /></p>
+
+<p>If we look more closely to the items solved we see that they appear to be of different difficulty. Some easier (2+3), some of intermediate difficulty (23*23), and some demanding more advanced knowledge ($e^{lne}$).</p>
+
+<p>So, Berta solved two of the easy items, one easy more item than Anna. But Carla solved a a more difficult item compared to those which were solved by Berta. Thus, the additional ability needed for solving those three items (“gain” in ability) appears greater than the additional ability needed for solving two easy items instead of one. It appears plausible that the ability difference between Anna and Berta is smaller than the ability difference between Berta and Carla. The same reasoning applies for the difference between Carla and Dora.</p>
+
+<p>In sum, equidistance of ability gains appears questionable, at least in this example. More generally, we cannot readily assume equidistance of difficulty/ability differences between adjacent levels. In other words: There are no grounds for assuming metric level just because we have a sum score.</p>
+
+<p>One may argue that the differences could be more or less equal, so that the error should not be too grave. I think a sensible answer would be to test this assertion, and not take it for granted. Given the pivotal of measurement for any empirical science, we should take great care. As a side note, it has been reported that <a href="http://tap.sagepub.com/content/19/5/579.short">advance in physical science was accompagnied by advance in measurement technology</a>. This alarms us of the importance of measurement theory and practice.</p>
+
+<p>Just as there are optimistic voices about measurement in psychology (“hey no worries, it just works, no need to check”) there are pessimistic voices as well (“there is no quantitative measurement in psychology, just not possible”), see e.g. <a href="http://tap.sagepub.com/content/19/5/579.short">Guenter Trendler</a>. For example, one could ask whether psychometric variables possess nominal or ordinal level. Consider this example:</p>
+
+<p><img src="https://sebastiansauer.github.io/images/scale3.png" alt="" /></p>
+
+<p>Carla has solved three items ($X_B = 3$) whereas Berta has only solved two ($X_A=2$); one less than Carla. Following the reasoning above, we conclude that Carla exhibits a higher ability compared to Berta.</p>
+
+<p>Looking at the contents of the items, one may doubt whether the ability exhibited by Carla really is greater than Berta’s, because Berta solved more difficult items than Carla did.</p>
+
+<p>Of course there are a number of different aspects that warrant attention, such as whether the items can be seen as of “one type””, so that they are “allowed”” to be summed up. Or whether the Rasch model solves the problem, and guaranties for metric level (it does not).</p>
+
+<p>In sum, the message is that we cannot take metric level for granted. We need to empirically investigate. If we do take metric level for granted, we are prone to a bias of unknown size.</p>
+
+      <footer class="entry-meta">
+        <span class="entry-tags"><a href="https://sebastiansauer.github.io/tags/#measurement" title="Pages tagged measurement" class="tag"><span class="term">measurement</span></a><a href="https://sebastiansauer.github.io/tags/#stats" title="Pages tagged stats" class="tag"><span class="term">stats</span></a></span>
+        
+        <div class="social-share">
+  <ul class="socialcount socialcount-small inline-list">
+    <li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https://sebastiansauer.github.io/measurement-01/" title="Share on Facebook"><span class="count"><i class="fa fa-facebook-square"></i> Like</span></a></li>
+    <li class="twitter"><a href="https://twitter.com/intent/tweet?text=https://sebastiansauer.github.io/measurement-01/" title="Share on Twitter"><span class="count"><i class="fa fa-twitter-square"></i> Tweet</span></a></li>
+    <li class="googleplus"><a href="https://plus.google.com/share?url=https://sebastiansauer.github.io/measurement-01/" title="Share on Google Plus"><span class="count"><i class="fa fa-google-plus-square"></i> +1</span></a></li>
+  </ul>
+</div><!-- /.social-share -->
+      </footer>
+    </div><!-- /.entry-content -->
+    
+    <div class="read-more">
+  
+    <div class="read-more-header">
+      <a href="https://sebastiansauer.github.io/what-to-read/" class="read-more-btn">Read More</a>
+    </div><!-- /.read-more-header -->
+    <div class="read-more-content">
+      <h3><a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/" title="New bar stacking with ggplot 2.2.0">New bar stacking with ggplot 2.2.0</a></h3>
+      <p>Recently, `ggplot2` 2.2.0 was released. Among other news, stacking bar plot was improved. Here is a short demonstration.Load libraries```...&hellip; <a href="https://sebastiansauer.github.io/improved_bar_stacking_ggplot2_220/">Continue reading</a></p>
+    </div><!-- /.read-more-content -->
+  
+  <div class="read-more-list">
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/Crashkurs_Barplots/" title="Crashkurs zur Erstellung von Barplots für Umfrage-Daten">Crashkurs zur Erstellung von Barplots für Umfrage-Daten</a></h4>
+        <span>Published on November 13, 2016</span>
+      </div><!-- /.list-item -->
+    
+      <div class="list-item">
+        <h4><a href="https://sebastiansauer.github.io/overfitting_simulation/" title="Some thoughts (and simulation) on overfitting">Some thoughts (and simulation) on overfitting</a></h4>
+        <span>Published on November 12, 2016</span>
+      </div><!-- /.list-item -->
+    
+  </div><!-- /.read-more-list -->
+</div><!-- /.read-more -->
+  </article>
+</div><!-- /#main -->
+
+<div class="footer-wrapper">
+  <footer role="contentinfo">
+    <span>&copy; 2016 Sebastian Sauer. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/hpstr-jekyll-theme/" rel="nofollow">HPSTR Theme</a>.</span>
+  </footer>
+</div><!-- /.footer-wrapper -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://sebastiansauer.github.io/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="https://sebastiansauer.github.io/assets/js/scripts.min.js"></script>
+
+<script type="text/javascript"
+    src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+	        
+
+</body>
+</html>

@@ -1,6 +1,7 @@
 ---
 title: "Plot of mean with exact numbers using ggplot2"
 layout: post
+tags: [rstats, plotting]
 ---
 
 

@@ -1,9 +1,9 @@
 ---
 title: "Why have z-transformed values a mean of zero and a sd of 1?"
 layout: post
+tags: [stats, intuition]
 ---
 
-*reading time: 5 min.*
 
 z-transformation is an ubiquitous operation in data analysis. It is often quite practical.
 

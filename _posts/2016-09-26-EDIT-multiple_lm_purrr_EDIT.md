@@ -1,6 +1,7 @@
 ---
 title: "EDIT: Running multiple simple regressions with purrr"
 layout: post
+tags: [tidyverse, rstats]
 ---
 
 
