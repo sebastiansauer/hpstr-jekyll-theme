@@ -2,7 +2,7 @@ title:            Sebastian Sauer Stats Blog
 description:      A blog about statistics including research methods, with a focus on data analysis using R and psychology.
 disqus_shortname: https-sebastiansauer-github-io
 reading_time:     true
-comments: TRUE
+comments: true
 words_per_minute: 100
 url: https://sebastiansauer.github.io
 
