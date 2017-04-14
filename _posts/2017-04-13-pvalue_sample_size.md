@@ -208,7 +208,7 @@ data_frame(
 ```
 
 
-<img src="www.sebastiansauer.github.io/images/2017-04-13/figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-13/figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" style="display: block; margin: auto;" />
 
 
 Thus, our result appears reasonable: The larger the sample size (`ns`), the higher the proportion of ps (`ps`).
