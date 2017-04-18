@@ -15,9 +15,9 @@ bibliography: references.bib
 
 # Datenjudo mit `dplyr`
 
+## Einleitung
 
-
-Innerhalb der R-Landschaft [@R_Core_Team_2016] hat sich das Paket "dplyr" [@Wickham_2016]  binnen kurzer Zeit zu einem der verbreitesten
+Innerhalb der R-Landschaft hat sich das Paket [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) binnen kurzer Zeit zu einem der verbreitesten
 Pakete entwickelt; es stellt ein innovatives Konzept der Datenanalyse
 zur Verfügung. dplyr zeichnet sich durch zwei Ideen aus. Die erste Idee ist, dass
 nur Tabellen ("dataframes" oder "tibbles") verarbeitet werden, keine anderen Datenstrukturen. Diese Tabellen werden
@@ -25,6 +25,7 @@ von Funktion zu Funktion durchgereicht. Der Fokus auf Tabellen vereinfacht die
 Analyse, da Spalten nicht einzeln oder mittels Schleifen werden müssen. Die zweite Idee ist, typische Tätigkeiten der Datenanalyse
 anhand einer Taxonomie zu "grammatikalisieren". Es lassen sich einige Bausteine identifizieren, mit der die typischen Aufgaben der Datenanalyse durchgeführt werden können. Der Workshop stellt beide Ideen von dplyr vor; dabei wird zuerst die Logik von dplyr erläutert ohne Rückgriff auf die R-Syntax. Danach wird die Funktionsweise von `dpyr` praktisch eingeübt. Der Workshop dauert ca. 90-120 Minuten. Grundkenntnisse in R werden vorausgesetzt.
 
+## Organisatorisches
 
 Bitte bringen Sie einen Comptuer zur Veranstaltung mit. Folgende Software nutzen wir im Workshop; bitte vorab installieren:
 
@@ -42,14 +43,14 @@ library(okcupiddata)  # Daten groß
 Außerdem laden wir noch einen Datensatz herunter; bitte stellen Sie eine Internetverbindung sicher.
 
 
-Das Paket `tidyverse` lädt `dplyr`, `ggplot2` und weitere Pakete^[für eine Liste s. `tidyverse_packages(include_self = TRUE)`]. Daher ist es komfortabler, `tidyverse` zu laden, damit spart man sich Tipparbeit. Die eigentliche Funktionalität, die wir in diesem Kapitel nutzen, kommt aus dem Paket `dplyr`.
+Das Paket `tidyverse` lädt `dplyr`, `ggplot2` und weitere Pakete (für eine Liste s. `tidyverse_packages(include_self = TRUE)`). Daher ist es komfortabler, `tidyverse` zu laden, damit spart man sich Tipparbeit. Die eigentliche Funktionalität, die wir in diesem Kapitel nutzen, kommt aus dem Paket `dplyr`.
 
 
 Mit *Datenjudo*\index{Datenjudo} ist gemeint, die Daten für die eigentliche Analyse "aufzubereiten". Unter *Aufbereiten*\index{Datenjudo} ist hier das Umformen, Prüfen, Bereinigen, Gruppieren und Zusammenfassen von Daten gemeint. Die deskriptive Statistik fällt unter die Rubrik Aufbereiten. Kurz gesagt: Alles, wan tut, nachdem die Daten "da" sind und bevor man mit anspruchsvoller(er) Modellierung beginnt.
 
 
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/Aufbereiten.pdf" title="Daten aufbereiten" alt="Daten aufbereiten" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/Aufbereiten.pdf" title="Daten aufbereiten" alt="Daten aufbereiten" width="70%" style="display: block; margin: auto;" />
 
 
 Ist das Aufbereiten von Daten auch nicht statistisch anspruchsvoll, so ist es trotzdem von großer Bedeutung und häufig recht zeitintensiv. Eine Anekdote zur Relevanz der Datenaufbereitung, die (so will es die Geschichte) mir an einer Bar nach einer einschlägigen Konferenz erzählt wurde (daher keine Quellenangebe, Sie verstehen...). Eine Computerwissenschaftlerin aus den USA (deutschen Ursprungs) hatte einen beeindruckenden "Track Record" an Siegen in Wettkämpfen der Datenanalyse. Tatsächlich hatte sie keine besonderen, raffinierten Modellierungstechniken eingesetzt; klassische Regression war ihre Methode der Wahl. Bei einem Wettkampf, bei dem es darum ging, Krebsfälle aus Krankendaten vorherzusagen (z.B. von Röntgenbildern) fand sie nach langem Datenjudo heraus, dass in die "ID-Variablen" Information gesickert war, die dort nicht hingehörte und die sie nutzen konnte für überraschend (aus Sicht der Mitstreiter) gute Vorhersagen zu Krebsfällen. Wie war das möglich? Die Daten stammten aus mehreren Kliniken, jede Klinik verwendete ein anderes System, um IDs für Patienten zu erstellen. Überall waren die IDs stark genug, um die Anonymität der Patienten sicherzustellen, aber gleich wohl konnte man (nach einigem Judo) unterscheiden, welche ID von welcher Klinik stammte. Was das bringt? Einige Kliniken waren reine Screening-Zentren, die die Normalbevölkerung versorgte. Dort sind wenig Krebsfälle zu erwarten. Andere Kliniken jedoch waren Onkologie-Zentren für bereits bekannte Patienten oder für Patienten mit besonderer Risikolage. Wenig überraschen, dass man dann höhere Krebsraten vorhersagen kann. Eigentlich ganz einfach; besondere Mathe steht hier (zumindest in dieser Geschichte) nicht dahinter. Und, wenn man den Trick kennt, ganz einfach. Aber wie so oft ist es nicht leicht, den Trick zu finden. Sorgfältiges Datenjudo hat hier den Schlüssel zum Erfolg gebracht.
@@ -70,7 +71,7 @@ Einige typische Probleme, die immer wieder auftreten, sind:
 
 ## Daten aufbereiten mit `dplyr`
 
-Es gibt viele Möglichkeiten, Daten mit R aufzubereiten; `dplyr`^[https://cran.r-project.org/web/packages/dplyr/index.html] ist ein populäres Paket dafür. Eine zentrale Idee von `dplyr` ist, dass es nur ein paar wenige Grundbausteine geben sollte, die sich gut kombinieren lassen. Sprich: Wenige grundlegende Funktionen mit eng umgrenzter Funktionalität. Der Autor, Hadley Wickham, sprach einmal in einem Forum (citation needed), dass diese Befehle wenig können, das Wenige aber gut. Ein Nachteil dieser Konzeption kann sein, dass man recht viele dieser Bausteine kombinieren muss, um zum gewünschten Ergebnis zu kommen. Außerdem muss man die Logik des Baukastens gut verstanden habe - die Lernkurve ist also erstmal steiler. Dafür ist man dann nicht darauf angewiesen, dass es irgendwo "Mrs Right" gibt, die genau das kann, was ich will. Außerdem braucht man sich auch nicht viele Funktionen merken. Es reicht einen kleinen Satz an Funktionen zu kennen (die praktischerweise konsistent in Syntax und Methodik sind). 
+Es gibt viele Möglichkeiten, Daten mit R aufzubereiten; [dplyr](https://cran.r-project.org/web/packages/dplyr/index.html) ist ein populäres Paket dafür. Eine zentrale Idee von `dplyr` ist, dass es nur ein paar wenige Grundbausteine geben sollte, die sich gut kombinieren lassen. Sprich: Wenige grundlegende Funktionen mit eng umgrenzter Funktionalität. Der Autor, Hadley Wickham, sprach einmal in einem Forum (citation needed), dass diese Befehle wenig können, das Wenige aber gut. Ein Nachteil dieser Konzeption kann sein, dass man recht viele dieser Bausteine kombinieren muss, um zum gewünschten Ergebnis zu kommen. Außerdem muss man die Logik des Baukastens gut verstanden habe - die Lernkurve ist also erstmal steiler. Dafür ist man dann nicht darauf angewiesen, dass es irgendwo "Mrs Right" gibt, die genau das kann, was ich will. Außerdem braucht man sich auch nicht viele Funktionen merken. Es reicht einen kleinen Satz an Funktionen zu kennen (die praktischerweise konsistent in Syntax und Methodik sind). 
 
 
 Willkommen in der Welt von `dyplr`! `dplyr` hat seinen Namen, weil es sich ausschließlich um *D*ataframes bemüht; es erwartet einen Dataframe als Eingabe und gibt einen Dataframe zurück (zumindest bei den meisten Befehlen).
@@ -85,7 +86,7 @@ Häufig will man bestimmte Zeilen aus einer Tabelle filtern; `filter`\index{dply
 
 Ein Sinnbild:
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/filter.pdf" title="Zeilen filtern" alt="Zeilen filtern" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/filter.pdf" title="Zeilen filtern" alt="Zeilen filtern" width="70%" style="display: block; margin: auto;" />
 
 Merke:
 
@@ -116,7 +117,7 @@ Gar nicht so schwer, oder? Allgemeiner gesprochen werden diejenigen Zeilen gefil
 Manche Befehle wie `filter` haben einen Allerweltsnamen; gut möglich, dass ein Befehl mit gleichem Namen in einem anderen (geladenen) Paket existiert. Das kann dann zu Verwirrungen führen - und kryptischen Fehlern. Im Zweifel den Namen des richtigen Pakets ergänzen, und zwar zum Beispiel so: `dplyr::filter(...)`.
 ```
 
-#### Aufgaben^[F, R, F, F, R]
+#### Aufgaben F, R, F, F, R
 
 ```
 Richtig oder Falsch!?
@@ -128,6 +129,7 @@ Richtig oder Falsch!?
 1. Möchte man aus dem Datensatz `profiles` (`okcupiddata`) die Frauen filtern, so ist folgende Syntax korrekt: `filter(profiles, sex == "f")´.
 ```
 
+Lösung: F, R, F, F, R
 
 #### Vertiefung: Fortgeschrittene Beispiele für `filter`
 
@@ -168,7 +170,7 @@ filter(profiles, !is.na(income) | !is.na(sex))
 
 Das Gegenstück zu `filter` ist `select`\index{dplyr::select}; dieser Befehl liefert die gewählten Spalten zurück. Das ist häufig praktisch, wenn der Datensatz sehr "breit" ist, also viele Spalten enthält. Dann kann es übersichtlicher sein, sich nur die relevanten auszuwählen. Das Sinnbild für diesen Befehl:
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/select.pdf" title="Spalten auswählen" alt="Spalten auswählen" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/select.pdf" title="Spalten auswählen" alt="Spalten auswählen" width="70%" style="display: block; margin: auto;" />
 
 
 Merke:
@@ -197,7 +199,7 @@ select(stats_test, 5:6) Spalten 5 bis 6 auswählen
 Tatsächlich ist der Befehl `select` sehr flexibel; es gibt viele Möglichkeiten, Spalten auszuwählen. Im `dplyr`-Cheatsheet findet sich ein guter Überblick dazu.
 
 
-#### Aufgaben^[F, F, R, R, F]
+#### Aufgaben 
 
 ```
 Richtig oder Falsch!?
@@ -211,6 +213,8 @@ Richtig oder Falsch!?
 
 ```
 
+
+Lösung: F, F, R, R, F
 
 ### Zeilen sortieren mit `arrange`
 
@@ -267,7 +271,7 @@ Merke:
 
 Ein Sinnbild zur Verdeutlichung:
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/arrange.pdf" title="Spalten sortieren" alt="Spalten sortieren" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/arrange.pdf" title="Spalten sortieren" alt="Spalten sortieren" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -313,7 +317,7 @@ Gibt man *keine* Spalte an, so bezieht sich `top_n` auf die letzte Spalte im Dat
 
 Da sich hier mehrere Personen den größten Rang (Wert 40) teilen, bekommen wir *nicht* 3 Zeilen zurückgeliefert, sondern entsprechend mehr.
 
-#### Aufgaben^[F, F, F, F, R]
+#### Aufgaben 
 
 ```
 Richtig oder Falsch!?
@@ -325,13 +329,16 @@ Richtig oder Falsch!?
 1. `top_n(5)` liefert die fünf kleinsten Ränge.
 ```
 
+Lösung: F, F, F, F, R
+
+
 ### Datensatz gruppieren mit `group_by`
 
 Einen Datensatz zu gruppieren ist eine häufige Angelegenheit: Was ist der mittlere Umsatz in Region X im Vergleich zu Region Y? Ist die Reaktionszeit in der Experimentalgruppe kleiner als in der Kontrollgruppe? Können Männer schneller ausparken als Frauen? Man sieht, dass das Gruppieren v.a. in Verbindung mit Mittelwerten oder anderen Zusammenfassungen sinnvol ist; dazu im nächsten Abschnitt mehr.
 
 >   Gruppieren meint, einen Datensatz anhand einer diskreten Variablen (z.B. Geschlecht) so aufzuteilen, dass Teil-Datensätze entstehen - pro Gruppe ein Teil-Datensatz (z.B. Mann vs. Frau).
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/group_by.pdf" title="Datensätze nach Subgruppen aufteilen" alt="Datensätze nach Subgruppen aufteilen" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/group_by.pdf" title="Datensätze nach Subgruppen aufteilen" alt="Datensätze nach Subgruppen aufteilen" width="70%" style="display: block; margin: auto;" />
 
 In der Abbildung wurde der Datensatz anhand der Spalte `Fach` in mehrere Gruppen geteilt. Wir könnten uns als nächstes z.B. Mittelwerte pro Fach - d.h. pro Gruppe (pro Ausprägung von `Fach`) - ausgeben lassen; in diesem Fall vier Gruppen (Fach A bis D).
 
@@ -359,17 +366,17 @@ test_gruppiert
 
 Schaut man sich nun den Datensatz an, sieht man erstmal wenig Effekt der Gruppierung. R teilt uns lediglich mit `Groups: interest [7]`, dass es 7 Gruppen gibt, aber es gibt keine extra Spalte oder sonstige Anzeichen der Gruppierung. Aber keine Sorge, wenn wir gleich einen Mittelwert ausrechnen, bekommen wir den Mittelwert pro Gruppe!
 
-Ein paar Hinweise: `Source: local data frame [306 x 6]` will sagen, dass die Ausgabe sich auf einen `tibble` bezieht^[http://stackoverflow.com/questions/29084380/what-is-the-meaning-of-the-local-data-frame-message-from-dplyrprint-tbl-df], also eine bestimmte Art von Dataframe. `Groups: interest [7]` zeigt, dass der Tibble in 7 Gruppen - entsprechend der Werte von `interest` aufgeteilt ist.
+Ein paar Hinweise: `Source: local data frame [306 x 6]` will sagen, dass die Ausgabe sich auf einen `tibble` bezieht (siehe Details [hier](http://stackoverflow.com/questions/29084380/what-is-the-meaning-of-the-local-data-frame-message-from-dplyrprint-tbl-df)), also eine bestimmte Art von Dataframe. `Groups: interest [7]` zeigt, dass der Tibble in 7 Gruppen - entsprechend der Werte von `interest` aufgeteilt ist.
 
 `group_by` an sich ist nicht wirklich nützlich. Nützlich wird es erst, wenn man weitere Funktionen auf den gruppierten Datensatz anwendet - z.B. Mittelwerte ausrechnet (z.B mit `summarise`, s. unten). Die nachfolgenden Funktionen (wenn sie aus `dplyr` kommen), berücksichtigen nämlich die Gruppierung. So kann man einfach Mittelwerte pro Gruppe ausrechnen. `dplyr` kombiniert dann die Zusammenfassungen (z.B. Mittelwerte) der einzelnen Gruppen in einen Dataframe und gibt diesen dann aus.
 
 
 Die Idee des "Gruppieren - Zusammenfassen - Kombinieren" ist flexibel; man kann sie häufig brauchen. Es lohnt sich, diese Idee zu lernen (vgl. Abb. \@ref(fig:sac)).
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/sac_crop.pdf" title="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" alt="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/sac_crop.pdf" title="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" alt="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" width="70%" style="display: block; margin: auto;" />
 
 
-#### Aufgaben^[R, F, R, R]
+#### Aufgaben 
 
 ```
 Richtig oder Falsch!?
@@ -382,6 +389,7 @@ Richtig oder Falsch!?
 
 ```
 
+Lösung: R, F, R, R
 
 Merke:
 
@@ -393,7 +401,7 @@ Merke:
 
 Vielleicht die wichtigste oder häufigte Tätigkeit in der Analyse von Daten ist es, eine Spalte zu *einem* Wert zusammenzufassen; `summarise`\index{dplyr::summarise} leistet dies. Anders gesagt: Einen Mittelwert berechnen, den größten (kleinsten) Wert heraussuchen, die Korrelation berechnen oder eine beliebige andere Statistik ausgeben lassen. Die Gemeinsamkeit dieser Operaitonen ist, dass sie eine Spalte zu einem Wert zusammenfassen, "aus Spalte mach Zahl", sozusagen. Daher ist der Name des Befehls `summarise` ganz passend. Genauer gesagt fasst dieser Befehl eine Spalte zu einer Zahl zusammen *anhand* einer Funktion wie `mean` oder `max`. Hierbei ist jede Funktion erlaubt, die eine Spalte als Input verlangt und eine Zahl zurückgibt; andere Funktionen sind bei `summarise` nicht erlaubt. 
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/summarise.pdf" title="Spalten zu einer Zahl zusammenfassen" alt="Spalten zu einer Zahl zusammenfassen" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/summarise.pdf" title="Spalten zu einer Zahl zusammenfassen" alt="Spalten zu einer Zahl zusammenfassen" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -457,9 +465,9 @@ Merke:
 
 >    Die deskriptive Statistik hat zwei Haupt-Bereiche: Lagemaße und Streuungsmaße.
 
-*Lagemaße* geben den "typischen", "mittleren" oder "repräsentativen" Vertreter der Verteilung an. Bei den Lagemaßen\index{Lagemaße} denkt man sofort an das *arithmetische Mittel* (synonym: Mittelwert; häufig als $\bar{X}$ abgekürzt; `mean`). Ein Nachteil von Mittelwerten ist, dass sie nicht robust gegenüber Extremwerte sind: Schon ein vergleichsweise großer Einzelwert kann den Mittelwert deutlich verändern und damit die Repräsentativität des Mittelwerts für die Gesamtmenge der Daten in Frage stellen. Eine robuste Variante ist der *Median* (Md; `median`). Ist die Anzahl der (unterschiedlichen) Ausprägungen nicht zu groß im Verhältnis zur Fallzahl, so ist der *Modus* eine sinnvolle Statistik; er gibt die häufigste Ausprägung an^[Der *Modus* ist im Standard-R nicht mit einem eigenen Befehl vertreten. Man kann ihn aber leicht von Hand bestimmen; s.u. Es gibt auch einige Pakete, die diese Funktion anbieten: z.B. https://cran.r-project.org/web/packages/modes/index.html].
+*Lagemaße* geben den "typischen", "mittleren" oder "repräsentativen" Vertreter der Verteilung an. Bei den Lagemaßen\index{Lagemaße} denkt man sofort an das *arithmetische Mittel* (synonym: Mittelwert; häufig als $\bar{X}$ abgekürzt; `mean`). Ein Nachteil von Mittelwerten ist, dass sie nicht robust gegenüber Extremwerte sind: Schon ein vergleichsweise großer Einzelwert kann den Mittelwert deutlich verändern und damit die Repräsentativität des Mittelwerts für die Gesamtmenge der Daten in Frage stellen. Eine robuste Variante ist der *Median* (Md; `median`). Ist die Anzahl der (unterschiedlichen) Ausprägungen nicht zu groß im Verhältnis zur Fallzahl, so ist der *Modus* eine sinnvolle Statistik; er gibt die häufigste Ausprägung an (Der *Modus* ist im Standard-R nicht mit einem eigenen Befehl vertreten. Man kann ihn aber leicht von Hand bestimmen; s.u. Es gibt auch einige Pakete, die diese Funktion anbieten: z.B. [so](https://cran.r-project.org/web/packages/modes/index.html)).
 
-*Streuungsmaße*\index{Streuungsmaße} geben die Unterschiedlichkeit in den Daten wieder; mit anderen Worten: sind die Daten sich ähnlich oder unterscheiden sich die Werte deutlich? Zentrale Statistiken sind der *mittlere Absolutabstand* (MAA; MAD) ^[Der *MAD* ist im Standard-R nicht mit einem eigenen Befehl vertreten. Es gibt einige Pakete, die diese Funktion anbieten: z.B. https://artax.karlin.mff.cuni.cz/r-help/library/lsr/html/aad.html], die *Standardabweichung* (sd; `sd`), die *Varianz* (Var; `var`) und der *Interquartilsabstand* (IQR; `IQR`). Da nur der IQR *nicht* auf dem Mittelwert basiert, ist er am robustesten. Beliebige Quantile bekommt man mit dem R-Befehl `quantile`.
+*Streuungsmaße*\index{Streuungsmaße} geben die Unterschiedlichkeit in den Daten wieder; mit anderen Worten: sind die Daten sich ähnlich oder unterscheiden sich die Werte deutlich? Zentrale Statistiken sind der *mittlere Absolutabstand* (MAA; MAD; Der *MAD* ist im Standard-R nicht mit einem eigenen Befehl vertreten. Es gibt einige Pakete, die diese Funktion anbieten: z.B. [so](https://artax.karlin.mff.cuni.cz/r-help/library/lsr/html/aad.html)), die *Standardabweichung* (sd; `sd`), die *Varianz* (Var; `var`) und der *Interquartilsabstand* (IQR; `IQR`). Da nur der IQR *nicht* auf dem Mittelwert basiert, ist er am robustesten. Beliebige Quantile bekommt man mit dem R-Befehl `quantile`.
 
 Der Befehl `summarise` eignet sich, um deskriptive Statistiken auszurechnen.
 
@@ -489,7 +497,7 @@ median(stats_test$score)
 
 
 
-#### Aufgaben^[R, R, R, R, R]
+#### Aufgaben 
 
 
 
@@ -501,9 +509,10 @@ Richtig oder Falsch!?
 1. Die Tabelle, die diese Funktion zurückliefert: `summarise(stats_test, mean(score))`, hat eine Spalte mit dem Namen `mean(score)`.
 1. `summarise` lässt zu, dass die zu berechnende Spalte einen Namen vom Nutzer zugewiesen bekommt.
 1. `summarise` darf nur verwendet werden, wenn eine Spalte zu einem Wert zusammengefasst werden soll.
+```
 
 
-
+Lösung: R, R, R, R, R
 
 1. (Fortgeschritten) Bauen Sie einen eigenen Weg, um den mittleren Absolutabstand auszurechnen! Gehen Sie der Einfachheit halber (zuerst) von einem Vektor mit den Werten (1,2,3) aus!
 
@@ -521,10 +530,10 @@ mad
 #> [1] 0.667
 ```
 
-```
+
 
 ### Zeilen zählen mit `n` und `count`
-Ebenfalls nützlich ist es, Zeilen zu zählen. Im Gegensatz zum Standardbefehl^[Standardbefehl meint, dass die Funktion zum Standardrepertoire von R gehört, also nicht über ein Paket extra geladen werden muss] `nrow` versteht der `dyplr`-Befehl `n`\index{dplyr::n} auch Gruppierungen. `n` darf nur innerhalb von `summarise` oder ähnlichen `dplyr`-Befehlen verwendet werden.
+Ebenfalls nützlich ist es, Zeilen zu zählen. Im Gegensatz zum Standardbefehl `nrow` (Standardbefehl meint, dass die Funktion zum Standardrepertoire von R gehört, also nicht über ein Paket extra geladen werden muss)  versteht der `dyplr`-Befehl `n`\index{dplyr::n} auch Gruppierungen. `n` darf nur innerhalb von `summarise` oder ähnlichen `dplyr`-Befehlen verwendet werden.
 
 
 ```r
@@ -599,7 +608,7 @@ Merke:
 
 
 
-#### Aufgaben^[R, R, F, F]
+#### Aufgaben 
 
 
 
@@ -612,6 +621,8 @@ Richtig oder Falsch!?
 1. `count` darf nicht bei nominalskalierten Variablen verwendet werden.
 
 ```
+
+Lösung: R, R, F, F
 
 
 1. Bauen Sie sich einen Weg, um den Modus mithilfe von `count` und `arrange` zu bekommen!
@@ -634,13 +645,13 @@ Ah! Der Score `34` ist der häufigste!
 ## Die Pfeife
 Die zweite Idee kann man salopp als "Durchpfeifen"\index{Pfeife} oder die "Idee der Pfeife\index{Pfeife} bezeichnen; ikonographisch mit einem Pfeifen ähnlichen Symbol dargestellt ` %>% `. Der Begriff "Durchpfeifen" ist frei vom Englischen "to pipe" übernommen. Das berühmte Bild von René Magritte stand dabei Pate.
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/ma-150089-WEB.jpg" title="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, http://collections.lacma.org/node/239578" alt="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, http://collections.lacma.org/node/239578" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/ma-150089-WEB.jpg" title="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, http://collections.lacma.org/node/239578" alt="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, http://collections.lacma.org/node/239578" width="70%" style="display: block; margin: auto;" />
 
 
  Hierbei ist gemeint, einen Datensatz sozusagen auf ein Fließband zu legen und an jedem Arbeitsplatz einen Arbeitsschritt auszuführen. Der springende Punkt ist, dass ein Dataframe als "Rohstoff" eingegeben wird und jeder Arbeitsschritt seinerseits wieder einen Datafram ausgiebt. Damit kann man sehr schön, einen "Flow" an Verarbeitung erreichen, außerdem spart man sich Tipparbeit und die Syntax wird lesbarer. Damit das Durchpfeifen funktioniert, benötigt man Befehle, die als Eingabe einen Dataframe erwarten und wieder einen Dataframe zurückliefern. Das Schaubild verdeutlich beispielhaft eine Abfolge des Durchpfeifens.
 
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/durchpfeifen.pdf" title="Das 'Durchpeifen'" alt="Das 'Durchpeifen'" width="80%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/durchpfeifen.pdf" title="Das 'Durchpeifen'" alt="Das 'Durchpeifen'" width="80%" style="display: block; margin: auto;" />
 
 Die sog. "Pfeife" (pipe\index{Pfeife}: ` %>% `) in Anspielung an das berühmte Bild von René Magritte, verkettet Befehle hintereinander. Das ist praktisch, da es die Syntax vereinfacht. Vergleichen Sie mal diese Syntax
 
@@ -745,7 +756,7 @@ Diese Syntax erzeugt eine neue Spalte innerhalb von `stats_test`; diese Spalte p
 
 Ein Sinnbild für `mutate`:
 
-<img src="https://sebastiansauer.github.io/2017-04-27/images/Datenjudo/mutate.png" title="plot of chunk fig-mutate" alt="plot of chunk fig-mutate" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/mutate.png" title="plot of chunk fig-mutate" alt="plot of chunk fig-mutate" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -808,25 +819,30 @@ flights %>%
 ```
 
 
-- Berechnen Sie die sd von `arr_delay` in `flights`! Vergleichen Sie sie mit dem Ergebnis der vorherigen Aufgabe!^[`sd(flights$arr_delay, na.rm = TRUE)`]
+- Berechnen Sie die sd von `arr_delay` in `flights`! Vergleichen Sie sie mit dem Ergebnis der vorherigen Aufgabe! 
 
 
-- Was hat die Pfeifen-Syntax oben berechnet?^[die sd von `arr_delay`]
+Lösung: `sd(flights$arr_delay, na.rm = TRUE)`
+
+
+- Was hat die Pfeifen-Syntax oben berechnet?
+
+Lösung: die sd von `arr_delay`
 
 
 ## Befehlsübersicht
 
 
-Paket::Funktion     Beschreibung
-----------------    -------------
-dplyr::arrange      Sortiert Spalten
-dplyr::filter       Filtert Zeilen
-dplyr::select       Wählt Spalten
-dplyr::group_by     gruppiert einen Dataframe
-dplyr::n            zählt Zeilen
-dplyr::count        zählt Zeilen nach Untergruppen
-%>% (dplyr)         verkettet Befehle
-dplyr::mutate       erzeugt/berechnet Spalten
+|Paket::Funktion  |   Beschreibung|
+|----------------    -------------|
+|dplyr::arrange    |  Sortiert Spalten|
+|dplyr::filter   |    Filtert Zeilen|
+|dplyr::select    |   Wählt Spalten|
+|dplyr::group_by   |  gruppiert einen Dataframe|
+|dplyr::n         |   zählt Zeilen|
+|dplyr::count     |   zählt Zeilen nach Untergruppen|
+|%>% (dplyr)     |    verkettet Befehle|
+|dplyr::mutate    |   erzeugt/berechnet Spalten|
 
 
 ## Verweise
