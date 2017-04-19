@@ -3,7 +3,7 @@ title: "Error bars for interaction effects with nominal variables"
 author: "Sebastian Sauer"
 date: "18 4 2017"
 layout: post
-tags: [visualization, rstats, r]
+tags: [visualization, rstats, r, plotting]
 ---
 
 
