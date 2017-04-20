@@ -36,6 +36,7 @@ simu_p <- function(n_samples = 1000, mean = 100, sd = 15, n = 30, distribution =
   # distribution: type of distribution. Either "normal" (default) or "uniform"
   # sample_mena: mean of sample
 
+  stopifnot(distribution %in% c("normal", "uniform"))
 
   if (!"ggplot2" %in% rownames(installed.packages())) stop("ggplot2 is not installed")
   if (!"dplyr" %in% rownames(installed.packages())) stop("dplyr is not installed")
