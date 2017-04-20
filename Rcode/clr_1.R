@@ -1,6 +1,17 @@
+# R code by Norman Markgraf and Sebastian Sauer
 
 
+# function stipros -------------------------------------------------------------
 stipros <- function(n_stipros = 1000, mean = 100, sd = 15, n = 30, distribution = "normal"){
+  # returns histogram of simulated samples
+  # arguments:
+  # n_stipros: number of samples to be simulated
+  # mean: mean of distribution
+  # sd: sd of distribtuion
+  # distribution: type of distribution. Either "normal" (default) or "uniform"
+
+  stopifnot(distribution %in% c("normal", "uniform"))
+
   if (distribution == "normal") {
     result <- replicate(n_stipros, mean(rnorm(n = n, mean = mean, sd = sd)))
     hist(result, main = "Histogramm zu Stichproben \naus einer Normalverteilung")
@@ -9,9 +20,25 @@ stipros <- function(n_stipros = 1000, mean = 100, sd = 15, n = 30, distribution 
     result <- replicate(n_stipros, mean(runif(n = n, min=0, max=1)))
     hist(result, main = "Histogramm zu Stichproben \naus einer Gleichverteilung")
   }
-}
+}  # end stipros
+
+
+# function "simu_p" ------------------------------------------------------------
 
 simu_p <- function(n_samples = 1000, mean = 100, sd = 15, n = 30, distribution = "normal", sample_mean = 107){
+
+  # returns: histogram of simulated samples including shaded area under the curve according to p-value as per simulation
+  # arguments:
+  # n_stipros: number of samples to be simulated
+  # mean: mean of distribution
+  # sd: sd of distribution
+  # n: sample size
+  # distribution: type of distribution. Either "normal" (default) or "uniform"
+  # sample_mena: mean of sample
+
+
+  if (!"ggplot2" %in% rownames(installed.packages())) stop("ggplot2 is not installed")
+  if (!"dplyr" %in% rownames(installed.packages())) stop("dplyr is not installed")
 
   library(ggplot2)
   library(dplyr)
@@ -25,7 +52,7 @@ simu_p <- function(n_samples = 1000, mean = 100, sd = 15, n = 30, distribution =
 
     df %>%
       mutate(perc_num = percent_rank(samples),
-             max_5perc = ifelse(perc_num > 950, 1, 0),
+             max_5perc = ifelse(perc_num > (trunc(.95*n)/n), 1, 0),
              greater_than_sample = ifelse(samples > sample_mean, 1, 0)) -> df
 
     p_value <- round(mean(df$greater_than_sample), 3)
@@ -39,7 +66,7 @@ simu_p <- function(n_samples = 1000, mean = 100, sd = 15, n = 30, distribution =
       geom_histogram(data = dplyr::filter(df, perc_num > .95), fill = "red") +
       theme(plot.title = element_text(hjust = 0.5)) +
       geom_vline(xintercept = sample_mean, linetype = "dashed", color = "grey40") +
-      ggplot2::annotate("text", x = Inf, y = Inf, label = paste("p =",p_value), hjust = 1, vjust = 1)
+      ggplot2::annotate("text", x = Inf, y = Inf, label = paste("p =", p_value), hjust = 1, vjust = 1)
     print(p)
   }
 
@@ -53,7 +80,7 @@ simu_p <- function(n_samples = 1000, mean = 100, sd = 15, n = 30, distribution =
 
     df %>%
       mutate(perc_num = percent_rank(samples),
-             max_5perc = ifelse(perc_num > 950, 1, 0),
+             max_5perc = ifelse(perc_num > (trunc(.95*n)/n), 1, 0),
              greater_than_sample = ifelse(samples > sample_mean, 1, 0)) -> df
 
     p_value <- round(mean(df$greater_than_sample), 3)
@@ -72,7 +99,9 @@ simu_p <- function(n_samples = 1000, mean = 100, sd = 15, n = 30, distribution =
     print(p)
 
   }
-return(df)
+# return(df)
 
-}
+} # end simu_p
+
+
 
