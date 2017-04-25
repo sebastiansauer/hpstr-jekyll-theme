@@ -1,7 +1,7 @@
 ---
 title: "Some reflections on stochastic independence"
 layout: post
-tags: [stats, intuition]
+tags: [stats, intuition, association]
 ---
 
 
