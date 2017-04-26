@@ -674,7 +674,7 @@ Die zweite Idee kann man salopp als "Durchpfeifen" oder die "Idee der Pfeife" be
  Hierbei ist gemeint, einen Datensatz sozusagen auf ein Fließband zu legen und an jedem Arbeitsplatz einen Arbeitsschritt auszuführen. Der springende Punkt ist, dass ein Dataframe als "Rohstoff" eingegeben wird und jeder Arbeitsschritt seinerseits wieder einen Datafram ausgiebt. Damit kann man sehr schön, einen "Flow" an Verarbeitung erreichen, außerdem spart man sich Tipparbeit und die Syntax wird lesbarer. Damit das Durchpfeifen funktioniert, benötigt man Befehle, die als Eingabe einen Dataframe erwarten und wieder einen Dataframe zurückliefern. Das Schaubild verdeutlich beispielhaft eine Abfolge des Durchpfeifens.
 
 
-<img src="images/Datenjudo/durchpfeifen.pdf" title="Das 'Durchpeifen'" alt="Das 'Durchpeifen'" width="80%" style="display: block; margin: auto;" />
+<img src=""https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/durchpfeifen.pdf" title="Das 'Durchpeifen'" alt="Das 'Durchpeifen'" width="80%" style="display: block; margin: auto;" />
 
 Die sog. "Pfeife" (pipe) in Anspielung an das berühmte Bild von René Magritte, verkettet Befehle hintereinander. Das ist praktisch, da es die Syntax vereinfacht. Vergleichen Sie mal diese Syntax
 
