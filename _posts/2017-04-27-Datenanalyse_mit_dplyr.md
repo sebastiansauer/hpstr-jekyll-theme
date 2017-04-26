@@ -50,7 +50,7 @@ Mit *Datenjudo* ist gemeint, die Daten für die eigentliche Analyse "aufzubereit
 
 
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/Aufbereiten.jpg" title="Daten aufbereiten" alt="Daten aufbereiten" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/Aufbereiten.pdf" title="Daten aufbereiten" alt="Daten aufbereiten" width="70%" style="display: block; margin: auto;" />
 
 
 Ist das Aufbereiten von Daten auch nicht statistisch anspruchsvoll, so ist es trotzdem von großer Bedeutung und häufig recht zeitintensiv. Eine Anekdote zur Relevanz der Datenaufbereitung, die (so will es die Geschichte) mir an einer Bar nach einer einschlägigen Konferenz erzählt wurde (daher keine Quellenangebe, Sie verstehen...). Eine Computerwissenschaftlerin aus den USA (deutschen Ursprungs) hatte einen beeindruckenden "Track Record" an Siegen in Wettkämpfen der Datenanalyse. Tatsächlich hatte sie keine besonderen, raffinierten Modellierungstechniken eingesetzt; klassische Regression war ihre Methode der Wahl. Bei einem Wettkampf, bei dem es darum ging, Krebsfälle aus Krankendaten vorherzusagen (z.B. von Röntgenbildern) fand sie nach langem Datenjudo heraus, dass in die "ID-Variablen" Information gesickert war, die dort nicht hingehörte und die sie nutzen konnte für überraschend (aus Sicht der Mitstreiter) gute Vorhersagen zu Krebsfällen. Wie war das möglich? Die Daten stammten aus mehreren Kliniken, jede Klinik verwendete ein anderes System, um IDs für Patienten zu erstellen. Überall waren die IDs stark genug, um die Anonymität der Patienten sicherzustellen, aber gleich wohl konnte man (nach einigem Judo) unterscheiden, welche ID von welcher Klinik stammte. Was das bringt? Einige Kliniken waren reine Screening-Zentren, die die Normalbevölkerung versorgte. Dort sind wenig Krebsfälle zu erwarten. Andere Kliniken jedoch waren Onkologie-Zentren für bereits bekannte Patienten oder für Patienten mit besonderer Risikolage. Wenig überraschen, dass man dann höhere Krebsraten vorhersagen kann. Eigentlich ganz einfach; besondere Mathe steht hier (zumindest in dieser Geschichte) nicht dahinter. Und, wenn man den Trick kennt, ganz einfach. Aber wie so oft ist es nicht leicht, den Trick zu finden. Sorgfältiges Datenjudo hat hier den Schlüssel zum Erfolg gebracht.
@@ -77,8 +77,31 @@ Es gibt viele Möglichkeiten, Daten mit R aufzubereiten; [dplyr](https://cran.r-
 Willkommen in der Welt von `dyplr`! `dplyr` hat seinen Namen, weil es sich ausschließlich um *D*ataframes bemüht; es erwartet einen Dataframe als Eingabe und gibt einen Dataframe zurück (zumindest bei den meisten Befehlen).
 
 
-Diese Bausteine sind typische Tätigkeiten im Umgang mit Daten; nichts Überraschendes. Schauen wir uns diese Bausteine näher an.
+### Die zwei Prinzipien von `dplyr` 
 
+Es gibt viele Möglichkeiten, Daten mit R aufzubereiten; `dplyr`^[https://cran.r-project.org/web/packages/dplyr/index.html] ist ein populäres Paket dafür. `dplyr` basiert auf zwei Ideen: 
+
+1. *Lego-Prinzip* Komplexe Datenanalysen in Bausteine zerlegen (vgl. Abb. \@ref(fig:bausteine)).
+2. *Durchpfeifen*: Alle Operationen werden nur auf Dataframes angewendet; jede Operation erwartet einen Dataframe als Eingabe und gibt wieder einen Dataframe aus (vgl. Abb. \@ref(fig:durchpfeifen-allgemein)).
+
+
+Das *erste Prinzip* von `dplyr` ist, dass es nur ein paar *wenige Grundbausteine* geben sollte, die sich gut kombinieren lassen. Sprich: Wenige grundlegende Funktionen mit eng umgrenzter Funktionalität. Der Autor, Hadley Wickham, sprach einmal in einem Forum (citation needed...), dass diese Befehle wenig können, das Wenige aber gut. Ein Nachteil dieser Konzeption kann sein, dass man recht viele dieser Bausteine kombinieren muss, um zum gewünschten Ergebnis zu kommen. Außerdem muss man die Logik des Baukastens gut verstanden habe - die Lernkurve ist also erstmal steiler. Dafür ist man dann nicht darauf angewiesen, dass es irgendwo "Mrs Right" gibt, die genau das kann, was ich will. Außerdem braucht man sich auch nicht viele Funktionen merken. Es reicht einen kleinen Satz an Funktionen zu kennen (die praktischerweise konsistent in Syntax und Methodik sind). Diese Bausteine sind typische Tätigkeiten im Umgang mit Daten; nichts Überraschendes. Wir schauen wir uns diese Bausteine gleich näher an.
+
+
+<img src="https://sebastiansauer.github.io/images/Datenjudo/Bausteine_dplyr_crop.pdf" title="Lego-Prinzip: Zerlege eine komplexe Struktur in einfache Bausteine" alt="Lego-Prinzip: Zerlege eine komplexe Struktur in einfache Bausteine" width="70%" style="display: block; margin: auto;" />
+
+
+
+
+Das *zweite Prinzip* von `dplyr` ist es, einen Dataframe von Operation zu Operation *durchzureichen.* `dplyr` arbeitet also *nur* mit Dataframes. Jeder Arbeitsschritt bei `dplyr` erwartet einen Dataframe als Eingabe und gibt im Gegenzug wieder einen Dataframe aus.
+
+
+<img src="https://sebastiansauer.github.io/images/Datenjudo/durchpfeifen_allgemein_crop.pdf" title="Durchpfeifen: Ein Dataframe wird von Operation zu Operation weitergereicht" alt="Durchpfeifen: Ein Dataframe wird von Operation zu Operation weitergereicht" width="70%" style="display: block; margin: auto;" />
+
+
+Werfen wir einen Blick auf ein paar typische Bausteine von `dplyr`.
+
+## Zentrale Bausteine von `dplyr`
 
 ### Zeilen filtern mit `filter`
 
@@ -86,7 +109,7 @@ Häufig will man bestimmte Zeilen aus einer Tabelle filtern; `filter`. Zum Beisp
 
 Ein Sinnbild:
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/filter.jpg" title="Zeilen filtern" alt="Zeilen filtern" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/filter.pdf" title="Zeilen filtern" alt="Zeilen filtern" width="70%" style="display: block; margin: auto;" />
 
 Merke:
 
@@ -170,7 +193,7 @@ filter(profiles, !is.na(income) | !is.na(sex))
 
 Das Gegenstück zu `filter` ist `select`; dieser Befehl liefert die gewählten Spalten zurück. Das ist häufig praktisch, wenn der Datensatz sehr "breit" ist, also viele Spalten enthält. Dann kann es übersichtlicher sein, sich nur die relevanten auszuwählen. Das Sinnbild für diesen Befehl:
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/select.jpg" title="Spalten auswählen" alt="Spalten auswählen" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/select.pdf" title="Spalten auswählen" alt="Spalten auswählen" width="70%" style="display: block; margin: auto;" />
 
 
 Merke:
@@ -271,7 +294,7 @@ Merke:
 
 Ein Sinnbild zur Verdeutlichung:
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/arrange.jpg" title="Spalten sortieren" alt="Spalten sortieren" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/arrange.pdf" title="Spalten sortieren" alt="Spalten sortieren" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -338,7 +361,7 @@ Einen Datensatz zu gruppieren ist eine häufige Angelegenheit: Was ist der mittl
 
 >   Gruppieren meint, einen Datensatz anhand einer diskreten Variablen (z.B. Geschlecht) so aufzuteilen, dass Teil-Datensätze entstehen - pro Gruppe ein Teil-Datensatz (z.B. Mann vs. Frau).
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/group_by.jpg" title="Datensätze nach Subgruppen aufteilen" alt="Datensätze nach Subgruppen aufteilen" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/group_by.pdf" title="Datensätze nach Subgruppen aufteilen" alt="Datensätze nach Subgruppen aufteilen" width="70%" style="display: block; margin: auto;" />
 
 In der Abbildung wurde der Datensatz anhand der Spalte `Fach` in mehrere Gruppen geteilt. Wir könnten uns als nächstes z.B. Mittelwerte pro Fach - d.h. pro Gruppe (pro Ausprägung von `Fach`) - ausgeben lassen; in diesem Fall vier Gruppen (Fach A bis D).
 
@@ -373,7 +396,7 @@ Ein paar Hinweise: `Source: local data frame [306 x 6]` will sagen, dass die Aus
 
 Die Idee des "Gruppieren - Zusammenfassen - Kombinieren" ist flexibel; man kann sie häufig brauchen. Es lohnt sich, diese Idee zu lernen (vgl. Abb. \@ref(fig:sac)).
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/sac_crop.jpg" title="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" alt="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/sac_crop.pdf" title="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" alt="Schematische Darstellung des 'Gruppieren - Zusammenfassen - Kombinieren'" width="70%" style="display: block; margin: auto;" />
 
 
 #### Aufgaben 
@@ -401,7 +424,7 @@ Merke:
 
 Vielleicht die wichtigste oder häufigte Tätigkeit in der Analyse von Daten ist es, eine Spalte zu *einem* Wert zusammenzufassen; `summarise` leistet dies. Anders gesagt: Einen Mittelwert berechnen, den größten (kleinsten) Wert heraussuchen, die Korrelation berechnen oder eine beliebige andere Statistik ausgeben lassen. Die Gemeinsamkeit dieser Operaitonen ist, dass sie eine Spalte zu einem Wert zusammenfassen, "aus Spalte mach Zahl", sozusagen. Daher ist der Name des Befehls `summarise` ganz passend. Genauer gesagt fasst dieser Befehl eine Spalte zu einer Zahl zusammen *anhand* einer Funktion wie `mean` oder `max`. Hierbei ist jede Funktion erlaubt, die eine Spalte als Input verlangt und eine Zahl zurückgibt; andere Funktionen sind bei `summarise` nicht erlaubt. 
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/summarise.jpg" title="Spalten zu einer Zahl zusammenfassen" alt="Spalten zu einer Zahl zusammenfassen" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/summarise.pdf" title="Spalten zu einer Zahl zusammenfassen" alt="Spalten zu einer Zahl zusammenfassen" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -645,13 +668,13 @@ Ah! Der Score `34` ist der häufigste!
 ## Die Pfeife
 Die zweite Idee kann man salopp als "Durchpfeifen" oder die "Idee der Pfeife" bezeichnen; ikonographisch mit einem Pfeifen ähnlichen Symbol dargestellt ` %>% `. Der Begriff "Durchpfeifen" ist frei vom Englischen "to pipe" übernommen. Das berühmte Bild von René Magritte stand dabei Pate.
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/ma-150089-WEB.jpg" title="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, &lt;http://collections.lacma.org/node/239578&gt;" alt="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, &lt;http://collections.lacma.org/node/239578&gt;" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/ma-150089-WEB.jpg" title="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, &lt;http://collections.lacma.org/node/239578&gt;" alt="La trahison des images [Ceci n'est pas une pipe], René Magritte, 1929, © C. Herscovici, Brussels / Artists Rights Society (ARS), New York, &lt;http://collections.lacma.org/node/239578&gt;" width="70%" style="display: block; margin: auto;" />
 
 
  Hierbei ist gemeint, einen Datensatz sozusagen auf ein Fließband zu legen und an jedem Arbeitsplatz einen Arbeitsschritt auszuführen. Der springende Punkt ist, dass ein Dataframe als "Rohstoff" eingegeben wird und jeder Arbeitsschritt seinerseits wieder einen Datafram ausgiebt. Damit kann man sehr schön, einen "Flow" an Verarbeitung erreichen, außerdem spart man sich Tipparbeit und die Syntax wird lesbarer. Damit das Durchpfeifen funktioniert, benötigt man Befehle, die als Eingabe einen Dataframe erwarten und wieder einen Dataframe zurückliefern. Das Schaubild verdeutlich beispielhaft eine Abfolge des Durchpfeifens.
 
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/durchpfeifen.jpg" title="Das 'Durchpeifen'" alt="Das 'Durchpeifen'" width="80%" style="display: block; margin: auto;" />
+<img src="images/Datenjudo/durchpfeifen.pdf" title="Das 'Durchpeifen'" alt="Das 'Durchpeifen'" width="80%" style="display: block; margin: auto;" />
 
 Die sog. "Pfeife" (pipe) in Anspielung an das berühmte Bild von René Magritte, verkettet Befehle hintereinander. Das ist praktisch, da es die Syntax vereinfacht. Vergleichen Sie mal diese Syntax
 
@@ -756,7 +779,7 @@ Diese Syntax erzeugt eine neue Spalte innerhalb von `stats_test`; diese Spalte p
 
 Ein Sinnbild für `mutate`:
 
-<img src="https://sebastiansauer.github.io/images/2017-04-27/Datenjudo/mutate.png" title="plot of chunk fig-mutate" alt="plot of chunk fig-mutate" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/Datenjudo/mutate.png" title="plot of chunk fig-mutate" alt="plot of chunk fig-mutate" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -847,7 +870,7 @@ Lösung: die sd von `arr_delay`
 
 ## Verweise
 
-- Die offizielle Dokumentation von `dplyr` findet sich hier: <https://cran.r-project.org/web/packages/dplyr/dplyr.jpg>. 
+- Die offizielle Dokumentation von `dplyr` findet sich hier: <https://cran.r-project.org/web/packages/dplyr/dplyr.pdf>. 
 
 - Eine schöne Demonstration der Mächtigkeit von `dplyr` findet sich hier: <http://bit.ly/2kX9lvC>.
 
