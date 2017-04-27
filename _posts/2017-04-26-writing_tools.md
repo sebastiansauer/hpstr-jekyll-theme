@@ -57,64 +57,33 @@ pander(df)
 
 
 
------------------------------------------------------------------------------
-        Criterion           Word   Tex   Overleaf_Authorea   Full   Markdown 
--------------------------- ------ ----- ------------------- ------ ----------
-  Beautiful typesetting      1      3            3            3        3     
+--------------------------------------------------------------------------------------
+Criterion                  Word   Tex   Overleaf_Authorea   Full   Markdown   G_Docs  
+-------------------------- ------ ----- ------------------- ------ ---------- --------
+Beautiful typesetting      1      3     3                   3      3          1       
 
- Different output formats    2      3            3            3        3     
+Different output formats   2      3     3                   3      3          2       
 
-        Citations            2      3            3            3        3     
+Citations                  2      3     3                   3      3          1       
 
-       Integrate R           1      1            1            3        1     
+Integrate R                1      1     1                   3      1          1       
 
-     Version control         2      1            3            3        1     
+Version control            2      1     3                   3      1          2       
 
-Reproducibility of writing   1      3            2            3        1     
+Reproducibility of writing 1      3     2                   3      1          1       
 
-      Collaboration          1      1            3            2        1     
+Collaboration              1      1     3                   2      1          3       
 
-        Simplicity           3      1            2            1        2     
+Simplicity                 3      1     2                   1      2          3       
 
- Style sheets (eg., APA)     1      2            3            2        1     
+Style sheets (eg., APA)    1      2     3                   2      1          1       
 
-        Stability            1      3            2            3        3     
+Stability                  1      3     2                   3      3          2       
 
-        Open code            1      3            2            3        3     
+Open code                  1      3     2                   3      3          1       
 
-Option for private writing   3      3            1            3        3     
------------------------------------------------------------------------------
-
-Table: Table continues below
-
- 
---------
- G_Docs 
---------
-   1    
-
-   2    
-
-   1    
-
-   1    
-
-   2    
-
-   1    
-
-   3    
-
-   3    
-
-   1    
-
-   2    
-
-   1    
-
-   3    
---------
+Option for private writing 3      3     1                   3      3          3       
+--------------------------------------------------------------------------------------
 
 
 
