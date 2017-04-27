@@ -52,73 +52,223 @@ tools <- read_csv("academic_writing_tools_competition.csv")
 
 
 ```r
-pander(df)
+htmlTable(df)
 ```
 
-
-
---------------------------------------------------------------------------------------
-Criterion                  Word   Tex   Overleaf_Authorea   Full   Markdown   G_Docs  
--------------------------- ------ ----- ------------------- ------ ---------- --------
-Beautiful typesetting      1      3     3                   3      3          1       
-
-Different output formats   2      3     3                   3      3          2       
-
-Citations                  2      3     3                   3      3          1       
-
-Integrate R                1      1     1                   3      1          1       
-
-Version control            2      1     3                   3      1          2       
-
-Reproducibility of writing 1      3     2                   3      1          1       
-
-Collaboration              1      1     3                   2      1          3       
-
-Simplicity                 3      1     2                   1      2          3       
-
-Style sheets (eg., APA)    1      2     3                   2      1          1       
-
-Stability                  1      3     2                   3      3          2       
-
-Open code                  1      3     2                   3      3          1       
-
-Option for private writing 3      3     1                   3      3          3       
---------------------------------------------------------------------------------------
-
+<!--html_preserve--><table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
+<thead>
+<tr>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Criterion</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Word</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Tex</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Overleaf_Authorea</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Full</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Markdown</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>G_Docs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style='text-align: left;'>1</td>
+<td style='text-align: center;'>Beautiful typesetting</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='text-align: left;'>2</td>
+<td style='text-align: center;'>Different output formats</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>3</td>
+<td style='text-align: center;'>Citations</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='text-align: left;'>4</td>
+<td style='text-align: center;'>Integrate R</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='text-align: left;'>5</td>
+<td style='text-align: center;'>Version control</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>6</td>
+<td style='text-align: center;'>Reproducibility of writing</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='text-align: left;'>7</td>
+<td style='text-align: center;'>Collaboration</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+</tr>
+<tr>
+<td style='text-align: left;'>8</td>
+<td style='text-align: center;'>Simplicity</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+</tr>
+<tr>
+<td style='text-align: left;'>9</td>
+<td style='text-align: center;'>Style sheets (eg., APA)</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='text-align: left;'>10</td>
+<td style='text-align: center;'>Stability</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>11</td>
+<td style='text-align: center;'>Open code</td>
+<td style='text-align: center;'>1</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>2</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>3</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='border-bottom: 2px solid grey; text-align: left;'>12</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>Option for private writing</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>3</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>3</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>1</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>3</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>3</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>3</td>
+</tr>
+</tbody>
+</table><!--/html_preserve-->
 
 
 # Criterion weight
 
 Let's assume we have some weights that we assign to the critera:
 
+<!--html_preserve--><table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
+<thead>
+<tr>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Criterion</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style='text-align: left;'>1</td>
+<td style='text-align: center;'>Beautiful typesetting</td>
+<td style='text-align: center;'>1</td>
+</tr>
+<tr>
+<td style='text-align: left;'>2</td>
+<td style='text-align: center;'>Different output formats</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>3</td>
+<td style='text-align: center;'>Citations</td>
+<td style='text-align: center;'>3</td>
+</tr>
+<tr>
+<td style='text-align: left;'>4</td>
+<td style='text-align: center;'>Integrate R</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>5</td>
+<td style='text-align: center;'>Version control</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>6</td>
+<td style='text-align: center;'>Reproducibility of writing</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>7</td>
+<td style='text-align: center;'>Collaboration</td>
+<td style='text-align: center;'>3</td>
+</tr>
+<tr>
+<td style='text-align: left;'>8</td>
+<td style='text-align: center;'>Simplicity</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>9</td>
+<td style='text-align: center;'>Style sheets (eg., APA)</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='text-align: left;'>10</td>
+<td style='text-align: center;'>Stability</td>
+<td style='text-align: center;'>3</td>
+</tr>
+<tr>
+<td style='text-align: left;'>11</td>
+<td style='text-align: center;'>Open code</td>
+<td style='text-align: center;'>2</td>
+</tr>
+<tr>
+<td style='border-bottom: 2px solid grey; text-align: left;'>12</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>Option for private writing</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>2</td>
+</tr>
+</tbody>
+</table><!--/html_preserve-->
 
------------------------------------
-Criterion                  Weight  
--------------------------- --------
-Beautiful typesetting      1       
-
-Different output formats   2       
-
-Citations                  3       
-
-Integrate R                2       
-
-Version control            2       
-
-Reproducibility of writing 2       
-
-Collaboration              3       
-
-Simplicity                 2       
-
-Style sheets (eg., APA)    2       
-
-Stability                  3       
-
-Open code                  2       
-
-Option for private writing 2       
------------------------------------
 
 
 # Scores by tool
