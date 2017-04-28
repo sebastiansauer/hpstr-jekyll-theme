@@ -276,22 +276,47 @@ Let's assume we have some weights that we assign to the critera:
 So we are able to devise a score or a ranking.
 
 
--------------------------
-tool_name         score  
------------------ -------
-Full              69     
-
-Overleaf_Authorea 61     
-
-Tex               58     
-
-Markdown          54     
-
-G_Docs            47     
-
-Word              41     
--------------------------
-
+-<!--html_preserve--><table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
+<thead>
+<tr>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>tool_name</th>
+<th style='border-bottom: 1px solid grey; border-top: 2px solid grey; text-align: center;'>score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style='text-align: left;'>1</td>
+<td style='text-align: center;'>Full</td>
+<td style='text-align: center;'>69</td>
+</tr>
+<tr>
+<td style='text-align: left;'>2</td>
+<td style='text-align: center;'>Overleaf_Authorea</td>
+<td style='text-align: center;'>61</td>
+</tr>
+<tr>
+<td style='text-align: left;'>3</td>
+<td style='text-align: center;'>Tex</td>
+<td style='text-align: center;'>58</td>
+</tr>
+<tr>
+<td style='text-align: left;'>4</td>
+<td style='text-align: center;'>Markdown</td>
+<td style='text-align: center;'>54</td>
+</tr>
+<tr>
+<td style='text-align: left;'>5</td>
+<td style='text-align: center;'>G_Docs</td>
+<td style='text-align: center;'>47</td>
+</tr>
+<tr>
+<td style='border-bottom: 2px solid grey; text-align: left;'>6</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>Word</td>
+<td style='border-bottom: 2px solid grey; text-align: center;'>41</td>
+</tr>
+</tbody>
+</table><!--/html_preserve-->
 
 
 ```r
