@@ -329,7 +329,7 @@ score %>% ggplot + aes(x = reorder(tool_name, score), y = score) +
 
 # And the winner is...
 
-**The full approach**. The full approach gets most points (disclaimer: well, I designed this compeition, and I like this approach 😄.
+**The full approach**. The full approach gets most points (disclaimer: well, I designed this competition, and I like this approach 😄).
 
 
 :+1:
