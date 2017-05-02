@@ -334,3 +334,14 @@ score %>% ggplot + aes(x = reorder(tool_name, score), y = score) +
 
 :+1:
 
+
+# Getting started
+
+There are numerous tutorial on "the full approach" out there, .eg.
+
+- [RMarkdown materials from RStudio](http://rmarkdown.rstudio.com)
+- Christopher Gandrud's book [Reproducible Research with R and RStudio Second Edition](https://englianhu.files.wordpress.com/2016/01/reproducible-research-with-r-and-studio-2nd-edition.pdf) - free pdf full text
+- Also by the same author [Reproducible Research with R and R Studio](https://books.google.de/books/about/Reproducible_Research_with_R_and_R_Studi.html?id=u-nuzKGvoZwC&source=kp_cover&redir_esc=y) 
+- Find [here](https://www.practicereproducibleresearch.org/case-studies/barbera.html) some case studies on reproducible research.
+
+
