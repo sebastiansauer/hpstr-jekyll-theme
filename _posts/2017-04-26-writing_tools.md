@@ -9,7 +9,7 @@ tags: [writing, reproducibility]
 
 
 
-Many tools exist for academic writing including the notorious W.O.R.D.; but many more are out there. Let's have a look at those tools, and discuss what's important (what we expect the tools to deliver, eg., beautiful typesetting).
+Many tools exist for academic writing including the notorious W.O.R.D.; but many more are out there. Let's have a look at those tools, and discuss what's important (what we expect the tool to deliver, eg., beautiful typesetting).
 
 
 # Typical tools for academic writing
@@ -36,7 +36,7 @@ Many tools exist for academic writing including the notorious W.O.R.D.; but many
 
 
 ```r
-libs <- c("readr", "tidyverse", "pander", "emo")
+libs <- c("readr", "tidyverse", "pander", "emo", "htmlTable")
 pacman::p_load(char = libs)
 ```
 
@@ -270,13 +270,11 @@ Let's assume we have some weights that we assign to the critera:
 </table><!--/html_preserve-->
 
 
-
 # Scores by tool
 
 So we are able to devise a score or a ranking.
 
-
--<!--html_preserve--><table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
+<!--html_preserve--><table class='gmisc_table' style='border-collapse: collapse; margin-top: 1em; margin-bottom: 1em;' >
 <thead>
 <tr>
 <th style='border-bottom: 1px solid grey; border-top: 2px solid grey;'> </th>
@@ -319,6 +317,7 @@ So we are able to devise a score or a ranking.
 </table><!--/html_preserve-->
 
 
+
 ```r
 score %>% ggplot + aes(x = reorder(tool_name, score), y = score) + 
     geom_point() + coord_flip() + xlab("tool")
@@ -329,13 +328,11 @@ score %>% ggplot + aes(x = reorder(tool_name, score), y = score) +
 
 # And the winner is...
 
-**The full approach**. The full approach gets most points (disclaimer: well, I designed this competition, and I like this approach 😄).
-
-
-:+1:
+**The full approach**. The full approach gets most points (disclaimer: well, I designed this competition, and I like this approach 😄.
 
 
 # Getting started
+
 
 There are numerous tutorial on "the full approach" out there, .eg.
 
@@ -343,5 +340,4 @@ There are numerous tutorial on "the full approach" out there, .eg.
 - Christopher Gandrud's book [Reproducible Research with R and RStudio Second Edition](https://englianhu.files.wordpress.com/2016/01/reproducible-research-with-r-and-studio-2nd-edition.pdf) - free pdf full text
 - Also by the same author [Reproducible Research with R and R Studio](https://books.google.de/books/about/Reproducible_Research_with_R_and_R_Studi.html?id=u-nuzKGvoZwC&source=kp_cover&redir_esc=y) 
 - Find [here](https://www.practicereproducibleresearch.org/case-studies/barbera.html) some case studies on reproducible research.
-
 
