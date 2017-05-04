@@ -21,7 +21,6 @@ library(tidyverse)
 
 
 ```r
-
 n_rows <- 100
 set.seed(271828)
 
@@ -31,14 +30,6 @@ df <- data_frame(
   exp_noisy = exp_clean + rnorm(n = n_rows, mean = 0, sd = 3),
   cntrl_noisy = cntrl_clean + rnorm(n = n_rows, mean = 0, sd = 3),
   ID = 1:n_rows)
-)
-```
-
-```
-## Error: <text>:11:1: unexpected ')'
-## 10:   ID = 1:n_rows)
-## 11: )
-##     ^
 ```
 
 
@@ -133,9 +124,7 @@ df_long_noise_level %>%
   coord_cartesian(ylim = c(-8,8))
 ```
 
-
-
-![plot of chunk unnamed-chunk-6](https://sebastiansauer.github.io/images/2017-05-05/ figure/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](https://sebastiansauer.github.io/images/2017-05-05/figure/unnamed-chunk-6-1.png)
 
 We see that the the variation (the grey deviation bars) are larger in the noisy data compared to the clean data.
 
@@ -205,7 +194,7 @@ df_long_group %>%
   coord_cartesian(ylim = c(-8,8))
 ```
 
-![plot of chunk unnamed-chunk-9](https://sebastiansauer.github.io/images/2017-05-05/ figure/unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](https://sebastiansauer.github.io/images/2017-05-05/figure/unnamed-chunk-9-1.png)
 
 
 Practically speaking, if we measure the deviation to the *respective group mean*, we see that the deviation (aka, variation within each group) has *decreased* when considering the explaining variable.
@@ -263,7 +252,7 @@ df_long_all %>%
   coord_cartesian(ylim = c(-8,8))
 ```
 
-![plot of chunk unnamed-chunk-12](https://sebastiansauer.github.io/images/2017-05-05/ figure/unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-12](https://sebastiansauer.github.io/images/2017-05-05/figure/unnamed-chunk-12-1.png)
 
 
 Similarly to the previous steps, we calculate the summary statistics for each of the 4 groups.
