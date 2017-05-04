@@ -39,3 +39,8 @@ Some nice blogs:
 ## Licence
 
 Own work is distributed under the terms of the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and redistribution in any medium, provided that the original author and source are credited.
+
+## DOI
+
+
+The DOI of this blog is [![DOI](https://zenodo.org/badge/73370743.svg)](https://zenodo.org/badge/latestdoi/73370743) (timestamp: 2017-05-04).
