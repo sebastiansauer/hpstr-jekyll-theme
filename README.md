@@ -38,4 +38,10 @@ Own work is distributed under the terms of the [Creative Commons Attribution BY 
 
 Please cite this blog as
 
-Sauer, S. (year, month day). Blog post title [Web blog post]. Retrieved from URL_to_post. 
+Sauer, S. (year, month day). Blog post title [Web blog post]. Retrieved from URL_to_post. DOI: 10.5281/zenodo.571356
+
+## DOI of Blog
+
+Please note that this DOI refers to the whole blog, specifically to the release of 2017-05-04.
+
+[![DOI](https://zenodo.org/badge/73370743.svg)](https://zenodo.org/badge/latestdoi/73370743)
