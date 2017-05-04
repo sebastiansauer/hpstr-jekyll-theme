@@ -1,27 +1,41 @@
-# HPSTR Jekyll Theme
+# Sebastian Sauer's stats blog 
 
-They say three times the charm, so here is another free responsive Jekyll theme for you. I've learned a ton since open sourcing [my first two themes](https://mademistakes.com/work/jekyll-themes/), and wanted to try a few new things this time around. If you've used my previous themes most of this should be familiar territory.
+A blog on research methods with a focus on computational methods using R
 
-**Compatible with Jekyll 3.0 and up.**
 
-## What HPSTR brings to the table:
 
-* Modern and minimal design.
-* Responsive templates for post, page, and post index `_layouts`. Looks great on mobile, tablet, and desktop devices.
-* Gracefully degrades in older browsers. Compatible with Internet Explorer 8+ and all modern browsers.  
-* Sweet animated menu with support for drop-downs.
-* Optional [Disqus](http://disqus.com) comments and social sharing links.
-* [Open Graph](https://developers.facebook.com/docs/opengraph/) and [Twitter Cards](https://dev.twitter.com/docs/cards) support for a better social sharing experience.
-* Simple [custom 404 page](http://mmistakes.github.io/hpstr-jekyll-theme/404.html) to get you started.
-* [Syntax highlighting](http://mmistakes.github.io/hpstr-jekyll-theme/code-highlighting-post/) stylesheet to make your code examples look snazzy
-* [Available in Spanish](https://github.com/cruznick/hpstr-jekyll-theme/tree/es). Thanks [@cruznick](https://github.com/cruznick)!
+I blog about statistics including research methods, particularly for psychology, and particularly with regard to data analysis using R.
 
-![HPSTR Theme Preview screenshot](http://mmistakes.github.io/hpstr-jekyll-theme/images/hpstr-jekyll-theme-preview.jpg)
+As a non-virtual person, I work as a professor at [FOM University of Applied Sciences](https://www.fom.de/die-fom-englisch/the-university-for-the-professionals.html). 
 
----
+Posts reflect mostly my current thinking; and posts are not immune to thought updates. With luck things and thinking get less wrong in the course of time (I am speaking of myself).
 
-## Getting Started
 
-HPSTR takes advantage of SCSS and data files to make customizing easier. This theme requires Jekyll 3.x and will not work with older versions properly.
+## Follow the blog
 
-To learn how to install and use this theme check out the [Setup Guide](https://mmistakes.github.io/hpstr-jekyll-theme/theme-setup/) for more information.
+To receive updates for this blog, follow me on [Twitter](https://twitter.com/sauer_sebastian), or subscribe to the [RSS feed](https://sebastiansauer.github.io/feed.xml).
+
+
+## Related stuff
+
+Some nice blogs:
+
+- R-Bloggers: <https://www.r-bloggers.com>
+
+- Richard Morey's blog: <https://richarddmorey.org>
+
+- Jan Vanhove's blog: <https://janhove.github.io>
+
+- Win Vector blog: <http://www.win-vector.com/blog/>
+
+
+## Licence
+
+Own work is distributed under the terms of the [Creative Commons Attribution BY 4.0 International License](https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and redistribution in any medium, provided that the original author and source are credited.
+
+
+## Citation
+
+Please cite this blog as
+
+Sauer, S. (year, month day). Blog post title [Web blog post]. Retrieved from URL_to_post. 
