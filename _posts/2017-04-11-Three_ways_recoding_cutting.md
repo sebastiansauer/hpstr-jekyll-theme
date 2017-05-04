@@ -1,7 +1,6 @@
 ---
 title: "Three ways to dichotomize a variable"
 author: "Sebastian Sauer"
-date: "11 4 2017"
 layout: post
 tags: rstats
 ---

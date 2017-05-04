@@ -3,9 +3,6 @@ title: "Preparing survey results data"
 author: "Sebastian Sauer"
 layout: post
 tags: [plotting, rstats, survey]
-output: 
-  html_document: 
-    keep_md: yes
 ---
 
 

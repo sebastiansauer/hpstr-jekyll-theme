@@ -1,7 +1,5 @@
 ---
 title: "Some tricks on dplyr::filter"
-author: "Sebastian Sauer"
-date: "2016-12-21"
 layout: post
 tags: [rstats, dplyr]
 ---

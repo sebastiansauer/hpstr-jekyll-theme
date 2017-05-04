@@ -1,7 +1,6 @@
 ---
 title: "Why is the variance additive? An intuition."
 author: "Sebastian Sauer"
-date: "2017-01-04"
 layout: post
 tags: [rstats, stats, tutorial]
 ---

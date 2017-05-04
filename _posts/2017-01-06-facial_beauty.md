@@ -1,7 +1,5 @@
 ---
 title: "Convert data frame from 'wide' to 'long'"
-author: "Sebastian Sauer"
-output: html_document
 layout: post
 tags: [rstats]
 ---

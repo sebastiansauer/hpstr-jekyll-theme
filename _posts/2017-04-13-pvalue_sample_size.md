@@ -1,7 +1,6 @@
 ---
 title: "The effect of sample on p-values. A simulation."
 author: "Sebastian Sauer"
-date: "13 4 2017"
 layout: post
 comments: TRUE
 tags: [rstats, stats, simulation]

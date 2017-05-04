@@ -1,7 +1,6 @@
 ---
 title: "Plotting skewed distributions"
 author: "Sebastian Sauer"
-date: "18 4 2017"
 layout: post
 tags: [plotting, rstats, stats]
 ---
