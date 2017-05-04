@@ -124,7 +124,7 @@ df_long_noise_level %>%
   coord_cartesian(ylim = c(-8,8))
 ```
 
-![plot of chunk unnamed-chunk-6](https://sebastiansauer.github.io/images/2017-05-05/figure/unnamed-chunk-6-1.png)
+![plot of chunk unnamed-chunk-6](   /unnamed-chunk-6-1.png)
 
 We see that the the variation (the grey deviation bars) are larger in the noisy data compared to the clean data.
 
@@ -284,5 +284,3 @@ df_long_all %>%
 Two conclusions can be drawn. First, any *explaining variable* will *reduce* the variation within the group (at least it will not increase the within group variation). This effect is what is called "the variable *explains* the target variable".
 
 Second, any *noise variable* will *increase* the variation within the groups. This effect could be called "the variable *blurs* the target variable".
-
-a *noise variable*  increases variation
