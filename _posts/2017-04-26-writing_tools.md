@@ -1,9 +1,8 @@
 ---
-title: "Tools for Academic Writing - Comparison"
-author: "Sebastian Sauer"
-date: "26 4 2017"
-layout: post
-tags: [writing, reproducibility]
+title: "Tools for Academic Writing - Comparison"   
+author: "Sebastian Sauer"  
+layout: post  
+tags: [writing, reproducibility]  
 ---
 
 
