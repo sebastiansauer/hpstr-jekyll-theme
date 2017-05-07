@@ -10,7 +10,12 @@ tags: [rstats, stats, tutorial]
 
 Logistic regression may give a headache initially. While the structure and idea is the same as "normal" regression, the interpretation of the b's (ie., the regression coefficients) can be more challenging.
 
-This post provides a convenience function for converting the output of the `glm` function to a probability. Or more generally, to convert logits (that's what spit out by `glm`) to a probabilty.
+This post explains how to convert the output of the `glm` function to a probability. Or more generally, to convert *logits* (that's what spit out by `glm`) to a probabilty.
+
+---
+*Note:* The objective of this post is to explain the mechanics of logits. There are more convenient tools out there.
+---
+
 
 # Example time
 
@@ -50,7 +55,7 @@ These coefficients are in a form called 'logits'.
 Here `pclass` coefficient is negative indicating that the *higher*  `Pclass` the *lower* is the probability of survival.
 
 
-# Conversion rule
+# Conversion rule: logit to probability
 
 To convert a logit (`glm` output) to probability, follow these 3 steps:
 
@@ -157,7 +162,13 @@ exp(-1)
 
 
 
-However, more convenient would be to use the `predict` function instance of `glm`.
+However, more convenient would be to use the `predict` function instance of `glm`. For example:
+```r
+predict(glm1, newdata=data.frame(Pclass=1), type="response")
+```
+
+(Thanks to Jack's comment who made me adding this note.)
+
 
 # Conversion table
 
@@ -254,7 +265,7 @@ htmlTable(df)
 </table>
 
 
-A handy function is `datatable`, does not work in this environment however it appears.
+A handy function is `datatable`, does not work in this environment however, it appears.
 
 
 ```r
@@ -266,6 +277,7 @@ datatable(df)
 
 
 # Conversion plot
+
 More convenient for an overview is a plot like this.
 
 
@@ -289,6 +301,11 @@ ggplot(df) +
 ```
 
 ![plot of chunk unnamed-chunk-14](https://sebastiansauer.github.io/images/2017-01-24/unnamed-chunk-14-1.png)
+
+
+# Convenience function
+
+The package [mfx](https://cran.r-project.org/web/packages/mfx/mfx.pdf) provides a convenient functions to get odds out of a logistic regression (Thanks for Henry Cann's comment for pointing that out!).
 
 
 
