@@ -14,6 +14,7 @@ This post explains how to convert the output of the `glm` function to a probabil
 
 ---
 *Note:* The objective of this post is to explain the mechanics of logits. There are more convenient tools out there.
+
 ---
 
 
