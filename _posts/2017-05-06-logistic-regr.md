@@ -6,9 +6,6 @@ tags: [stats, regression]
 ---
 
 
-```
-## Error: 'opt_chunk' is not an exported object from 'namespace:knitr'
-```
 
 
 The logistic regression is an incredible useful tool, partly because binary outcomes are so frequent in live ("she loves me - she doesn't love me"). In parts because we can make use of well-known "normal" regression instruments.
@@ -26,27 +23,6 @@ For example, let's look at the question of whether having extramarital affairs i
 
 ```r
 library(tidyverse)
-```
-
-```
-## Loading tidyverse: ggplot2
-## Loading tidyverse: tibble
-## Loading tidyverse: tidyr
-## Loading tidyverse: readr
-## Loading tidyverse: purrr
-## Loading tidyverse: dplyr
-```
-
-```
-## Conflicts with tidy packages ----------------------------------------------
-```
-
-```
-## filter(): dplyr, stats
-## lag():    dplyr, stats
-```
-
-```r
 data(Affairs, package = "AER")
 ```
 
@@ -61,7 +37,7 @@ Affairs %>%
   geom_smooth(aes(y = has_affairs), method = "glm", method.args = list(family = "binomial"), se = FALSE)
 ```
 
-![plot of chunk unnamed-chunk-2](https://sebastiansauer.github.io/images/2017-05-6/figure/unnamed-chunk-2-1.png)
+<img src="https://sebastiansauer.github.io/images/2017-05-06/figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="50%" style="display: block; margin: auto;" />
 
 Hm, the curve does not pop out to vividly. Let's have a look at some other data, why not the Titanic disaster data. Can the survival chance plausible put as a function of the cabin fare?
 
@@ -76,7 +52,7 @@ titanic_train %>%
   geom_smooth(aes(y = Survived), method = "glm", method.args = list(family = "binomial"), se = FALSE)
 ```
 
-![plot of chunk unnamed-chunk-3](https://sebastiansauer.github.io/images/2017-05-6/figure/unnamed-chunk-3-1.png)
+<img src="https://sebastiansauer.github.io/images/2017-05-06/figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="50%" style="display: block; margin: auto;" />
 
 
 Hm, maybe better to look at the curve in general.
@@ -92,7 +68,7 @@ p1 <- ggplot(data_frame())
 p1 + stat_function(aes(-5:5), fun = logist) + xlab("x")
 ```
 
-![plot of chunk unnamed-chunk-4](figure/unnamed-chunk-4-1.png)
+<img src="https://sebastiansauer.github.io/images/2017-05-06/figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="50%" style="display: block; margin: auto;" />
 
 Ok, better.
 
