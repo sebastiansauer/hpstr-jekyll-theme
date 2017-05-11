@@ -15,7 +15,7 @@ knitr::opts_chunk$set(fig.align = "center",
 
 Every now and then, random numbers come in handy to demonstrate some statistical behavior. Of course, well-known appraoches are `rnorm` and friends. These functions are what is called *pseudo random number generators*, because they are not random at all, strictly speaking, but determined by some algorithm. An algorithm is a sort of creature that is 100% predictable once you know the input (and the details of the algorithm). Pseudo random numbers are useful 'cause you know what you will get; reproducibility ensured.
 
-However, at times it is useful to get make use of *true* random numbers, coming from atmospheric noise, for example. That's were the R package `random` by Dirk Edelbuettel comes into play.
+However, at times it is useful to get make use of *true* random numbers, coming from atmospheric noise, for example. That's were the R package `random` by Dirk Eddelbuettel comes into play.
 
 Technical details are beyond the scope of this post; here we just grap some random numbers to simulate or demonstrate some research setting.
 
