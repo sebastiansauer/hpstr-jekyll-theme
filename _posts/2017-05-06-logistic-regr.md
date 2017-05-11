@@ -79,9 +79,9 @@ It is well-known that the fucntional form of the logictic regression curve is
 
 $$f(t) = p(Y=1) = \frac{e^t}{1+e^t}$$
 
-where $e$ is Euler's number (2.718...) and $t$ can be any linear combination of predictors such as $b0 + b1x$. $Y=1$ indicates that the event in question has occured (eg., "survived", "has_affairs").
+where $$e$$ is Euler's number (2.718...) and $$t$$ can be any linear combination of predictors such as $$b0 + b1x$$. $$Y=1$$ indicates that the event in question has occured (eg., "survived", "has_affairs").
 
-Assume that $t$ is $b0 + b1x$ then
+Assume that $$t$$ is $$b0 + b1x$$ then
 
 $$f(t) = \frac{e^{b0+b1x}}{1+e^{b0+b1x}}$$
 
@@ -90,19 +90,19 @@ Now what? Well, we would to end up with the "typical" formula of the logistic re
 
 $$f(x)= L(b0+b1x+...)$$
 
-where $L$ is the *Logit*, i.e.,
+where $$L$$ is the *Logit*, i.e.,
 
 $$f(t) = ln \left( \frac{e^t}{1+e^t} \right)=b0+b1x$$
 
 # Deriving the formula
 
-Ok, in a first step, let's take our $p(Y=1) = f(t)$ and divide by the probability of the complementary event. If the probability of event $A$ is $p$, the the probability of $not-A$ is $1-p$. Thus
+Ok, in a first step, let's take our $$p(Y=1) = f(t)$$ and divide by the probability of the complementary event. If the probability of event $$A$$ is $$p$$, the the probability of $$not-A$$ is $$1-p$$. Thus
 
 $$\frac{f(t)}{1-f(t)} = \frac{\frac{e^t}{1+e^t}}{1-\frac{e^t}{1+e^t}}$$
 
-So wat did we do? We have just replaced $f(t)$ by $\frac{e^t}{1e^t}$, and have therey computed the *odds*.
+So wat did we do? We have just replaced $$f(t)$$ by $$\frac{e^t}{1e^t}$$, and have therey computed the *odds*.
 
-Next, we multiply the equation by $\frac{1+e^t}{1+e^t}$ (which is the neutral element, 1), yielding.
+Next, we multiply the equation by $$\frac{1+e^t}{1+e^t}$$ (which is the neutral element, 1), yielding.
 
 $$=\frac{e^t}{(e^t+1) \cdot \left(\frac{1+e^t}{1+e^t} - \frac{e^t}{e^t+1} \right)}$$
 
@@ -125,7 +125,7 @@ so the final solution is
 
 $$=e^t$$.
 
-Ok, great, but what does this solution tells us? It tells us the that the *odds* simplify to $e^t$.
+Ok, great, but what does this solution tells us? It tells us the that the *odds* simplify to $$e^t$$.
 
 Now, let's take the (natural) *logarithm* of this expression.
 
@@ -133,15 +133,15 @@ $$ln(e^t)=t$$
 
 by the rules of exponents algebra.
 
-But $t = b0 + b1x$.
+But $$t = b0 + b1x$$.
 
 In sum
 
 $$ln\left( \frac{f(t)}{1-f(t)}\right) = b0 + b1x$$
 
-The left part of the previous equation is called the *logit* which is "odds plus logarithm" of $f(t)$, or rather, more precisely, the logarithm of the odss of $p/(1-p)$.
+The left part of the previous equation is called the *logit* which is "odds plus logarithm" of $$f(t)$$, or rather, more precisely, the logarithm of the odss of $$p/(1-p)$$.
 
-Looking back, what have we gained? We now know that if we take the logit of any linear combination, we will get the logistic regression formula. In simple words: "Take the normal regression equation, apply the logit $L$, and you'll get out the logistic regression" (provided the criterion is binary).
+Looking back, what have we gained? We now know that if we take the logit of any linear combination, we will get the logistic regression formula. In simple words: "Take the normal regression equation, apply the logit $$L$$, and you'll get out the logistic regression" (provided the criterion is binary).
 
 $$L(t) = ln\left( \frac{f(t)}{1-f(t)}\right) = b0 + b1x$$.
 
