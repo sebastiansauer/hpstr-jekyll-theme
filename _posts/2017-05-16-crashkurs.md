@@ -48,7 +48,7 @@ Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schr
 
 Der einfachste Weg, Daten einzulesen, ist über den Button "Import Dataset" in RStudio.
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/import_RStudio.png){ width="50%" }
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/import_RStudio.png)
 
 So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
 
