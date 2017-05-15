@@ -1,8 +1,14 @@
 ---
 title: "Crashkurs Datenanalyse mit R"
 author: "Sebastian Sauer"
+output: html_document
+tags:
+- rstats
+- tutorial
+- German
 layout: post
-tags: [rstats, tutorial, German]
+number_sections: yes
+toc: yes
 ---
 
 
@@ -28,12 +34,13 @@ Bevor wir uns die Schritte näher anschauen, ein paar Worte zur Software. Wir br
 
 # Über sieben Brücken musst Du gehen
 
-![Peter Maffay, André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Maffay#/media/File:Peter_Maffay.jpg](https://sebastiansauer.github.io/images/2017-05-16/figure/Peter_Maffay.jpg){ width="50%"}
+![Peter Maffay](https://sebastiansauer.github.io/images/2017-05-16/figure/Peter_Maffay.jpg){width=30%}
 
+Lizenz: André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Maffay#/media/File:Peter_Maffay.jpg
 
 Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schritte einteilen, angelehnt dem Song von Peter Maffay "Über sieben Brücken musst du gehen".
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/prozess.png)
+![](figure/prozess.png)
 
 
 
@@ -41,7 +48,7 @@ Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schr
 
 Der einfachste Weg, Daten einzulesen, ist über den Button "Import Dataset" in RStudio.
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/import_RStudio.png){ width="50%" }
+![](figure/import_RStudio.png){ width="50%" }
 
 So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
 
@@ -49,7 +56,7 @@ So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
 
 Ggf. müssen Sie also in der Import-Maske von RStudio als *delimiter* ein *semicolon* auswählen.
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter.png)
+![](figure/delimiter.png)
 
 
 Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren. 
@@ -61,7 +68,7 @@ Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren.
 
 Damit Sie in R vernünftig mit Ihren Daten arbeiten können, sollten die Daten "tidy" sein, d.h. in Normalform. Was ist Normalform? Betrachten Sie folgende Abbildung:
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/Normalform.png)
+![](figure/Normalform.png)
 
 Die goldene Regel der Normalform einer Tabelle lautet also:
 
@@ -77,7 +84,7 @@ Die goldene Regel der Normalform einer Tabelle lautet also:
 Sie denken, dass Ihre Daten immer/auf jeden Fall in Normalform sind? Dann scheuen Sie sich mal dieses Bild an:
 
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/breit_lang.png)
+![](figure/breit_lang.png)
 
 
 ## Textkodierung in UTF-8
@@ -95,6 +102,7 @@ Der Schritt des Aufbereitens ist häufig der zeitintensivste Schritt. In diesem 
 - Komische Werte prüfen
 - Daten zusammenfassen
 - Zeilenmittelwerte bilden
+- Logische Variablen bilden
 
 
 
@@ -102,7 +110,7 @@ Der Schritt des Aufbereitens ist häufig der zeitintensivste Schritt. In diesem 
 
 :warning: Ein häufiger Fehler ist, dass die Daten nicht richtig eingelesen werden. Zum Beispiel werden die Spaltentrennzeichen nicht richtig erkannt. Das kann dann so aussehen.
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter_wrong.png){ width=20% }
+![](figure/delimiter_wrong.png){ width=50% }
 
 Unter "delimiter" in der Maske können Sie das Trennzeichen anpassen. 
 
@@ -170,7 +178,9 @@ Deskriptive Statistik ist letztlich nichts anderes, als Daten geschickt zusammen
 
 >   Praktisch sind es meistens Spalten, die zu einen Zahl zusammengefasst werden.
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/summarise.png)
+![](figure/summarise.png)
+
+
 
 Schauen wir uns das mal mit echten Daten an. Der Datensatz "mtcars" ist schon in R eingebaut, so dass wir in nicht extra laden müssen. Ganz praktisch.
 
@@ -195,12 +205,12 @@ summary(mtcars)
 ##  Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
 ##  3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
 ##  Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
-##        am              gear            carb      
-##  Min.   :0.0000   Min.   :3.000   Min.   :1.000  
-##  1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
-##  Median :0.0000   Median :4.000   Median :2.000  
-##  Mean   :0.4062   Mean   :3.688   Mean   :2.812  
-##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+##        am              gear            carb         Spass         cyl_f 
+##  Min.   :0.0000   Min.   :3.000   Min.   :1.000   Mode :logical   4:11  
+##  1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000   FALSE:25        6: 7  
+##  Median :0.0000   Median :4.000   Median :2.000   TRUE :7         8:14  
+##  Mean   :0.4062   Mean   :3.688   Mean   :2.812   NA's :0               
+##  3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000                         
 ##  Max.   :1.0000   Max.   :5.000   Max.   :8.000
 ```
 
@@ -214,7 +224,11 @@ help(mtcars)
 :bulb: mit `help(Befehl)` bekommt man Hilfe zu einem Befehl oder einem sonstigen Objekt (z.B. Datensatz).
 
 
-Der einfachste Weg, um Deskriptivstatistik auf einen Abwasch zu erledigen ist dieser Befehl:
+### Numerische Variablen
+
+
+
+Der einfachste Weg, um Deskriptivstatistik für eine *numerische Variable* auf einen Abwasch zu erledigen ist dieser Befehl:
 
 
 ```r
@@ -229,7 +243,7 @@ favstats(mtcars$mpg)
 
 :warning: Um einen Befehl zu verwenden, der *nicht* im Standard-R, sondern in einer Erweiterung von R ("Paket") wohnt, müssen sie dieses Paket erst starten (laden). Dazu können Sie den Befehl `library` verwenden. Oder Sie klicken den Namen des Pakets hier an:
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/packages_load.png)
+![](figure/packages_load.png)
 
 
 Der Befehl `favstats` lässt auch Subgruppenanalysen zu, z.B. um Männer und Frauen zu vergleichen:
@@ -249,6 +263,48 @@ favstats(mpg ~ cyl, data = mtcars)
 Dabei ist `mpg` die Variable, die sie vergleichen wollen (Spritverbrauch); `cyl` die Gruppierungsvariable (Anzahl der Zylinder). Gruppierungsvariable bedeutet hier, dass den Spritverbrauch zwischen 4,6 und 8-Zylindern vergleichen wollen.
 
 
+### Nominale Variablen
+
+Eine Häufigkeitstabelle für eine *nicht-metrische* Variable lässt über den Befehl `table` erstellen.
+
+Aber zuerst wandeln wir eine unserer metrischen Variablen in eine nominale um:
+
+
+```r
+mtcars$cyl_f <- factor(mtcars$cyl)
+```
+
+`factor` wandelt eine metrische (numerische)  Variable in einen nominale Variable um; nominale Variablen nennt man in R auch "Faktor".
+
+
+```r
+table(mtcars$cyl_f)
+```
+
+```
+## 
+##  4  6  8 
+## 11  7 14
+```
+
+Aha, 14 Autos in unserer Tabelle haben also 8 Zylinder.
+
+Brechen wir jetzt die Auszählunng noch mal auf in "Spass" vs. "Krücke".
+
+
+```r
+table(mtcars$cyl_f, mtcars$Spass)
+```
+
+```
+##    
+##     FALSE TRUE
+##   4    11    0
+##   6     7    0
+##   8     7    7
+```
+
+
 ## Zeilenmittelwerte bilden
 
 Bei Umfragen kommt es häufig vor, dass man Zeilenmittelwerte bildet. Wieso? Man möchte z.B. in einer Mitarbeiterbefragung den "Engagementwert" jedes Beschäftigten wissen (klingt einfach gut). Dazu addiert man die Werte jedes passenden Items auf. Diese Summe teilen Sie durch die Anzahl der Spalten
@@ -261,11 +317,39 @@ In R können Sie Zeilen einfach mit dem `+` Zeichen addieren:
 meine_tabelle$zeilenmittelwert <- (meine_tabelle$item1 + meine Tabelle$item2) / 2
 ```
 
+## Logische Variablen bilden
+
+Sagen wir, uns interessiert welches Auto mehr als 200 PS hat; wir wollen Autos mit mehr als 200 PS vergleichen ("Spass") mit schwach motorisierten Autos ("Kruecke"). Wie können wir das (einfach) in R erreichen? Logische Variablen sind ein einfacher Weg.
+
+
+```r
+mtcars$Spass <- mtcars$hp > 200
+```
+
+Dieser Befehl hat eine Spalte (Variable) in der Tabelle `mtcars` erzeugt, in der `TRUE` steht, wenn das Auto der jeweiligen Spalte die Bedingung (hp > 200) erfüllt. Schauen Sie nach.
+
+
+```r
+favstats(mtcars$Spass)
+```
+
+```
+## Warning in fav_stats(x, ..., na.rm = na.rm): Auto-converting logical to
+## numeric.
+```
+
+```
+##  min Q1 median Q3 max    mean        sd  n missing
+##    0  0      0  0   1 0.21875 0.4200134 32       0
+```
+
+
+
 # Schritt 3: Visualisieren
 
 Ein Bild sagt bekanntlich mehr als 1000 Worte. Betrachten Sie dazu "Anscombes Quartett":
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/anscombe.png)
+![](figure/anscombe.png)
 
 Diese vier Datensätze sehen ganz unterschiedlich aus, nicht wahr? Aber ihre zentralen deskriptiven Statistiken sind praktisch gleich! Ohne Diagramm wäre uns diese Unterschiedlichkeit nicht (so leicht) aufgefallen!
 
@@ -296,7 +380,7 @@ qplot(x = hp,
       data = mtcars)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
 
 Easy, oder?
 
@@ -310,7 +394,7 @@ qplot(x = factor(cyl),
       geom = "boxplot")
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-7-1.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
 
 Beachten Sie, dass `qplot` nur dann *mehrere* Boxplots zeichnet, wenn auf der X-Achse eine nominal skalierte Variable steht.
 
@@ -326,7 +410,7 @@ qplot(x = hp,
       geom = "histogram")
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
 
 :bulb: Geben wir keine Y-Variable an, nimmt qplot eigenständig die Häufigkeit pro X-Wert!
 
@@ -439,7 +523,7 @@ qplot(x = cyl,
   geom_abline(slope = -2.9, intercept = 38)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="70%" style="display: block; margin: auto;" />
 
 
 
