@@ -40,7 +40,7 @@ Lizenz: André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Ma
 
 Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schritte einteilen, angelehnt dem Song von Peter Maffay "Über sieben Brücken musst du gehen".
 
-![](figure/prozess.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/Prozess.png)
 
 
 
@@ -48,7 +48,7 @@ Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schr
 
 Der einfachste Weg, Daten einzulesen, ist über den Button "Import Dataset" in RStudio.
 
-![](figure/import_RStudio.png){ width="50%" }
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/import_RStudio.png){ width="50%" }
 
 So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
 
@@ -56,7 +56,7 @@ So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
 
 Ggf. müssen Sie also in der Import-Maske von RStudio als *delimiter* ein *semicolon* auswählen.
 
-![](figure/delimiter.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter.png)
 
 
 Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren. 
@@ -68,7 +68,7 @@ Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren.
 
 Damit Sie in R vernünftig mit Ihren Daten arbeiten können, sollten die Daten "tidy" sein, d.h. in Normalform. Was ist Normalform? Betrachten Sie folgende Abbildung:
 
-![](figure/Normalform.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/Normalform.png)
 
 Die goldene Regel der Normalform einer Tabelle lautet also:
 
@@ -84,7 +84,7 @@ Die goldene Regel der Normalform einer Tabelle lautet also:
 Sie denken, dass Ihre Daten immer/auf jeden Fall in Normalform sind? Dann scheuen Sie sich mal dieses Bild an:
 
 
-![](figure/breit_lang.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/breit_lang.png)
 
 
 ## Textkodierung in UTF-8
@@ -110,7 +110,7 @@ Der Schritt des Aufbereitens ist häufig der zeitintensivste Schritt. In diesem 
 
 :warning: Ein häufiger Fehler ist, dass die Daten nicht richtig eingelesen werden. Zum Beispiel werden die Spaltentrennzeichen nicht richtig erkannt. Das kann dann so aussehen.
 
-![](figure/delimiter_wrong.png){ width=50% }
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter_wrong.png){ width=50% }
 
 Unter "delimiter" in der Maske können Sie das Trennzeichen anpassen. 
 
@@ -178,7 +178,7 @@ Deskriptive Statistik ist letztlich nichts anderes, als Daten geschickt zusammen
 
 >   Praktisch sind es meistens Spalten, die zu einen Zahl zusammengefasst werden.
 
-![](figure/summarise.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/summarise.png)
 
 
 
@@ -243,7 +243,7 @@ favstats(mtcars$mpg)
 
 :warning: Um einen Befehl zu verwenden, der *nicht* im Standard-R, sondern in einer Erweiterung von R ("Paket") wohnt, müssen sie dieses Paket erst starten (laden). Dazu können Sie den Befehl `library` verwenden. Oder Sie klicken den Namen des Pakets hier an:
 
-![](figure/packages_load.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/packages_load.png)
 
 
 Der Befehl `favstats` lässt auch Subgruppenanalysen zu, z.B. um Männer und Frauen zu vergleichen:
@@ -349,7 +349,7 @@ favstats(mtcars$Spass)
 
 Ein Bild sagt bekanntlich mehr als 1000 Worte. Betrachten Sie dazu "Anscombes Quartett":
 
-![](figure/anscombe.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/anscombe.png)
 
 Diese vier Datensätze sehen ganz unterschiedlich aus, nicht wahr? Aber ihre zentralen deskriptiven Statistiken sind praktisch gleich! Ohne Diagramm wäre uns diese Unterschiedlichkeit nicht (so leicht) aufgefallen!
 
@@ -380,7 +380,7 @@ qplot(x = hp,
       data = mtcars)
 ```
 
-<img src="figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
 
 Easy, oder?
 
@@ -394,7 +394,7 @@ qplot(x = factor(cyl),
       geom = "boxplot")
 ```
 
-<img src="figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
 
 Beachten Sie, dass `qplot` nur dann *mehrere* Boxplots zeichnet, wenn auf der X-Achse eine nominal skalierte Variable steht.
 
@@ -410,7 +410,7 @@ qplot(x = hp,
       geom = "histogram")
 ```
 
-<img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
 
 :bulb: Geben wir keine Y-Variable an, nimmt qplot eigenständig die Häufigkeit pro X-Wert!
 
@@ -523,7 +523,7 @@ qplot(x = cyl,
   geom_abline(slope = -2.9, intercept = 38)
 ```
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="70%" style="display: block; margin: auto;" />
 
 
 
