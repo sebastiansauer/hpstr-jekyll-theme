@@ -388,7 +388,7 @@ meine_tabelle$zeilenmittelwert <- (meine_tabelle$item1 + meine Tabelle$item2) / 
 
 Ein Bild sagt bekanntlich mehr als 1000 Worte. Betrachten Sie dazu "Anscombes Quartett":
 
-![](figure/anscombe.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/anscombe.png)
 
 Diese vier Datensätze sehen ganz unterschiedlich aus, nicht wahr? Aber ihre zentralen deskriptiven Statistiken sind praktisch gleich! Ohne Diagramm wäre uns diese Unterschiedlichkeit nicht (so leicht) aufgefallen!
 
@@ -415,7 +415,7 @@ qplot(x = hp,
       data = mtcars)
 ```
 
-<img src="figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
 
 Easy, oder?
 
@@ -429,7 +429,7 @@ qplot(x = factor(cyl),
       geom = "boxplot")
 ```
 
-<img src="figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
 
 Beachten Sie, dass `qplot` nur dann *mehrere* Boxplots zeichnet, wenn auf der X-Achse eine nominal skalierte Variable steht.
 
@@ -445,7 +445,7 @@ qplot(x = hp,
       geom = "histogram")
 ```
 
-<img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
 
 :bulb: Geben wir keine Y-Variable an, nimmt qplot eigenständig die Häufigkeit pro X-Wert!
 
@@ -558,7 +558,7 @@ qplot(x = cyl,
   geom_abline(slope = -2.9, intercept = 38)
 ```
 
-<img src="figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/unnamed-chunk-18-1.png" title="plot of chunk unnamed-chunk-18" alt="plot of chunk unnamed-chunk-18" width="70%" style="display: block; margin: auto;" />
 
 
 
