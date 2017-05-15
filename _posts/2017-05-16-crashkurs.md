@@ -69,7 +69,7 @@ library(tidyverse)
 
 # Über sieben Brücken musst Du gehen
 
-![Peter Maffay](https://sebastiansauer.github.io/images/2017-05-16/figure/Peter_Maffay.jpg){width=30%}
+![Peter Maffay](https://sebastiansauer.github.io/images/2017-05-16/figure/Peter_Maffay.jpg)
 
 Lizenz: André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Maffay#/media/File:Peter_Maffay.jpg
 
@@ -104,7 +104,7 @@ Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren.
 
 Damit Sie in R vernünftig mit Ihren Daten arbeiten können, sollten die Daten "tidy" sein, d.h. in Normalform. Was ist Normalform? Betrachten Sie folgende Abbildung:
 
-![](figure/Normalform.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/Normalform.png)
 
 Die goldene Regel der Normalform einer Tabelle lautet also:
 
