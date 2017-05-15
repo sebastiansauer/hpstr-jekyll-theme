@@ -83,7 +83,7 @@ Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schr
 
 Der einfachste Weg, Daten einzulesen, ist über den Button "Import Dataset" in RStudio.
 
-![](https://sebastiansauer.github.io/images/2017-05-16/figure/Prozess.png)
+![](https://sebastiansauer.github.io/images/2017-05-16/figure/import_RStudio.png)
 
 
 So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
@@ -583,3 +583,10 @@ Daten kommunizieren heißt praktisch zumeist, Tabellen oder Diagramme zu erstell
 
 Wäre das nicht cool: Jegliches Formatieren wird automatisch übernommen und sogar so, das ses schick aussieht? Außerdem wird Ihr R-Code und dessen Ergebnisse (Tabellen und Diagramme oder reine Zahlen) automatisch in Ihr Dokument übernommen. Keine Copy-Paste-Fehler mehr. Keine händisches Aktualisieren, weil Sie Daten oder die vorhergehende Analyse geändert haben. Hört sich gut an? Probieren Sie mal [RMarkdown](http://rmarkdown.rstudio.com) aus :one_up:.
 
+
+
+# Fazit
+
+Glück auf :smile:
+
+[Hier](https://sebastiansauer.github.io/Lieblingsbefehle/) finden Sie einen Überblick an einige "Lieblings-R-Befehle".    
