@@ -19,7 +19,7 @@ Wir fassen die gegebenen Informationen zusammen:
 
 ```r
 mue = 16.28  # mue laut H0
-xquer = 17.29
+xquer = 16.79
 sdpop = 3
 n = 36
 ```
@@ -46,10 +46,10 @@ z
 ```
 
 ```
-## [1] 2.02
+## [1] 1.02
 ```
 
-Der z-Wert ist: 2.02.
+Der z-Wert ist: 1.02.
 
 Und berechnen den p-Wert für `z`:
 
@@ -68,11 +68,11 @@ p
 ```
 
 ```
-## [1] 0.02
+## [1] 0.15
 ```
 
 
-Der p-Wert beträgt: 0.02.
+Der p-Wert beträgt: 0.15.
 
 Wenn p < 5% (.05) ist, verwerfen wir die H0; wir prüfen also als letzten Schritt, ob diese Bedingung erfüllt ist.
 
@@ -82,8 +82,7 @@ p < .05
 ```
 
 ```
-## [1] TRUE
+## [1] FALSE
 ```
 
-Ja, wir verwerfen die H0 und nehmen die H1 an: Der mittlere Mietpreis in München ist höher als 16.28€.
-
+Nein, wir verwerfen die H0 *nicht*, sondern behalten sie bei.
