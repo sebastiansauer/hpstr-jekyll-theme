@@ -104,7 +104,7 @@ How to interpret:
 - The survival probability is 0.8095038 if `Pclass` were zero (intercept).
 - However, you *cannot* just add the probability of, say `Pclass == 1` to survival probability of `PClass == 0` to get the survival chance of 1st class passengers.
 
-Instead, consider that the logistic regression can be interpreted as a normal regression as long as you use logits. So the general formuly applies as always:
+Instead, consider that the logistic regression can be interpreted as a normal regression as long as you use logits. So the general regression formula applies as always:
 
 ```
 y = intercept + b*x
