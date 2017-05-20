@@ -302,7 +302,7 @@ library(DT)
 datatable(df)
 ```
 
-![plot of chunk unnamed-chunk-14](https://sebastiansauer.github.io/images/2017-01-24/figure/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-14](https://sebastiansauer.github.io/images/2017-01-24/unnamed-chunk-14-1.png)
 
 The package [mfx](https://cran.r-project.org/web/packages/mfx/mfx.pdf) provides a convenient functions to get odds out of a logistic regression (Thanks for Henry Cann's comment for pointing that out!).
 
