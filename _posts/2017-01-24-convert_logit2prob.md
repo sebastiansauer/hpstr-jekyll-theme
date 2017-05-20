@@ -53,7 +53,7 @@ These coefficients are in a form called 'logits'.
 
 >    If coefficient (logit) is positive, the effect of this predictor (on survival rate) is positive and vice versa.
 
-Here `Üclass` coefficient is negative indicating that the *higher* `Pclass` the *lower* is the probability of survival.
+Here `Pclass` coefficient is negative indicating that the *higher* `Pclass` the *lower* is the probability of survival.
 
 
 # Conversion rule
