@@ -28,11 +28,12 @@ find_funs <- function(f) {
     dplyr::select(Package) %>%
     distinct -> builtin_pckgs_df
 
-  # check for each element of 'pckg hit' whether its built-in (via match). Then print results.
+  # check for each element of 'pckg hit' whether its built-in and loaded (via match). Then print results.
 
   results <- data_frame(
     package_name = pckg_hits,
-    builtin_pckage = match(pckg_hits, builtin_pckgs_df$Package, nomatch = 0) > 0
+    builtin_pckage = match(pckg_hits, builtin_pckgs_df$Package, nomatch = 0) > 0,
+    loaded = match(paste("package:",pckg_hits, sep = ""), search(), nomatch = 0) > 0
   )
 
   return(results)

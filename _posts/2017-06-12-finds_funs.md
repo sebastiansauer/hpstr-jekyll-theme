@@ -1,5 +1,5 @@
 ---
-title: "Identifying package of a function"
+title: "Identifying the package of a function"
 author: "Sebastian Sauer"
 layout: post
 tags: [rstats]
@@ -11,7 +11,7 @@ Sometimes it is helpful to know in which R package a function 'resides'. For exa
 
 Additionally, sometimes we have in mind 'oh I should make use of this function `filter` here', but cannot remember which package should be loaded for that function.
 
-A number of ways exist to address this question. Our convenience function here takes the name of the function for which we search its residential package as its input (that's the only parameter). The function will then return the one more packgages in which the function was found. In addition, it returns for each package found whether that package comes with standard R (is 'built-in'). That information can be useful to know whether someone needs to install a package in order to use some function.
+A number of ways exist to address this question. Our convenience function here takes the name of the function for which we search its residential package as its input (that's the only parameter). The function will then return the one more packgages in which the function was found. In addition, it returns for each package found whether that package comes with standard R (is 'built-in'). That information can be useful to know whether someone needs to install a package in order to use some function. The function also returns whether the function is currently loaded.
 
 
 
@@ -50,11 +50,12 @@ find_funs <- function(f) {
     dplyr::select(Package) %>%
     distinct -> builtin_pckgs_df
 
-  # check for each element of 'pckg hit' whether its built-in (via match). Then print results.
+  # check for each element of 'pckg hit' whether its built-in and loaded (via match). Then print results.
   
   results <- data_frame(
     package_name = pckg_hits,
-    builtin_pckage = match(pckg_hits, builtin_pckgs_df$Package, nomatch = 0) > 0
+    builtin_pckage = match(pckg_hits, builtin_pckgs_df$Package, nomatch = 0) > 0,
+    loaded = match(paste("package:",pckg_hits, sep = ""), search(), nomatch = 0) > 0
   )
 
   return(results)
@@ -71,13 +72,13 @@ find_funs("filter")
 ```
 
 ```
-## # A tibble: 4 x 2
-##   package_name builtin_pckage
-##          <chr>          <lgl>
-## 1         base           TRUE
-## 2        dplyr          FALSE
-## 3       plotly          FALSE
-## 4        stats           TRUE
+## # A tibble: 4 x 3
+##   package_name builtin_pckage loaded
+##          <chr>          <lgl>  <lgl>
+## 1         base           TRUE   TRUE
+## 2        dplyr          FALSE   TRUE
+## 3       plotly          FALSE  FALSE
+## 4        stats           TRUE   TRUE
 ```
 
 
