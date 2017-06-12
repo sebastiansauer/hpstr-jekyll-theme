@@ -1,10 +1,11 @@
 find_funs <- function(f) {
-  # Returns dataframe with two columns:
+  # Returns dataframe with the columns:
   # `package_name`: packages(s) which the function is part of (chr)
-  # `builtin_package`:  whether the package comes with standard R (a 'builtin'  package)
+  # `builtin_package`:  whether the package comes with standard R (a 'builtin' package; lgl)
+  # `loaded`: whether that package is currently loaded/attached
 
   # Arguments:
-  # f: name of function for which the package(s) are to be identified.
+  # f: name of one function for which the package(s) are to be identified. Must be a a text vector of length one.
 
 
   if ("tidyverse" %in% rownames(installed.packages()) == FALSE) {
