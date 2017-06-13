@@ -26,6 +26,11 @@ find_funs("filter")
 This function will search all *installed* packages for this function name. It will return all the package names that match the function name (ie., packages which include a function by the respective name). In addition, the function raises a flag as to whether the packages is a standard (built-in) packge and whether the package is currently loaded/attached.
 
 
+For convenience this function can be sourced like this:
+
+```
+source("https://sebastiansauer.github.io/Rcode/find_funs.R")
+```
 
 
 # Usecase
