@@ -3,7 +3,7 @@ layout: page
 title: About Sebastian Sauer Stats Blog
 image:
   feature: wildblue.jpg
-  credit: Laurenz
+  credit: LS
 comments: false
 modified: 2017-01-18
 ---
@@ -13,7 +13,7 @@ modified: 2017-01-18
 
 I blog about statistics including research methods, particularly for psychology, and particularly with regard to data analysis using R.
 
-As a non-virtual person, I work as a professor at [FOM University of Applied Sciences](https://www.fom.de/die-fom-englisch/the-university-for-the-professionals.html). 
+As a non-virtual person, I work as a professor at [FOM University of Applied Sciences](https://www.fom.de/die-fom-englisch/the-university-for-the-professionals.html).
 
 Posts reflect mostly my current thinking; and posts are not immune to thought updates. With luck things get less wrong in the course of time.
 
@@ -23,17 +23,17 @@ Posts reflect mostly my current thinking; and posts are not immune to thought up
 To receive updates for this blog, follow me on [Twitter](https://twitter.com/sauer_sebastian), or subscribe to the [RSS feed](https://sebastiansauer.github.io/feed.xml).
 
 
-## Related stuff
+## Blogroll
 
 Some nice blogs:
 
-- R-Bloggers: <https://www.r-bloggers.com>
+- [R-Bloggers](https://www.r-bloggers.com)
 
-- Richard Morey's blog: <https://richarddmorey.org>
+- [Richard Morey's blog](https://richarddmorey.org)
 
-- Jan Vanhove's blog: <https://janhove.github.io>
+- [Jan Vanhove's blog](https://janhove.github.io)
 
-- Win Vector blog: <http://www.win-vector.com/blog/>
+-[ Win Vector blog](http://www.win-vector.com/blog/)
 
 
 ## Licence
