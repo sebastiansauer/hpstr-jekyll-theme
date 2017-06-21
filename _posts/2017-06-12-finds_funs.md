@@ -69,6 +69,9 @@ find_funs <- function(f) {
   # extract package name from help file
   pckg_hits <- help_installed$matches[,"Package"]
 
+  if (length(pckg_hits) == 0) pckg_hits <- "No_results_found"
+
+
   # get list of built-in packages
 
   pckgs <- installed.packages()  %>% as_tibble
