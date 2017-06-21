@@ -9,7 +9,7 @@ find_funs <- function(f) {
 
 
   if ("tidyverse" %in% rownames(installed.packages()) == FALSE) {
-    cat("tidyverse is needed for this fuction. Please install. Stopping")
+    cat("package 'tidyverse' is needed for this fuction. Please install. Stopping.")
     stop()}
 
   suppressMessages(library(tidyverse))
@@ -20,6 +20,8 @@ find_funs <- function(f) {
 
   # extract package name from help file
   pckg_hits <- help_installed$matches[,"Package"]
+
+  if (length(pckg_hits) == 0) pckg_hits <- "No_results_found"
 
   # get list of built-in packages
 
@@ -40,6 +42,7 @@ find_funs <- function(f) {
   return(results)
 
 }
+
 
 # code inspired by code from Ben Bolker
 # https://stackoverflow.com/questions/10553755/name-of-a-package-for-a-given-function-in-r
