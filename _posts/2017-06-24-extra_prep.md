@@ -8,7 +8,7 @@ tags: [rstats, psychometrics, survey]
 
 
 
-For teaching purposes and out of curiosity towards some psychometric questions, I have run a survey on extraversion [here](https://docs.google.com/forms/d/e/1FAIpQLSfD4wQuhDV_edx1WBfN3Qos7XqoVbe41VpiKLRKtGLeuUD09Q/viewform?usp=sf_link). The survey is base on a google form, which in turn saves the data in Google spreadsheet. Before the data can be analyzed, some preparation and makeup is in place. This posts shows some general makeup, typical for survey data.
+For teaching purposes and out of curiosity towards some psychometric questions, I have run a survey on extraversion [here](https://docs.google.com/forms/d/e/1FAIpQLSfD4wQuhDV_edx1WBfN3Qos7XqoVbe41VpiKLRKtGLeuUD09Q/viewform?usp=sf_link). The dataset has been published at [OSF](https://osf.io/4kgzh/) (DOI 10.17605/OSF.IO/4KGZH). The survey is base on a google form, which in turn saves the data in Google spreadsheet. Before the data can be analyzed, some preparation and makeup is in place. This posts shows some general makeup, typical for survey data.
 
 
 
@@ -63,7 +63,7 @@ Next, replace the lengthy col names by 'i' followed by a number:
 
 ```r
 extra <- extra_raw
-names(extra) <- paste0("i",1:length(names(extra)))  
+names(extra) <- c("timestamp", "code", paste0("i",1:26))
 ```
 
 
@@ -75,23 +75,21 @@ Then we rename some of the variables with new names.
 ```r
 extra <-
   extra %>%
-  rename(timestamp = i1,
-         code = i2,
-         n_facebook_friends = i13,
-         n_hangover = i14,
-         age = i15,
-         sex = i16,
-         extra_single_item = i17,
-         time_conversation = i18,
-         presentation = i19,
-         n_party = i20,
-         clients = i21,
-         extra_vignette = i22,
-         extra_vignette2 = i24,
-         major = i25,
-         smoker = i26,
-         sleep_week = i27,
-         sleep_wend = i28)
+  rename(n_facebook_friends = i11,
+         n_hangover = i12,
+         age = i13,
+         sex = i14,
+         extra_single_item = i15,
+         time_conversation = i16,
+         presentation = i17,
+         n_party = i18,
+         clients = i19,
+         extra_vignette = i20,
+         extra_vignette2 = i22,
+         major = i23,
+         smoker = i24,
+         sleep_week = i25,
+         sleep_wend = i26)
 ```
 
 
@@ -153,16 +151,16 @@ attr(extra, "spec") <- NULL
 
 # Recode items
 
-Some extraversion items (variables i4, i8) need to be recoded, ie., reversed. 
+Some extraversion items (variables i2, i6) need to be recoded, ie., reversed. 
 
 
 
 ```r
 extra %>% 
-  mutate(i4 = 5-i4,
-            i8 = 5-i8) %>% 
-  rename(i4r = i4,
-         i8r = i8) -> extra
+  mutate(i2 = 5-i2,
+            i6 = 5-i6) %>% 
+  rename(i2r = i2,
+         i6r = i6) -> extra
 ```
 
 
@@ -182,13 +180,7 @@ extra %>%
 ```
 
 ```
-## Warning in base::max(t): no non-missing arguments to max; returning -Inf
-
-## Warning in base::max(t): no non-missing arguments to max; returning -Inf
-
-## Warning in base::max(t): no non-missing arguments to max; returning -Inf
-
-## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+## Error in summarise_impl(.data, dots): Evaluation error: object 'i4r' not found.
 ```
 
 ```r
