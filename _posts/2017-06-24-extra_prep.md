@@ -93,6 +93,22 @@ extra <-
 ```
 
 
+# Add leading zero to items
+
+It is more helpful for sorting purposes for variable names with numbers to have the same format, ie., the same number of leadings zero. So not this "i1, i2", but this "i01, i02" (if the number of items is not greater than 99).
+
+To get the same amount of leading zeros we can use:
+
+
+```r
+i <- 1:10
+item_names <- paste0("i", formatC(i, width = 2, flag = "0"))
+
+colnames(extra)[3:12] <- item_names
+```
+
+
+
 # Parse numbers from chr columns 
 
 Some columns actually assess a number but the field in the survey form was liberally open to characters. So we have to convert the character to numbers, or, more precisely, suck out the numbers from the character variables.
@@ -149,7 +165,7 @@ attr(extra, "spec") <- NULL
 
 
 
-# Recode items
+# Recode items 1: Reverse order
 
 Some extraversion items (variables i2, i6) need to be recoded, ie., reversed. 
 
@@ -157,34 +173,135 @@ Some extraversion items (variables i2, i6) need to be recoded, ie., reversed.
 
 ```r
 extra %>% 
-  mutate(i2 = 5-i2,
-            i6 = 5-i6) %>% 
-  rename(i2r = i2,
-         i6r = i6) -> extra
+  mutate(i02 = 5-i02,
+            i06 = 5-i06) %>% 
+  rename(i02r = i02,
+         i06r = i06) -> extra
 ```
+
+
+# Recode items 2: Convert labels to numbers
+
+Typically, items answers are anchored with labels such as "do not agree" till "fully agree" or similar. However, sometimes it is convenient to have such labels in a number format. Let's convert such items labels to numbers.
+
+
+```r
+extra %>% 
+  mutate(clients_freq = case_when(
+    clients ==  "im Schnitt 1 Mal pro Quartal (oder weniger)" ~ "1",
+    clients == "im Schnitt 1 Mal pro Monat" ~ "2",
+    clients == "im Schnitt 1 Mal pro Woche" ~ "3",
+    clients == "im Schnitt 1 Mal pro Tag" ~ "4",
+    clients == "im Schnitt mehrfach pro Tag" ~"5",
+    TRUE ~ "NA")) %>% 
+  mutate(clients_freq = parse_number(clients_freq)) -> extra
+```
+
 
 
 # Compute summaries (extraversion score)
 
 Let's compute the mean but also the median and mode for each *person* (ie., row) with regard to the 10 extraversion items.
 
+For that, we'll use a helper function to compute the mode (most frequent value).
+
+
+```r
+most <- function(x){
+  if (!(is.numeric(x))) {
+    out <- NA
+    return(out)
+  }
+  x <- stats::na.omit(x)
+  t <- base::table(x)
+  m <- base::max(t)
+  out <- base::as.numeric(base::names(t)[t==m])
+  if (base::length(out) > 1) out <- out[1]
+  if (base::length(out) == 0) out <- NA
+  base::return(out)
+}
+```
+
+
+
 
 ```r
 extra %>% 
   rowwise %>% 
-  summarise(extra_m = mean(c(i3, i4r, i5, i6, i7, i8r, i9, i10, i11, i12), na.rm = TRUE),
-            extra_md = median(c(i3, i4r, i5, i6, i7, i8r, i9, i10, i11, i12), na.rm = TRUE),
-            extra_aad = aad(c(i3, i4r, i5, i6, i7, i8r, i9, i10, i11, i12), na.rm = TRUE),
-            extra_mode = prada::most(c(i3, i4r, i5, i6, i7, i8r, i9, i10, i11, i12)),
-            extra_iqr = IQR(c(i3, i4r, i5, i6, i7, i8r, i9, i10, i11, i12), na.rm = TRUE)) -> extra_scores
+  summarise(extra_mean = mean(c(i01, i02r, i03, i04, i05, i06r, i07, i08, i09, i10), na.rm = TRUE),
+            extra_md = median(c(i01, i02r, i03, i04, i05, i06r, i07, i08, i09, i10), na.rm = TRUE),
+            extra_aad = aad(c(i01, i02r, i03, i04, i05, i06r, i07, i08, i09, i10), na.rm = TRUE),
+            extra_mode = most(c(i01, i02r, i03, i04, i05, i06r, i07, i08, i09, i10)),
+            extra_iqr = IQR(c(i01, i02r, i03, i04, i05, i06r, i07, i08, i09, i10))) -> extra_scores
 ```
 
 ```
-## Error in summarise_impl(.data, dots): Evaluation error: object 'i4r' not found.
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
 ```
+
+This approach works but it's a lot of duplicated typing. Rather give `summarise` an unquoted expression:
+
+First, we define an expression; that's to say we want R to *quote*, rather than to evaluation the expression. This can be achieved using `quo`:
+
+
+```r
+extra_items <- quo(c(i01, i02r, i03, i04, i05, i06r, i07, i08, i09, i10))
+```
+
+Then we hand over the *un*quoted expression (defined by `quote`) to mean Unquoting now (dplyr >= .7) works by usig the `!!` operator.
+
+
+```r
+extra %>% 
+  rowwise %>% 
+  summarise(extra_mean = mean(!!extra_items),
+            extra_md = median(!!extra_items),
+            extra_aad = lsr::aad(!!extra_items),
+            extra_mode = most(!!extra_items),
+            extra_iqr = IQR(!!extra_items)) -> extra_scores
+```
+
+```
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+
+## Warning in base::max(t): no non-missing arguments to max; returning -Inf
+```
+
+```r
+extra_scores %>% head
+```
+
+```
+## # A tibble: 6 x 5
+##   extra_mean extra_md extra_aad extra_mode extra_iqr
+##        <dbl>    <dbl>     <dbl>      <dbl>     <dbl>
+## 1        2.9      3.0      0.56          3      0.00
+## 2        2.1      2.0      0.54          2      0.75
+## 3        2.6      3.0      1.08          1      2.50
+## 4        2.9      3.0      0.36          3      0.00
+## 5        3.2      3.5      0.80          4      1.00
+## 6        2.8      3.0      0.68          3      0.75
+```
+
+Neat! Now let's bind that to the main df.
+
+
 
 ```r
 extra %>% 
   bind_cols(extra_scores) -> extra
 ```
+
+Done! Enyoj the freshly juiced data frame :sunglasses:
+
 
