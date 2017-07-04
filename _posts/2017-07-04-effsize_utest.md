@@ -2,7 +2,7 @@
 title: "Effect sizes for the Mann-Whitney U Test: an intuition"
 author: "Sebastian Sauer"
 layout: post
-tags: [stats, intuition]
+tags: [stats, intuition, rstats]
 ---
 
 
@@ -14,10 +14,10 @@ The Mann-Whitney U-Test is a test with a wide applicability, wider than the t-Te
 
 How is the test computed? In essence, that's easy: 
 
-1. Count the number of pairwaise comparisons in your sample. Say you have  two groups, with n1=5 and n2=4. Thus there are 20 comparisons in total.
+1. Count the number of pairwise comparisons in your sample. Say you have  two groups, with n1=5 and n2=4. Thus there are 20 comparisons in total.
 2. Now count the frequency group 1 "wins" a comparison (count 0.5 for ties). The resulting statistic can be called U.
 
-How to achieve that in R? Try this code. Say we have two groups of runners (100m):
+How to achieve that in R? Try this code. Say we have two groups of runners (100m), and we record their running time (in seconds):
 
 
 ```r
@@ -57,7 +57,7 @@ nrow(comp)
 
 
 
-And now count how often members of g1 outperform members of g2, ie., we count the proportion of $g1_i > g2_j$ for all $i,j$.
+And now count how often members of g1 outperform members of g2, ie., we count the proportion of $$g1_i > g2_j$$ for all $$i,j$$.
 
 I need the pipe for that...
 
@@ -90,7 +90,7 @@ U is given by
 
 $$U1 =\sum{g1} - \sum{min1}$$
 
-where $U1$ means the U stastitic for g1, and $min1$ the *minimal possible* rank sum in g1. What's the smallest possible rank sum if there are 2 observations in a group? 3. Because 1+2=3. If there are 5 runners in a group? 15. Because 1+2+3+4+5=15. So, in our case for g1, 15 is the minimal possible rank sum in g1. Now we now that if we get a rank sum of 15 that's as possible as it can be.
+where $$U1$$ means the U statistic for g1, and $$min1$$ is the *minimal possible* rank sum in g1. What's the smallest possible rank sum if there are 2 observations in a group? 3. Because 1+2=3. If there are 5 runners in a group? 15. Because 1+2+3+4+5=15. So, in our case for g1, 15 is the minimal possible rank sum in g1. Now we now that if we get a rank sum of 15 that's as possible as it can be.
 
 Let's compute the rank sums for each group.
 
@@ -104,7 +104,7 @@ df <- data.frame(
   )
 ```
 
-Now transform the runtime to ranks.
+Now transform the run time to ranks.
 
 
 ```r
@@ -133,11 +133,13 @@ df %>%
 
 Applying the formula above we see that the rank sum for g1 is 19, subtracting the min rank of 15, we get a value of 4. This number is equivalent to saying that out of 20 comparisons, g1 lost 4 (and won 16). U is obviously synonymous to saying "how many comparisons were lost".
 
+For g2, similarly: 26 - 10 = 16, so 16 (out of 20) comparisons were *lost*.
+
 Now, the *proportion* of won (or lost) comparisons is of course more telling than the absolute value, seen from a practical point of view. This amounts to saying that the proportion of won/lost comparisons is some kind of *effect size*. See details for this idea in the paper of [Kerby](http://journals.sagepub.com/doi/pdf/10.2466/11.IT.3.1) (Kerby, D. S. (2014). The Simple Difference Formula: An Approach to Teaching Nonparametric Correlation. *Comprehensive Psychology, 3*, 11.IT.3.1. http://doi.org/10.2466/11.IT.3.1), and the 1992 paper of 
-[McGraw and Wong](http://core.ecu.edu/psyc/wuenschk/docs30/CL.pdf) (McGraw, K. O., & Wong, S. P. (1992). A common language effect size statistic. *Psychological Bulletin, 111*(2), 361–365. http://doi.org/10.1037/0033-2909.111.2.361). That's were the ideas presented here stemm from (as far as I am involved).
+[McGraw and Wong](http://core.ecu.edu/psyc/wuenschk/docs30/CL.pdf) (McGraw, K. O., & Wong, S. P. (1992). A common language effect size statistic. *Psychological Bulletin, 111*(2), 361–365. http://doi.org/10.1037/0033-2909.111.2.361). That's were the ideas presented here stem from (as far as I am involved).
 
 
->   The proportion of favorable comparisions can be gauged a "common language effect size" (CLES).
+>   The proportion of favorable comparisons can be gauged a "common language effect size" (CLES).
 
 In our example, the effect size (CLES) would amount to 16/20 = 80% (.8). For the sake of a memorable example, let's say that g1 are "doped runners" and g2 are "normal runners".
 
