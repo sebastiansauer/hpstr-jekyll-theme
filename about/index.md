@@ -17,6 +17,8 @@ As a non-virtual person, I work as a professor at [FOM University of Applied Sci
 
 Posts reflect mostly my current thinking; and posts are not immune to thought updates. With luck things get less wrong in the course of time.
 
+See also my [Google Scholar profile](https://scholar.google.de/citations?user=r-2ssnAAAAAJ&hl=de) and my [ORCID](http://orcid.org/0000-0003-1515-8348).
+
 
 ## Follow the blog
 
@@ -41,6 +43,5 @@ Some nice blogs:
 Own work is distributed under the terms of the [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and redistribution in any medium, provided that the original author and source are credited.
 
 ## DOI
-
 
 The DOI of this blog is [![DOI](https://zenodo.org/badge/73370743.svg)](https://zenodo.org/badge/latestdoi/73370743) (timestamp: 2017-05-04).
