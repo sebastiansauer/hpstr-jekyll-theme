@@ -76,5 +76,3 @@ prop_fav <- function(df, value, group, g1, g2){
   return(fav_prop)
 
 }
-
-prop_fav(extra, extra_mean, sex, "Frau", "Mann")
