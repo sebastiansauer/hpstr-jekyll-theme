@@ -15,20 +15,15 @@ https://github.com/tidyverse/ggplot2/issues/1528), I found this easy solution.
 
 
 ```r
-library(ggplot)
-```
+library(ggplot2)
 
-```
-## Error in library(ggplot): there is no package called 'ggplot'
-```
 
-```r
-ggplot(NULL, aes(c(-3,3))) +
+ggplot(NULL, aes(c(-3,3))) + 
   geom_area(stat = "function", fun = dnorm, fill = "#00998a", xlim = c(-3, 0)) +
   geom_area(stat = "function", fun = dnorm, fill = "grey80", xlim = c(0, 3))
 ```
 
-![plot of chunk unnamed-chunk-1]({{ site.url }}/images/2017-08-29/unnamed-chunk-1-1.png)
+<img src="figure/unnamed-chunk-1-1.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="70%" style="display: block; margin: auto;" />
 
 Simple, right?
 
@@ -37,7 +32,9 @@ Some minor beautification:
 
 
 ```r
- ggplot(NULL, aes(c(-3,3))) +
+library(cowplot)
+
+ ggplot(NULL, aes(c(-3,3))) + 
   geom_area(stat = "function", fun = dnorm, fill = "#00998a", xlim = c(-3, 1)) +
   geom_area(stat = "function", fun = dnorm, fill = "grey80", xlim = c(1, 3)) +
   labs(x = "z", y = "") +
@@ -45,7 +42,7 @@ Some minor beautification:
   scale_x_continuous(breaks = 1)
 ```
 
-![plot of chunk unnamed-chunk-2]({{ site.url }}/images/2017-08-29/unnamed-chunk-2-1.png)
+<img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -54,7 +51,7 @@ And some other quantiles:
 
 
 ```r
-ggplot(NULL, aes(c(-3,3))) +
+ggplot(NULL, aes(c(-3,3))) + 
   geom_area(stat = "function", fun = dnorm, fill = "#00998a", xlim = c(-3, 1.65)) +
   geom_area(stat = "function", fun = dnorm, fill = "grey80", xlim = c(1.65, 3)) +
   labs(x = "z", y = "") +
@@ -62,10 +59,10 @@ ggplot(NULL, aes(c(-3,3))) +
   scale_x_continuous(breaks = 1.65)
 ```
 
-![plot of chunk unnamed-chunk-3]({{ site.url }}/images/2017-08-29/unnamed-chunk-3-1.png)
+<img src="figure/unnamed-chunk-3-1.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="70%" style="display: block; margin: auto;" />
 
 ```r
-ggplot(NULL, aes(c(-3,3))) +
+ggplot(NULL, aes(c(-3,3))) + 
   geom_area(stat = "function", fun = dnorm, fill = "#00998a", xlim = c(-3, 2)) +
   geom_area(stat = "function", fun = dnorm, fill = "grey80", xlim = c(2, 3)) +
   labs(x = "z", y = "") +
@@ -73,4 +70,5 @@ ggplot(NULL, aes(c(-3,3))) +
   scale_x_continuous(breaks = 2)
 ```
 
-![plot of chunk unnamed-chunk-3]({{ site.url }}/images/2017-08-29/unnamed-chunk-3-2.png)
+<img src="figure/unnamed-chunk-3-2.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="70%" style="display: block; margin: auto;" />
+
