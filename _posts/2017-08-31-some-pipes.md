@@ -48,7 +48,7 @@ class(mtcars[, c("mpg", "hp")])
 ## [1] "data.frame"
 ```
 
-That's ok, because `cor` expects a matrix or a dataframe as input. Alternatively, we can understand dataframes as lists to as in the following example.
+That's ok, because `cor` expects a matrix or a dataframe as input. Alternatively, we can understand dataframes as lists as in the following example.
 
 ## Base approach 2
 
@@ -76,7 +76,7 @@ the `[[`-operator extracts a column from a list (a dataframe is technically a li
 
 ## Pipe approach 1
 
-We will use `dplyr` for that purpose.
+We will use `dplyr` for demonstrating the pipe approach.
 
 
 ```r
