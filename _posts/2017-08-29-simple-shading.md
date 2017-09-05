@@ -1,7 +1,6 @@
 ---
 title: "Shading normal curve made easy"
 author: "Sebastian Sauer"
-date: "29 8 2017"
 output: html_document
 ---
 

@@ -1,7 +1,6 @@
 ---
 title: "Comparing the pipe with base methods"
 author: "Sebastian Sauer"
-date: "30 8 2017"
 output: html_document
 layout: post
 tags: [rstats, tidyverse]
@@ -58,16 +57,16 @@ cor.test(x = mtcars[["mpg"]], y = mtcars[["hp"]])
 ```
 
 ```
-## 
+##
 ## 	Pearson's product-moment correlation
-## 
+##
 ## data:  mtcars[["mpg"]] and mtcars[["hp"]]
 ## t = -6.7424, df = 30, p-value = 1.788e-07
 ## alternative hypothesis: true correlation is not equal to 0
 ## 95 percent confidence interval:
 ##  -0.8852686 -0.5860994
 ## sample estimates:
-##        cor 
+##        cor
 ## -0.7761684
 ```
 
@@ -82,8 +81,8 @@ We will use `dplyr` for demonstrating the pipe approach.
 ```r
 library(dplyr)
 
-mtcars %>% 
-  select(mpg, hp) %>% 
+mtcars %>%
+  select(mpg, hp) %>%
   cor
 ```
 
@@ -134,7 +133,7 @@ This code can be made simpler using dplyr:
 
 
 ```r
-mtcars %>% 
+mtcars %>%
   do(tidy(cor.test(.$mpg, .$hp)))
 ```
 
@@ -153,8 +152,8 @@ This code produces the same result:
 
 
 ```r
-mtcars %>% 
-  do(cor.test(.$mpg, .$hp) %>% tidy) %>% 
+mtcars %>%
+  do(cor.test(.$mpg, .$hp) %>% tidy) %>%
   knitr::kable()
 ```
 
@@ -171,8 +170,8 @@ The package `magrittr` provides some pipe variants, most importantly perhaps the
 
 
 ```r
-mtcars %$% 
-  cor.test(mpg, hp) %>% 
+mtcars %$%
+  cor.test(mpg, hp) %>%
   tidy
 ```
 
