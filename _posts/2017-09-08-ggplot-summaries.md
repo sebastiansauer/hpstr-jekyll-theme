@@ -31,7 +31,7 @@ mtcars %>%
 p1
 ```
 
-<img src="figure/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-08/unnamed-chunk-2-1.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" style="display: block; margin: auto;" />
 
 
 # Way one: Let ggplot compute the summary statistic
@@ -54,7 +54,7 @@ p1 +
   geom_jitter(color = "grey", width = .1)
 ```
 
-<img src=""https://sebastiansauer.github.io/images/2017-09-08/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-08/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -97,7 +97,7 @@ mtcars %>%
   geom_point(data = mtcars2, color = "red", shape = 15, size = 5)
 ```
 
-<img src=""https://sebastiansauer.github.io/images/2017-09-08/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-08/unnamed-chunk-6-1.png" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="70%" style="display: block; margin: auto;" />
 
 
 # Debrief
