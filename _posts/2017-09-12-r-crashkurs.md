@@ -22,7 +22,7 @@ Ok, let's dance 🕺.
 
 # Software
 
-Bevor wir uns die Schritte näher anschauen, ein paar Worte zur Software.
+Bevor wir uns die Schritte näher anschauen, ein paar Worte zur Software. 
 
 ## Programme
 
@@ -34,7 +34,7 @@ Wir brauchen zwei Programme:
 
 Bitte laden Sie diese herunter und installieren Sie sie. Wenn R installiert ist, dann findet RStudio R auch direkt. Wenn alles läuft, sieht es etwa so aus:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/RStudio-Screenshot.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/RStudio-Screenshot.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -44,8 +44,8 @@ __Warum R?__
 
 * R ist ein Programm für Statistik und Datenanalyse.
 * R ist für Linux, MacOS X und Windows (95 oder höher) Plattformen verfügbar.
-* R ist eine elegante und umfassende statistische und grafische Programmiersprache.
-* R kann eine steile Lernkurve L haben `(L = Zeiteinheit/Erfolgseinheit)`.
+* R ist eine elegante und umfassende statistische und grafische Programmiersprache. 
+* R kann eine steile Lernkurve L haben `(L = Zeiteinheit/Erfolgseinheit)`. 
 * R ist kostenlos! Wenn Sie Lehrender oder Studierender sind, sind die Vorteile offensichtlich.
 * R bietet eine unvergleichliche Plattform für die Programmierung neuer statistischer Methoden in einer einfachen und unkomplizierten Weise.
 * R enthält fortgeschrittene statistische Routinen, die noch nicht in anderen Software-Paketen verfügbar sind.
@@ -77,7 +77,7 @@ library(effects) # Effektplots für ANOVA-Modelle
 Oder Sie klicken den Namen des Pakets hier an:
 
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/packages_load.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/packages_load.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -87,7 +87,7 @@ Wir gehen im Folgenden davon aus, dass Sie diese beiden Pakete geladen haben.
 
 ⚠️ Um ein Paket zu laden, muss es installiert sein. Klicken Sie zum Installieren auf den Button "Install" unter dem Reiter "Packages" in RStudio:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/install_packages.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/install_packages.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -108,7 +108,7 @@ library(tidyverse)
 Wir verwenden in diesem Kurs diese Datensätze:
 
 - `mtcars`
-- `tips`
+- `tips` 
 
 `mtcars` ist schon im Standard-R fest eingebaut; Sie müssen also nichts weiter tun. Den Datensatz `tips` können Sie [hier](https://sebastiansauer.github.io/data/tips.csv) herunterladen.
 
@@ -120,16 +120,16 @@ Wir verwenden in diesem Kurs diese Datensätze:
 
 # Über sieben Brücken musst Du gehen
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/Peter_Maffay.jpg" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="20%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Peter_Maffay.jpg" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="20%" style="display: block; margin: auto;" />
 
 
-
+  
 Lizenz: André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Maffay#/media/File:Peter_Maffay.jpg
 
 Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schritte einteilen, angelehnt dem Song von Peter Maffay "Über sieben Brücken musst du gehen".
 
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/Prozess.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Prozess.png" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -139,14 +139,14 @@ Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schr
 
 Das Paket `mosaic` wird unser Zugpferd für alle folgenden Analysen ein. Es hat den Charme, über eine einfache, konsistente Syntax zu verfügen. Mit wenig kann man da viel erreichen. Genau das, wovon man als Student träumt... (so denken Dozenten, jedenfalls).
 
-Die folgende Syntax
+Die folgende Syntax 
 
 > Zielbefehl(y ~ x | z, data=...)
 
-wird verwendet für
+wird verwendet für 
 
 * graphische Zusammenfassungen,
-* numerische Zusammenfassungen und
+* numerische Zusammenfassungen und 
 * inferentstatistische Auswertungen
 
 
@@ -155,11 +155,11 @@ Für Grafiken gilt:
 * y: y-Achse Variable
 * x: x-Achse Variable
 * z: Bedingungsvariable
-
+    
 
 Generell gilt:
 
-> `y ~ x | z`
+> `y ~ x | z` 
 
 kann in der Regel gelesen werden **y wird modelliert von (oder hängt ab von) x unterschieden für jedes z**.
 
@@ -179,7 +179,7 @@ So lassen sich verschiedene Formate - wie XLS(X) oder CSV - importieren.
 
 Haben Sie also eine "deutsche" CSV-Datei, müssen Sie in der Import-Maske von RStudio als *delimiter* ein *semicolon* auswählen.
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/delimiter.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -203,7 +203,7 @@ Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren. Am einf
 
 Damit Sie in R vernünftig mit Ihren Daten arbeiten können, sollten die Daten "tidy" sein, d.h. in *Normalform*. Was ist Normalform? Betrachten Sie folgende Abbildung - so sieht eine Tabelle in Normalform aus.
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/Normalform.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Normalform.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -212,7 +212,7 @@ Die goldene Regel der Normalform einer Tabelle lautet also:
 >   In jeder Zeile steht eine Beobachtung (z.B. Person). In jeder Spalte eine Variable (z.B. Geschlecht). In der ersten Zeile stehen die Spaltennamen, danach folgen die Werte. Sonst steht nichts in der Tabelle.
 
 
-⚠️ Falls Ihre Daten *nicht* in Normalform sind, sollten Sie diese zunächst in Normalform bringen.
+⚠️ Falls Ihre Daten *nicht* in Normalform sind, sollten Sie diese zunächst in Normalform bringen. 
 
 💡 Der einfachste Weg (von der Lernkurve her betrachtet, nicht vom Zeitaufwand), Daten in Normalform zu bringen, ist sie in Excel passend umzubauen.
 
@@ -220,7 +220,7 @@ Die goldene Regel der Normalform einer Tabelle lautet also:
 
 Sie denken, dass Ihre Daten immer/auf jeden Fall in Normalform sind? Dann schauen Sie sich mal dieses Bild an:
 
-<img src="(https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/breit_lang.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="50%" style="display: block; margin: auto;" />
+<img src="(https://sebastiansauer.github.io/images/2017-05-16/figure/breit_lang.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -275,7 +275,7 @@ Deine_PINs <- c(1234, 7777, 1234567, 0000)
 ```
 
 
-💻 AUFGABE:
+💻 AUFGABE: 
 
 1. Erzeugen Sie einen Vektor mit einem kreativen Namen.
 2. Erzeugen Sie einen Vektor, in dem Sie Zahlen und Text mischen. Was passiert?
@@ -325,7 +325,7 @@ Falls Sie RStudio oder ein beliebiger Texteditor irgendwann fragt, wie die Textd
 
 
 
-💻 AUFGABE:
+💻 AUFGABE: 
 
 1. Prüfen Sie, in welchem Format Ihr Dokument kodiert ist.
 2. Setzen Sie das Format ggf. auf UTF-8.
@@ -352,11 +352,11 @@ Der Schritt des Aufbereitens ist häufig der zeitintensivste Schritt. In diesem 
 
 ⚠️ Ein häufiger Fehler ist, dass die Daten nicht richtig eingelesen werden. Zum Beispiel werden die Spaltentrennzeichen nicht richtig erkannt. Das kann dann so aussehen:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/delimiter_wrong.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter_wrong.png" title="plot of chunk unnamed-chunk-17" alt="plot of chunk unnamed-chunk-17" width="50%" style="display: block; margin: auto;" />
 
 
 
-Unter "delimiter" in der Maske können Sie das Trennzeichen anpassen.
+Unter "delimiter" in der Maske können Sie das Trennzeichen anpassen. 
 
 ⚠️ "Deutsche" CSV-Dateien verwenden als *Dezimaltrennzeichen* ein Komma; englisch-formatierte CSV-Dateien hingegen einen Punk. R geht per Default von englisch-formatierten CSV-Dateien aus. Importieren Sie eine deutsch-formatierte CSV-Datei, müssen Sie das Dezimaltrennzeichen von Hand ändern; es wird nicht automatisch erkannt.
 
@@ -391,7 +391,7 @@ benenne_spalte_um(meine_tabelle, neuer_name = altername) -> meine_neue_tabelle
 ```
 
 
-💻 AUFGABE:
+💻 AUFGABE: 
 
 - Benennen Sie in `mtcars` die Spalte `mpg` in `spritverbrauch` um.
 - Suchen Sie sich noch zwei weitere Spalten, und benennen Sie die Spaltennamen nach eigenen Vorstellungen um!
@@ -400,7 +400,7 @@ benenne_spalte_um(meine_tabelle, neuer_name = altername) -> meine_neue_tabelle
 
 ## Umkodieren
 
-Gerade bei der Analyse von Fragebogendaten ist es immer wieder nötig, Daten umzukodieren. Klassisches Beispiel: Ein Item ist negativ kodiert. Zum Beispiel das Item "Ich bin ein Couch-Potator" in einem Fragebogen für Extraversion.
+Gerade bei der Analyse von Fragebogendaten ist es immer wieder nötig, Daten umzukodieren. Klassisches Beispiel: Ein Item ist negativ kodiert. Zum Beispiel das Item "Ich bin ein Couch-Potator" in einem Fragebogen für Extraversion. 
 
 Nehmen wir an, das Item "i04" hat die Werte 1 ("stimme überhaupt nicht zu") bis 4 ("stimme voll und ganz zu"). Kreuzt jemand das Couch-Potato-Item mit 4 an, so sollte er nicht die maximale Extraversion-Punktzahl (4), sondern die *minimale* Extraversion-Punktzahl (1) erhalten. Also
 
@@ -417,7 +417,7 @@ Am einfachsten ist dies zu bewerkstelligen mit folgendem R-Befehl:
 meine_tabelle$i04_r <- 5 - meine_Tabelle$i04
 ```
 
-Rechnet man `5-i04` so kommt der richtige, "neue" Wert heraus.
+Rechnet man `5-i04` so kommt der richtige, "neue" Wert heraus. 
 
 Zur Erinnerung:
 
@@ -491,11 +491,11 @@ favstats(Spass)
 
 ## Daten zusammenfassen: Deskriptivstatistik
 
-Deskriptive Statistik ist letztlich nichts anderes, als Daten geschickt zusammenzufassen.
+Deskriptive Statistik ist letztlich nichts anderes, als Daten geschickt zusammenzufassen. 
 
 >   Praktisch wird meistens eine Spalte einer Tabelle zu einer Zahl zusammengefasst.
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/summarise.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/summarise.png" title="plot of chunk unnamed-chunk-22" alt="plot of chunk unnamed-chunk-22" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -585,28 +585,28 @@ Die üblichen Verdächtigen der deskriptiven Statistiken lassen sich leiht aus I
 
 ```r
 mean(tip~sex, data=tips)
-#>   Female     Male
+#>   Female     Male 
 #> 2.833448 3.089618
 median(tip~sex, data=tips)
-#> Female   Male
+#> Female   Male 
 #>   2.75   3.00
 sd(tip~sex, data=tips)
-#>   Female     Male
+#>   Female     Male 
 #> 1.159495 1.489102
 var(tip~sex, data=tips)
-#>   Female     Male
+#>   Female     Male 
 #> 1.344428 2.217424
 IQR(tip~sex, data=tips)
-#> Female   Male
+#> Female   Male 
 #>   1.50   1.76
 diffmean(tip~sex, data=tips)
-#>  diffmean
+#>  diffmean 
 #> 0.2561696
 min(tip~sex, data=tips)
-#> Female   Male
+#> Female   Male 
 #>      1      1
 max(tip~sex, data=tips)
-#> Female   Male
+#> Female   Male 
 #>    6.5   10.0
 ```
 
@@ -618,7 +618,7 @@ Sinngemäß übersetzt: "Hey R, wenn Du NAs triffst (fehlende Werte), dann 'remo
 
 ```r
 mean(tip~sex, data=tips, na.rm = TRUE)
-#>   Female     Male
+#>   Female     Male 
 #> 2.833448 3.089618
 ```
 
@@ -649,7 +649,7 @@ cor(tips2)
 ### Korrelationsplot
 
 
-Mit Hilfe des Zusatzpakets `corrplot` lassen sich Korrelationen schön visualisieren.
+Mit Hilfe des Zusatzpakets `corrplot` lassen sich Korrelationen schön visualisieren. 
 
 
 ```r
@@ -659,7 +659,7 @@ library(corrplot)
 corrplot(cor(tips2))
 ```
 
-<img src="/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-31-1.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="70%" style="display: block; margin: auto;" />
 
 Je intensiver die Farbe, desto höher die Korrelation. Hier gibt es unzählige Einstellmöglichkeiten, siehe `?corrplot` bzw. für Beispiele:
 
@@ -677,7 +677,7 @@ library(corrgram)
 corrgram(tips2)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-33-1.png" title="plot of chunk unnamed-chunk-33" alt="plot of chunk unnamed-chunk-33" width="70%" style="display: block; margin: auto;" />
 
 Am schönsten, meiner Meinung nach, sieht es mit dem Paket `GGally` aus:
 
@@ -688,7 +688,7 @@ ggcorr(tips2)
 ggpairs(tips2)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-34-2.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-34-1.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="70%" style="display: block; margin: auto;" /><img src="figure/unnamed-chunk-34-2.png" title="plot of chunk unnamed-chunk-34" alt="plot of chunk unnamed-chunk-34" width="70%" style="display: block; margin: auto;" />
 
 
 ### Nominale Variablen
@@ -700,8 +700,8 @@ Mit dem Befehl `summary(meine_tabelle)` bekommt man schon eine brauchbare Übers
 
 ```r
 table(tips$sex)
-#>
-#> Female   Male
+#> 
+#> Female   Male 
 #>     87    157
 ```
 
@@ -774,7 +774,7 @@ Sortieren Sie `mtcars` *gleichzeitig* nach Spritverbrauch und PS! (Tipp: `arrang
 Ein Bild sagt bekanntlich mehr als 1000 Worte. Betrachten Sie dazu "Anscombes Quartett":
 
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/https://sebastiansauer.github.io/images/2017-09-12/anscombe.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/anscombe.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="50%" style="display: block; margin: auto;" />
 
 
 Diese vier Datensätze sehen ganz unterschiedlich aus, nicht wahr? Aber ihre zentralen deskriptiven Statistiken sind praktisch gleich! Ohne Diagramm wäre uns diese Unterschiedlichkeit nicht (so leicht) aufgefallen!
@@ -789,7 +789,7 @@ Die normale Denkweise von `mosaic` wird verwendet:
 
 `gf_diagrammtyp(Y_Achse ~ X_Achse, sonstiges, data = meine_daten)`.
 
-`gf_` steht für `ggplot` und `formula`.
+`gf_` steht für `ggplot` und `formula`. 
 
 
 Darüber hinaus verkraftet der Befehl noch viele andere Schnörkel, die wir uns hier sparen. Interessierte können googeln... Es ist ein sehr mächtiger Befehl, der sehr ansprechende Diagramme erzeugen kann.
@@ -802,7 +802,7 @@ data(mtcars)
 gf_point(mpg ~ hp, data = mtcars)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="70%" style="display: block; margin: auto;" />
 
 Easy, oder?
 
@@ -813,7 +813,7 @@ Ein anderes Geom:
 gf_boxplot(mpg ~ factor(cyl), data = mtcars)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="70%" style="display: block; margin: auto;" />
 
 
 :attention: Beachten Sie, dass  nur dann *mehrere Boxplots* gezeichnet werden, wenn auf der X-Achse eine nominal skalierte Variable steht.
@@ -828,7 +828,7 @@ Oder mal nur eine Variable (ihre Verteilung) malen:
 gf_histogram(~hp, data = mtcars)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-43-1.png" title="plot of chunk unnamed-chunk-43" alt="plot of chunk unnamed-chunk-43" width="70%" style="display: block; margin: auto;" />
 
 💡 Geben wir keine Y-Variable an, nimmt R eigenständig die Häufigkeit pro X-Wert!
 
@@ -842,7 +842,7 @@ Probieren Sie mal diesen Befehl:
 gf_point(hp ~ factor(cyl), data = mtcars)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-44-1.png" title="plot of chunk unnamed-chunk-44" alt="plot of chunk unnamed-chunk-44" width="70%" style="display: block; margin: auto;" />
 
 Sieht ganz ok aus. Aber was ist, wenn wir viele Punkte (=Fälle) haben? Schauen wir uns das im Datensatz `tips` an:
 
@@ -851,7 +851,7 @@ Sieht ganz ok aus. Aber was ist, wenn wir viele Punkte (=Fälle) haben? Schauen 
 gf_point(tip ~ sex, data = tips)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-45-1.png" title="plot of chunk unnamed-chunk-45" alt="plot of chunk unnamed-chunk-45" width="70%" style="display: block; margin: auto;" />
 
 Nicht so schön; viele Punkte überdecken sich gegenseitig. Dieses Überdecken bezeichnet man auch als "Overplotting" (hört sich cooler an). Besser wäre es, wenn sich die Punkte nicht überdecken würden, dann würde man besser erkennen, wie viele Puntke wo liegen. Eine einfache Lösung bestünde darin, das Bild etwas zu "schütteln" oder zu "wackeln", so dass die Punkte etwas verwackelt würden und damit nebeneinander zu liegen kämen. Das kann mit man mit dem Geom `jitter` (eng. für wackeln) erreichen:
 
@@ -860,7 +860,7 @@ Nicht so schön; viele Punkte überdecken sich gegenseitig. Dieses Überdecken b
 gf_jitter(tip ~ sex, data = tips)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-46-1.png" title="plot of chunk unnamed-chunk-46" alt="plot of chunk unnamed-chunk-46" width="70%" style="display: block; margin: auto;" />
 
 Möchte man die Punkte etwas enger haben, so kann man den Parameter `width` hinzufügen:
 
@@ -869,7 +869,7 @@ Möchte man die Punkte etwas enger haben, so kann man den Parameter `width` hinz
 gf_jitter(tip ~ sex, data = tips, width = .1)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-47-1.png" title="plot of chunk unnamed-chunk-47" alt="plot of chunk unnamed-chunk-47" width="70%" style="display: block; margin: auto;" />
 
 
 💡 Die Reihenfolge der Parameter in einem R-Befehl ist egal, solange man die Parameter benennt (width, data,...).
@@ -878,7 +878,7 @@ gf_jitter(tip ~ sex, data = tips, width = .1)
 💻 AUFGABE:
 
 - Tauschen Sie mal "histogram" mit "density"!
-- Erstellen Sie ein Histogramm für `hp`!
+- Erstellen Sie ein Histogramm für `hp`! 
 - Erstellen Sie Boxplots für `tip`, vergleichen Sie dabei Männer und Frauen (Tipp: `sex` steht auf der X-Achse).
 - Erstellen Sie Boxplots für `hp`, vergleichen Sie dabei die verschiedenen Zylinder (Tipp: `cyl` muss noch in eine Faktorvariable umgewandelt werden).
 
@@ -893,18 +893,18 @@ Möchte man nur zwei Mittelwerte darstellen, ist ein Diagramm überflüssig, str
 gf_point(hp ~ factor(cyl),
          data = mtcars,
          stat = "summary",
-         color = "red",
+         color = "red", 
          size = 5)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-48-1.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="70%" style="display: block; margin: auto;" />
 
 Überprüfen wir mal, ob die Punkte beim Mittelwert liegen:
 
 
 ```r
 mean(hp ~ cyl, data = mtcars)
-#>         4         6         8
+#>         4         6         8 
 #>  82.63636 122.28571 209.21429
 ```
 
@@ -916,14 +916,14 @@ Am besten, wir kombinieren die Rohdaten mit den Mittelerten in einem Plot:
 
 ```r
 gf_point(hp ~ factor(cyl),
-         data = mtcars) %>%
+         data = mtcars) %>% 
 gf_point(hp ~ factor(cyl),
          data = mtcars,
          stat = "summary",
          color = "red", size = 5)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" width="70%" style="display: block; margin: auto;" />
 
 Was bedeutet das komische Symbol `%>%`, welches die beiden Befehle offenbar verkettet? Man nennt es "DIE PFEIFE" (Großbuchstaben machen es erst richtig bedeutsam). Und auf Deutsch heißt dieser Befehl in etwa "UND DANN MACHE...". Hier verketter die Pfeife die Beiden Diagrammbefehle, so dass beide Diagramme übereinander gezeichent werden - ähnlich wie eine Klarsichtfolie, die über ein Bild gelegt wird.
 
@@ -937,7 +937,7 @@ Der Parameter `stat = summary` führt dazu, dass als Punkte nicht die Rohdaten, 
 - Punkte
 - Linien
 - Histogramm
-- Fliesen
+- Fliesen 
 - ...
 
 
@@ -976,16 +976,16 @@ Weil die Regression so praktisch ist, hier ein Beispiel.
 
 ```r
 lm(mpg ~ cyl, data = mtcars)
-#>
+#> 
 #> Call:
 #> lm(formula = mpg ~ cyl, data = mtcars)
-#>
+#> 
 #> Coefficients:
 #> (Intercept)          cyl  
 #>      37.885       -2.876
 ```
 
-`lm` heißt "lineares Modell" - weil man bei der (normalen) Regression eine Gerade in die Punktewolke der Daten legt, um den Trend zu abzuschätzen. Als nächstes gibt man die "Ziel-Variable" (Output) an, hier `mpg`. Dann kommt ein Kringel `~` gefolgt von einer (mehr) Input-Variablen (Prädiktoren, UVs). Schließlich muss noch die Datentabelle erwähnt werden.
+`lm` heißt "lineares Modell" - weil man bei der (normalen) Regression eine Gerade in die Punktewolke der Daten legt, um den Trend zu abzuschätzen. Als nächstes gibt man die "Ziel-Variable" (Output) an, hier `mpg`. Dann kommt ein Kringel `~` gefolgt von einer (mehr) Input-Variablen (Prädiktoren, UVs). Schließlich muss noch die Datentabelle erwähnt werden. 
 
 Das Ergebnis sagt uns, dass *pro Zylinder* die Variable `mpg` um knapp 3 Punkte sinkt. Also: Hat die Karre einen Zylinder mehr, so kann man pro Galone Sprit 3 Meilen weniger fahren. Immer im Schnitt, versteht sich. (Und wenn die Voraussetzungen erfüllt sind, aber darum kümmern wir uns jetzt nicht.)
 
@@ -1003,10 +1003,10 @@ Man kann auch mehrere Prädiktoren anführen:
 
 ```r
 lm(mpg ~ cyl + hp, data = mtcars)
-#>
+#> 
 #> Call:
 #> lm(formula = mpg ~ cyl + hp, data = mtcars)
-#>
+#> 
 #> Coefficients:
 #> (Intercept)          cyl           hp  
 #>    36.90833     -2.26469     -0.01912
@@ -1031,7 +1031,7 @@ Dazu nimmt man am besten den Befehl `predict`, weil wir wollen eine Vorhersage t
 
 ```r
 predict(mein_lm, data.frame(cyl = 12, hp = 400))
-#>        1
+#>        1 
 #> 2.083329
 ```
 
@@ -1050,19 +1050,19 @@ Es ist zu prüfen: \emph{$H_{0}:$ Das Rauchverhalten ist vom Geschlecht unabhän
 
 ```r
 xchisq.test(tally(sex~smoker, data=tips))
-#>
+#> 
 #> 	Pearson's Chi-squared test with Yates' continuity correction
-#>
+#> 
 #> data:  x
 #> X-squared = 0, df = 1, p-value = 1
-#>
+#> 
 #>    54       33   
-#> (53.84)  (33.16)
+#> (53.84)  (33.16) 
 #> [0.00047] [0.00077]
 #> < 0.022> <-0.028>
 #>    
 #>    97       60   
-#> (97.16)  (59.84)
+#> (97.16)  (59.84) 
 #> [0.00026] [0.00043]
 #> <-0.016> < 0.021>
 #>    
@@ -1082,13 +1082,13 @@ assocstats(tally(sex~smoker, data=tips))
 #>                        X^2 df P(> X^2)
 #> Likelihood Ratio 0.0019354  1  0.96491
 #> Pearson          0.0019348  1  0.96492
-#>
-#> Phi-Coefficient   : 0.003
-#> Contingency Coeff.: 0.003
+#> 
+#> Phi-Coefficient   : 0.003 
+#> Contingency Coeff.: 0.003 
 #> Cramer's V        : 0.003
 ```
 
-💻 AUFGABE:
+💻 AUFGABE: 
 
 Testen Sie die Nullhypothese \emph{$H_{0}:$ Der Essenstag ist vom Geschlecht des Rechnungsbezahlers unabhängig} und bestimmen Sie die Stärke des Zusammenhangs mit dem Kontingenzkoeffizienten.  
 
@@ -1113,7 +1113,7 @@ favstats(~tip, data=tips)
 #>    1  2    2.9 3.5625  10 2.998279 1.383638 244       0
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-57-2.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="70%" style="display: block; margin: auto;" /><img src="figure/unnamed-chunk-57-2.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="70%" style="display: block; margin: auto;" />
 
 Nun kommt der t-Test.
 
@@ -1121,16 +1121,16 @@ Nun kommt der t-Test.
 ```r
 t.test(~tip, data=tips)
 #> ~tip
-#>
+#> 
 #> 	One Sample t-test
-#>
+#> 
 #> data:  tip
 #> t = 33.849, df = 243, p-value < 2.2e-16
 #> alternative hypothesis: true mean is not equal to 0
 #> 95 percent confidence interval:
 #>  2.823799 3.172758
 #> sample estimates:
-#> mean of x
+#> mean of x 
 #>  2.998279
 ```
 
@@ -1149,20 +1149,20 @@ Laut der Beschreibung der Funktionshilfe erwartet R die Sepzifikation der Altern
 ```r
 t.test(~tip, data=tips, alternative="less")
 #> ~tip
-#>
+#> 
 #> 	One Sample t-test
-#>
+#> 
 #> data:  tip
 #> t = 33.849, df = 243, p-value = 1
 #> alternative hypothesis: true mean is less than 0
 #> 95 percent confidence interval:
 #>      -Inf 3.144535
 #> sample estimates:
-#> mean of x
+#> mean of x 
 #>  2.998279
 ```
 
-💻 AUFGABE:
+💻 AUFGABE: 
 
 1. Testen Sie die Nullhypothese \emph{$H_{0}:$ Es wird höchstens zwei Dollar Trinkgeld gegeben ($H_{0}: \mu(tip) \le 2$)}.  
 2. Bestimmen Sie ein 90%-Konfidenzintervall für das durchschnittliche Trinkgeld.  
@@ -1180,7 +1180,7 @@ favstats(tip~sex, data=tips) # deskriptive Statistiken
 #> 2   Male   1  2   3.00 3.76 10.0 3.089618 1.489102 157       0
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-61-1.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-61-2.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-61-1.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" /><img src="figure/unnamed-chunk-61-2.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" />
 
 Nun kann der t-Test durchgeführt werden.
 
@@ -1188,20 +1188,20 @@ Nun kann der t-Test durchgeführt werden.
 ```r
 t.test(tip~sex, data=tips)
 #> tip ~ sex
-#>
+#> 
 #> 	Welch Two Sample t-test
-#>
+#> 
 #> data:  tip by sex
 #> t = -1.4895, df = 215.71, p-value = 0.1378
 #> alternative hypothesis: true difference in means is not equal to 0
 #> 95 percent confidence interval:
 #>  -0.5951448  0.0828057
 #> sample estimates:
-#> mean in group Female   mean in group Male
+#> mean in group Female   mean in group Male 
 #>             2.833448             3.089618
 ```
 
-💻 AUFGABE:
+💻 AUFGABE: 
 
 Testen Sie die Nullhypothese \emph{$H_{0}:$ Das durchschnittliche Trinkgeld ist genauso hoch wie die durchschnittliche Restaurantrechnung ($H_{0}: \mu(tip) = \mu(totalbill)$)}.  
 
@@ -1215,7 +1215,7 @@ __Beispiel (Trinkgeld-Datensatz)__
 Es ist zu prüfen \emph{$H_{0}:$ Die durchschnittlichen Restaurantrechnungen sind an den vier verschiedenen Tagen (Donnerstag bis Sonntag) gleich hoch.} Zunächst werden Grafiken und deskriptive Statistiken erstellt.
 
 ```r
-gf_boxplot(total_bill~day, data=tips) %>%
+gf_boxplot(total_bill~day, data=tips) %>% 
 gf_point(total_bill~day, data=tips, stat = "summary", color = "red") # Mittelwertplot
 favstats(total_bill~day, data=tips) # deskriptive Statistiken
 #>    day  min      Q1 median      Q3   max     mean       sd  n missing
@@ -1225,7 +1225,7 @@ favstats(total_bill~day, data=tips) # deskriptive Statistiken
 #> 4 Thur 7.51 12.4425  16.20 20.1550 43.11 17.68274 7.886170 62       0
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-63-1.png" title="plot of chunk unnamed-chunk-63" alt="plot of chunk unnamed-chunk-63" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-63-1.png" title="plot of chunk unnamed-chunk-63" alt="plot of chunk unnamed-chunk-63" width="70%" style="display: block; margin: auto;" />
 
 Dann folgt die Varianzanalyse:
 
@@ -1265,7 +1265,7 @@ summary(anovamodel)
 plot(allEffects(anovamodel))
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-66-1.png" title="plot of chunk unnamed-chunk-66" alt="plot of chunk unnamed-chunk-66" width="70%" style="display: block; margin: auto;" />
 
 Ein Modell nur für die Haupteffekte funktioniert wie folgt:
 
@@ -1282,7 +1282,7 @@ summary(anovamodel)
 plot(allEffects(anovamodel))
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-67-1.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-67-1.png" title="plot of chunk unnamed-chunk-67" alt="plot of chunk unnamed-chunk-67" width="70%" style="display: block; margin: auto;" />
 
 Es folgt das Modell nur für die Wechselwirkungen:
 
@@ -1297,10 +1297,10 @@ summary(anovamodel)
 plot(allEffects(anovamodel))
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-68-1.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-68-1.png" title="plot of chunk unnamed-chunk-68" alt="plot of chunk unnamed-chunk-68" width="70%" style="display: block; margin: auto;" />
 
-💻 AUFGABE:
-
+💻 AUFGABE: 
+  
 Führen Sie eine zweifaktorielle Varianzanalyse für die Zielgröße \texttt{tips} mit den Faktoren \texttt{time} und \texttt{smoker} durch.
 
 
@@ -1310,13 +1310,13 @@ Die Korrelationsanalyse wird verwendet, um den Zusammenhang von mindestens zwei 
 Hinweis: Eine (positive oder negative) Korrelation zwischen zwei Merkmalen bedeutet nicht, dass es auch einen Kausalzusammenhang gibt. Das bekannteste Beispiel hierfür ist die sog. Theorie der Störche. So lässt sich zeigen, dass es eine positive Korrelation zwischen Geburtenraten und Storchpopulationen gibt. Ein Kausalzusammenhang darf bezweifelt werden...  
 
 __Beispiel (Trinkgeld-Datensatz)__  
-Es ist der Zusammenhang zwischen der Höhe der Restaurantrechnung und der Trinkgeldhöhe zu untersuchen.
+Es ist der Zusammenhang zwischen der Höhe der Restaurantrechnung und der Trinkgeldhöhe zu untersuchen. 
 
 ```r
 gf_point(tip~total_bill, data=tips)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-69-1.png" title="plot of chunk unnamed-chunk-69" alt="plot of chunk unnamed-chunk-69" width="70%" style="display: block; margin: auto;" />
+<img src="figure/unnamed-chunk-69-1.png" title="plot of chunk unnamed-chunk-69" alt="plot of chunk unnamed-chunk-69" width="70%" style="display: block; margin: auto;" />
 
 Die aufwärts gerichtete Punktwolke deutet auf eine positive Korrelation hin. Die Stärke der Korrelation ergibt sich wie folgt:
 
@@ -1333,7 +1333,7 @@ cor(tip ~ total_bill, data=tips, method="spearman") # Spearman-Korrelation
 
 # Schritt 5: Kommunizieren
 
-Kommunizieren soll sagen, dass Sie Ihre Ergebnisse anderen mitteilen - als Student heißt das häufig in Form einer Seminararbeit an den Dozenten.
+Kommunizieren soll sagen, dass Sie Ihre Ergebnisse anderen mitteilen - als Student heißt das häufig in Form einer Seminararbeit an den Dozenten. 
 
 Einige Hinweise:
 
