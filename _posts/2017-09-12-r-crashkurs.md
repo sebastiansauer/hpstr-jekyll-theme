@@ -1,6 +1,6 @@
 ---
 title: "Crashkurs Datenanalyse mit R"
-author: "ifes and friends (Sebastian Sauer)"
+author: "ifes and friend (Sebastian Sauer)"
 tags:
 - rstats
 - tutorial
@@ -12,11 +12,16 @@ layout: post
 
 
 
+
+
+# Willkommen zum R-Crashkurs
+
 Nicht jeder liebt Datenanalyse und Statistik... in gleichem Maße! Das ist zumindest meine Erfahrung aus dem Unterricht 🔥. Crashkurse zu R sind vergleichbar zu Tanzkursen vor der Hochzeit: Hat schon vielen das Leben gerettet, aber ersetzt nicht ein Semester in der Pariser Tanzakademie (man beachte den Vergleich zum Unterricht an der FOM).
 
 Dieser Crashkurs ist für Studierende oder Anfänger der Datenanalyse gedacht, die in kurzer Zeit einen verzweifelten Versuch ... äh ... einen grundständigen Überblick über die Datenanalyse erwerben wollen.
 
 Ok, let's dance 🕺.
+
 
 
 
@@ -52,11 +57,11 @@ Beide Programme sind kostenlos.
 
 Wenn alles läuft, sieht es etwa so aus:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/RStudio-Screenshot.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Rstudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
 
 ## Hilfe
 
-R will nicht so, wie ich wohl will?[Hier](https://sebastiansauer.github.io/Praxis_der_Datenanalyse/rahmen.html#hilfe-r-startet-nicht) finden Sie einige Tipps zur Fehlerbehebung. Außerdem hilft erfahrungsgemäß: Googeln Sie nach der Fehlermeldung.
+R will nicht so, wie ich wohl will? [Hier](https://sebastiansauer.github.io/Praxis_der_Datenanalyse/rahmen.html#hilfe-r-startet-nicht) finden Sie einige Tipps zur Fehlerbehebung. Außerdem hilft erfahrungsgemäß: Googeln Sie nach der Fehlermeldung.
 
 [Hier](http://ftp5.gwdg.de/pub/misc/cran/manuals.html) finden sich einige Einführungen in R in unterschiedlichem Niveau; Antworten auf häufige Fragen finden sich [hier](http://ftp5.gwdg.de/pub/misc/cran/faqs.html).
 
@@ -727,21 +732,23 @@ Sagen wir, Sie möchten von diesen zwei Variablen `hp` und `mpg` die Korrelation
 
 
 ```r
-cor(hp ~ mpg, data = mtcars)
+cor(eval ~ beauty, data = TeachingRatings)
 ```
 
 Falls Sie viele Variablen auf ihre Korrelation untersuchen wollen, können Sie es so auf einen Abwasch tun:
 
 
 ```r
-tips2 <- select(tips, tip, total_bill, size)
-cor(tips2)
-#>                  tip total_bill      size
-#> tip        1.0000000  0.6757341 0.4892988
-#> total_bill 0.6757341  1.0000000 0.5983151
-#> size       0.4892988  0.5983151 1.0000000
+TR2 <- dplyr::select(TeachingRatings, eval, beauty, age)
+cor(TR2)
+#>               eval     beauty         age
+#> eval    1.00000000  0.1890391 -0.05169619
+#> beauty  0.18903909  1.0000000 -0.29789253
+#> age    -0.05169619 -0.2978925  1.00000000
 ```
 
+
+💡 Manchmal gibt's zwei Häuser, in denen "Herr Maier" wohnt. Um klar zu machen, *welchen* Maier Sie meinen, empfiehlt es sich, die Adresse mitanzugeben. In R ist es analog: Manchmal gibt es zwei Pakete, in denen ein Befehl mit gleichem Namen (z.B. `select`) wohnt. Mit dem Operator `::` gibt man an, aus welchem Paket man den Befehl ziehen möchte.
 
 ### Korrelationsplot
 
@@ -753,7 +760,7 @@ Mit Hilfe des Zusatzpakets `corrplot` lassen sich Korrelationen schön visualisi
 #Zusatzpaket laden
 library(corrplot)
 
-corrplot(cor(tips2))
+corrplot(cor(TR2))
 ```
 
 <img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="70%" style="display: block; margin: auto;" />
@@ -771,7 +778,7 @@ Noch einfacher, aber nicht so schön geht es mit dem Paket `corrgram`. Hier müs
 
 ```r
 library(corrgram)
-corrgram(tips2)
+corrgram(TR2)
 ```
 
 <img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="70%" style="display: block; margin: auto;" />
@@ -781,8 +788,8 @@ Am schönsten, meiner Meinung nach, sieht es mit dem Paket `GGally` aus:
 
 ```r
 library(GGally)
-ggcorr(tips2)
-ggpairs(tips2)
+ggcorr(TR2)
+ggpairs(TR2)
 ```
 
 <img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-42-2.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="70%" style="display: block; margin: auto;" />
@@ -1057,7 +1064,7 @@ mean(eval ~ gender, data = TeachingRatings)
 
 😄.
 
-Am besten, wir kombinieren die Rohdaten mit den Mittelwerten in einem Plot:
+Am besten, wir kombinieren die Rohdaten mit den Mittelerten in einem Plot:
 
 
 
@@ -1354,11 +1361,11 @@ Eine zweite Möglichkeit bestünde darin, nur den mittleren Vorhersagefehler uns
 ## Häufige Verfahren der Inferenzstatistik
 
 
-### $\chi^{2}$-Test
-Der $\chi^{2}$-Test (sprich: Chi-Quadrat-Test) wird verwendet, um auf Unabhängigkeit zweier Mermale bzw. auf Homogenität der (Häufigkeits-)Verteilungen zweier kategorieller, i.d.R. nominal skalierter Merkmale zu prüfen. Die zugehörige Nullhypothese lautet \emph{$H_{0}:$ Die beiden Merkmale sind unabhängig.}  
+### Chi-Quadarat-Test
+Der $\chi^{2}$-Test (sprich: Chi-Quadrat-Test) wird verwendet, um auf Unabhängigkeit zweier Mermale bzw. auf Homogenität der (Häufigkeits-)Verteilungen zweier kategorieller, i.d.R. nominal skalierter Merkmale zu prüfen. Die zugehörige Nullhypothese lautet $H_{0}:$ Die beiden Merkmale sind unabhängig.  
 
 __Beispiel__  
-Es ist zu prüfen: \emph{$H_{0}:$ Das Geschlecht ist unabhängig vom Einstellungsverhältnis.}  
+Es ist zu prüfen: $H_{0}:$ Das Geschlecht ist unabhängig vom Einstellungsverhältnis}  
 
 
 ```r
@@ -1386,7 +1393,7 @@ xchisq.test(tally(gender ~ tenure, data = TeachingRatings))
 #> 	<Pearson residual>
 ```
 
-Zusammenhangsmaße wie den Kontingenzkoeffizienten oder Cramérs V erhält man mit nachfolgendem Befehl (das Paket \texttt{vcd} muss aktiviert sein):
+Zusammenhangsmaße wie den Kontingenzkoeffizienten oder Cramérs V erhält man mit nachfolgendem Befehl (das Paket `vcd` muss aktiviert sein):
 
 
 ```r
@@ -1429,20 +1436,20 @@ gf_bar(~gender, fill = ~tenure, data = TeachingRatings) %>%
 
 💻 AUFGABE:
 
-Testen Sie die Nullhypothese \emph{$H_{0}:$ In den Geschlechtern gibt es gleich viele Individuen aus Minderheiten} und bestimmen Sie die Stärke des Zusammenhangs mit dem Kontingenzkoeffizienten.  
+Testen Sie die Nullhypothese $H_{0}:$ In den Geschlechtern gibt es gleich viele Individuen aus Minderheiten und bestimmen Sie die Stärke des Zusammenhangs mit dem Kontingenzkoeffizienten.  
 
 ### t-Test
-Der t-Test wird verwendet, um Mittelwerte metrisch skalierter Merkmale zu prüfen. Dabei kann entweder der Mittelwert einer Messreihe mit einem vorgegebenen Wert verglichen werden (Beispiel-\emph{$H_{0}:$ Das Alter aller FOM-Studierenden ist im Durchschnitt 25 Jahre}), oder die Mittelwerte zweier Messreihen werden miteinander verglichen (Beispiel-\emph{$H_{0}:$ Studentinnen und Studenten an der FOM sind im Durchschnitt gleich alt}). Im Falle zweier Stichproben wird zwischen abhängigen und unabhängigen Stichproben unterschieden.  
+Der t-Test wird verwendet, um Mittelwerte metrisch skalierter Merkmale zu prüfen. Dabei kann entweder der Mittelwert einer Messreihe mit einem vorgegebenen Wert verglichen werden (Beispiel-$H_{0}:$ Das Alter aller FOM-Studierenden ist im Durchschnitt 25 Jahre), oder die Mittelwerte zweier Messreihen werden miteinander verglichen (Beispiel-$H_{0}:$ Studentinnen und Studenten an der FOM sind im Durchschnitt gleich alt). Im Falle zweier Stichproben wird zwischen abhängigen und unabhängigen Stichproben unterschieden.  
 
 Zwei Stichproben sind unabhängig, wenn an verschiedenen Subjekten das gleiche Merkmal erhoben wird. Beispiel: Alter (gleiches Merkmal) bei Studentinnen und Studenten (verschiedene Subjekte).  
 
 Zwei Stichproben sind abhängig, wenn verschiedene Merkmale an den gleichen Subjekten erhoben werden. Beispiel: Blutdruck vor und nach einer Behandlung (verschiedene Merkmale) an einer Gruppe von Patienten (gleiche Subjekte).  
 
-Ein t-Test kann mit einseitiger und zweiseitiger Nullhypothese durchgeführt werden. Bei einer zweiseitigen Nullhypothese wird auf Gleichheit getestet (Beispiel-\emph{$H_{0}: \mu=0$}), die Nullhypothese wird bei starker Abweichung nach oben und unten verworfen. Bei einer einseitigen Nullhypothese wird auf kleinergleich oder größergleich getestet (Beispiel-\emph{$H_{0}: \mu \le 0$} oder \emph{$H_{0}: \mu \ge 0$}), die Nullhypothese wird bei starker Abweichung nach oben oder unten verworfen.
+Ein t-Test kann mit einseitiger und zweiseitiger Nullhypothese durchgeführt werden. Bei einer zweiseitigen Nullhypothese wird auf Gleichheit getestet (Beispiel-$H_{0}: \mu=0$), die Nullhypothese wird bei starker Abweichung nach oben und unten verworfen. Bei einer einseitigen Nullhypothese wird auf kleinergleich oder größergleich getestet (Beispiel-$H_{0}: \mu \le 0$ oder $H_{0}: \mu \ge 0$), die Nullhypothese wird bei starker Abweichung nach oben oder unten verworfen.
 
 #### Einstichproben-t-Test
 __Beispiel (Trinkgeld-Datensatz)__  
-Es ist zu prüfen \emph{$H_{0}:$ Das mittlere Alter der Dozenten beträgt 40 Jahre ($H_{0}: \mu(age) = 40$)}. Zunächst sollte mit einer grafischen Darstellung und deskriptiven Statistiken begonnen werden.
+Es ist zu prüfen $H_{0}:$ Das mittlere Alter der Dozenten beträgt 40 Jahre ($H_{0}: \mu(age) = 40$). Zunächst sollte mit einer grafischen Darstellung und deskriptiven Statistiken begonnen werden.
 
 ```r
 gf_dens(~age, data = TeachingRatings)
@@ -1475,15 +1482,15 @@ t.test(~age, data = TeachingRatings, mu = 40)
 
 Im Output finden sich zunächst der t-Wert (durchschnittliches Trinkgeld dividiert durch den Standardfehler), die Freiheitsgrade (Stichprobenumfang weniger 1) und der p-Wert (Wahrscheinlichkeit für t unter der Nullhypothese). Weiter finden sich ein 95%-Konfidenzintervall für das Alter sowie das mittlere Trinkgeld.  
 
-Die Funktion \texttt{t.test} in der Voreinstellung einen *zwei*seitigen Test durch. Soll ein *ein*seitiger Test durchgeführt werden, so muss dies durch einen zusätzlichen Übergabeparameter kenntlich gemacht werden. Um von diesem die genaue Syntax zu erfahren kann die R-Hilfe zur Funktion aufgerufen werden.
+Die Funktion `t.test` in der Voreinstellung einen *zwei*seitigen Test durch. Soll ein *ein*seitiger Test durchgeführt werden, so muss dies durch einen zusätzlichen Übergabeparameter kenntlich gemacht werden. Um von diesem die genaue Syntax zu erfahren kann die R-Hilfe zur Funktion aufgerufen werden.
 
 ```r
 ?t.test
 ```
 
 __Beispiel (Trinkgeld-Datensatz)__  
-Es ist zu prüfen \emph{$H_{0}:$ Die Dozenten sind im Mittel gleich oder jünger als 40 Jahre ($H_{0}: \mu(age) \le 40$)}
-Laut der Beschreibung der Funktionshilfe erwartet R die Sepzifikation der Alternativhypothese. Der zugehörige Übergabeparameter lautet \texttt{alternative=\dq less\dq} und damit lautet der R-Befehl:
+Es ist zu prüfen $H_{0}:$ Die Dozenten sind im Mittel gleich oder jünger als 40 Jahre ($H_{0}: \mu(age) \le 40$)
+Laut der Beschreibung der Funktionshilfe erwartet R die Sepzifikation der Alternativhypothese. Der zugehörige Übergabeparameter lautet `alternative="less"` und damit lautet der R-Befehl:
 
 ```r
 t.test(~age, data = TeachingRatings, alternative="less", mu = 40)
@@ -1503,12 +1510,12 @@ t.test(~age, data = TeachingRatings, alternative="less", mu = 40)
 
 💻 AUFGABE:
 
-1. Testen Sie die Nullhypothese \emph{$H_{0}:$ Es wird höchstens zwei Dollar Trinkgeld gegeben ($H_{0}: \mu(tip) \le 2$)}.  
+1. Testen Sie die Nullhypothese $H_{0}:$ Es wird höchstens zwei Dollar Trinkgeld gegeben ($H_{0}: \mu(tip) \le 2$).  
 2. Bestimmen Sie ein 90%-Konfidenzintervall für das durchschnittliche Trinkgeld.  
 
 #### Zweistichproben-t-Test  
 __Beispiel (Trinkgeld-Datensatz)__  
-Es ist zu prüfen \emph{$H_{0}:$ Männer und Frauen geben gleich viel Trinkgeld ($H_{0}: \mu(tip_{Männer})-\mu(tip_{Frauen})= 0$)}. Es empfiehlt sich, zunächst mit einer grafischen Darstellung sowie deskriptiven Statistiken zu starten. Als grafische Darstellungen bieten sich Boxplots und Mittelwertplots an.
+Es ist zu prüfen $H_{0}:$ Männer und Frauen geben gleich viel Trinkgeld ($H_{0}: \mu(tip_{Männer})-\mu(tip_{Frauen})= 0$). Es empfiehlt sich, zunächst mit einer grafischen Darstellung sowie deskriptiven Statistiken zu starten. Als grafische Darstellungen bieten sich Boxplots und Mittelwertplots an.
 
 ```r
 gf_boxplot(eval ~ gender, data = TeachingRatings) # Boxplot
@@ -1542,7 +1549,7 @@ t.test(eval ~ gender, data = TeachingRatings)
 
 💻 AUFGABE:
 
-Testen Sie die Nullhypothese \emph{$H_{0}:$ Das durchschnittliche Trinkgeld ist genauso hoch wie die durchschnittliche Restaurantrechnung ($H_{0}: \mu(tip) = \mu(totalbill)$)}.  
+Testen Sie die Nullhypothese $H_{0}:$ Das durchschnittliche Trinkgeld ist genauso hoch wie die durchschnittliche Restaurantrechnung ($H_{0}: \mu(tip) = \mu(totalbill)$).  
 
 ## Varianzanalyse
 Sollen mehr als zwei Mittelwerte miteinander verglichen werden, dann muss anstelle eines t-Tests eine Varianzanalyse durchgeführt werden.
@@ -1561,7 +1568,7 @@ tips <- read.csv("https://sebastiansauer.github.io/data/tips.csv")
 
 
 
-Es ist zu prüfen \emph{$H_{0}:$ Die durchschnittlichen Restaurantrechnungen sind an den vier verschiedenen Tagen (Donnerstag bis Sonntag) gleich hoch.} Zunächst werden Grafiken und deskriptive Statistiken erstellt.
+Es ist zu prüfen $H_{0}:$ Die durchschnittlichen Restaurantrechnungen sind an den vier verschiedenen Tagen (Donnerstag bis Sonntag) gleich hoch. Zunächst werden Grafiken und deskriptive Statistiken erstellt.
 
 ```r
 gf_boxplot(total_bill~day, data = tips) %>%
@@ -1595,9 +1602,9 @@ Bei mehrfaktoriellen Varianzanalysen können sowohl die Haupteffekte als auch di
 
 __Beispiel (Trinkgeld-Datensatz)__  
 Folgende drei Hypothesen sind zu prüfen:  
-\emph{$H_{01}:$ Das Geschlecht des Rechnungsbezahlers hat keinen Einfluss auf die Rechnungshöhe.}  
-\emph{$H_{02}:$ Das Rauchverhalten des Rechnungsbezahlers hat keinen Einfluss auf die Rechnungshöhe.}  
-\emph{$H_{03}:$ Das gibt keine Wechselwirkung zwischen Geschlecht und Rauchverhalten des Rechnungsbezahlers.}  
+$H_{01}:$ Das Geschlecht des Rechnungsbezahlers hat keinen Einfluss auf die Rechnungshöhe.  
+$H_{02}:$ Das Rauchverhalten des Rechnungsbezahlers hat keinen Einfluss auf die Rechnungshöhe.  
+$H_{03}:$ Das gibt keine Wechselwirkung zwischen Geschlecht und Rauchverhalten des Rechnungsbezahlers.  
 
 
 ```r
@@ -1665,7 +1672,7 @@ gf_point(tip ~ sex, stat = "summary",
 
 💻 AUFGABE:
 
-Führen Sie eine zweifaktorielle Varianzanalyse für die Zielgröße \texttt{tips} mit den Faktoren \texttt{time} und \texttt{smoker} durch.
+Führen Sie eine zweifaktorielle Varianzanalyse für die Zielgröße `tip` mit den Faktoren `time` und `smoker` durch.
 
 
 ## Korrelationsanalyse
@@ -1743,7 +1750,7 @@ So sieht zum Beispiel eine schöne Tabelle aus:
 
 ## Für Fortgeschrittene: RMarkdown
 
-Wäre das nicht cool: Jegliches Formatieren wird automatisch übernommen und sogar so, das es schick aussieht? Außerdem wird Ihr R-Code und dessen Ergebnisse (Tabellen und Diagramme oder reine Zahlen) automatisch in Ihr Dokument übernommen. Keine Copy-Paste-Fehler mehr. Keine händisches Aktualisieren, weil Sie Daten oder die vorhergehende Analyse geändert haben. Hört sich gut an? Probieren Sie mal [RMarkdown](http://rmarkdown.rstudio.com) aus 👍.
+Wäre das nicht cool: Jegliches Formatieren wird automatisch übernommen und sogar so, das es schick aussieht? Außerdem wird Ihr R-Code und dessen Ergebnisse (Tabellen und Diagramme oder reine Zahlen) automatisch in Ihr Dokument übernommen. Keine Copy-Paste-Fehler mehr. Keine händisches Aktualisieren, weil Sie Daten oder die vorhergehende Analyse geändert haben. Hört sich gut an? Probieren Sie mal [RMarkdown](http://rmarkdown.rstudio.com) aus.
 
 
 
