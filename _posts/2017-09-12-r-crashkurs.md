@@ -1,12 +1,22 @@
 ---
 title: "Crashkurs Datenanalyse mit R"
-author: "ifes and friend (Sebastian Sauer)"
-tags:
-- rstats
-- tutorial
-- German
-layout: post
+author: "ifes and friends (Sebastian Sauer)"
+date: "2017-09-27"
+urlcolor: blue
+linkcolor: blue
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
+    theme: yeti
+    highlight: tango
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    number_sections: true
 ---
+
 
 
 
@@ -57,7 +67,7 @@ Beide Programme sind kostenlos.
 
 Wenn alles läuft, sieht es etwa so aus:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Rstudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
+<img src="img/Rstudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
 
 ## Hilfe
 
@@ -89,15 +99,17 @@ RStudio ist eine integrierte Entwicklungsumgebung (IDE), die die Verwendung von 
 
 
 
-Um einen Befehl zu verwenden, der *nicht* im Standard-R, sondern in einer Erweiterung von R ("Paket") wohnt, müssen sie dieses Paket erst starten (laden). Dazu können Sie den Befehl `library` verwenden. Wir benötigen diese Pakete; bitte laden (d.h. Code ausführen):
+Um einen Befehl zu verwenden, der *nicht* im Standard-R, sondern in einer Erweiterung von R ("Paket") wohnt, müssen sie dieses Paket erst starten (laden). Dazu können Sie den Befehl `library` verwenden. Wir benötigen diese Pakete; bitte laden (d.h. Code ausführen); starten Sie jetzt diese Erweiterungen (per Klick oder mit folgenden Befehlen).
+
 
 
 ```r
 library(mosaic)  # Zugpferd
-library(tidyverse)  # Datenjudo
-library(ggformula)  # Malen
 library(effects) # Effektplots für ANOVA-Modelle
-
+library(openxlsx)  # Excel-Dateien schreiben
+library(corrgram)  # Korrelationsdiagramme
+library(GGally)  # Korrelationsdiagramme
+library(corrplot)  # Korrelationsdiagramme
 ```
 
 
@@ -105,7 +117,7 @@ library(effects) # Effektplots für ANOVA-Modelle
 Oder Sie klicken den Namen des Pakets hier an:
 
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/packages_load.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
+<img src="img/packages_load.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -115,21 +127,13 @@ Wir gehen im Folgenden davon aus, dass Sie diese beiden Pakete geladen haben.
 
 ⚠️ Um ein Paket zu laden, muss es installiert sein. Klicken Sie zum Installieren auf den Button "Install" unter dem Reiter "Packages" in RStudio:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/install_packages.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="50%" style="display: block; margin: auto;" />
+<img src="img/install_packages.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="50%" style="display: block; margin: auto;" />
 
 
 
 >    Sie müssen ein Paket nur *einmal* installieren, um es verwenden zu können. Sie installieren ja auch nicht Ihren Browser jedes Mal neu, wenn Sie den Computer starten.
 
 
-Starten Sie jetzt die beiden Erweiterungen (per Klick oder mit folgenden Befehlen).
-
-
-```r
-library(mosaic)  # Zugpferd
-library(tidyverse)  # Datenjudo
-library(openxlsx)  # Excel-Dateien schreiben
-```
 
 
 ## Daten
@@ -151,7 +155,7 @@ Wir verwenden in diesem Kurs diese Datensätze:
 
 # Über sieben Brücken musst Du gehen - Die Schritte der Datenanalyse
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Peter_Maffay.jpg" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="20%" style="display: block; margin: auto;" />
+<img src="img/Peter_Maffay.jpg" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="20%" style="display: block; margin: auto;" />
 
 
 
@@ -160,7 +164,7 @@ Lizenz: André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Ma
 Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schritte einteilen, angelehnt dem Song von Peter Maffay "Über sieben Brücken musst du gehen". Wir werden nacheinander alle Schritte bearbeiten: Sieben Mal wirst Du die Asche sein. Aber einmal auch der helle Schein.
 
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Prozess.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="50%" style="display: block; margin: auto;" />
+<img src="img/Prozess.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -221,7 +225,7 @@ Der einfachste Weg, Daten einzulesen, ist über den Button "Import Dataset" in R
 
 Haben Sie also eine "deutsche" CSV-Datei, müssen Sie in der Import-Maske von RStudio als *delimiter* ein *semicolon* auswählen.
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="50%" style="display: block; margin: auto;" />
+<img src="img/delimiter.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -252,7 +256,7 @@ Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren. Am einf
 
 Damit Sie in R vernünftig mit Ihren Daten arbeiten können, sollten die Daten "tidy" sein, d.h. in *Normalform*. Was ist Normalform? Betrachten Sie folgende Abbildung - so sieht eine Tabelle in Normalform aus.
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/Normalform.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" />
+<img src="img/Normalform.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" />
 
 Übrigens heißen Tabellen (mit Spaltennamen) in R *Dataframes*.
 
@@ -269,7 +273,7 @@ Die goldene Regel der Normalform einer Tabelle lautet also:
 
 Sie denken, dass Ihre Daten immer/auf jeden Fall in Normalform sind? Dann schauen Sie sich mal dieses Bild an:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/breit_lang.png" title="plot of chunk unnamed-chunk-21" alt="plot of chunk unnamed-chunk-21" width="50%" style="display: block; margin: auto;" />
+<img src="img/breit_lang.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" />
 
 
 Wir werden in diesem Kurs nicht bearbeiten, wie man Daten von "breit" auf "lang" (=tidy) umformatiert. Aber lesen Sie bei Interesse doch z.B. [hier](https://sebastiansauer.github.io/facial_beauty/) nach.
@@ -398,7 +402,7 @@ Der Schritt des Aufbereitens ist häufig der zeitintensivste Schritt. In diesem 
 
 ⚠️ Ein häufiger Fehler ist, dass die Daten nicht richtig eingelesen werden. Zum Beispiel werden die Spaltentrennzeichen nicht richtig erkannt. Das kann dann so aussehen:
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/delimiter_wrong.png" title="plot of chunk unnamed-chunk-26" alt="plot of chunk unnamed-chunk-26" width="50%" style="display: block; margin: auto;" />
+<img src="img/delimiter_wrong.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -596,7 +600,7 @@ inspect(Dozimodels)
 
 Deskriptive Statistik ist letztlich nichts anderes, als Daten geschickt zusammenzufassen. Praktisch wird meistens eine Spalte einer Tabelle zu einer Zahl zusammengefasst.
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/summarise.png" title="plot of chunk unnamed-chunk-31" alt="plot of chunk unnamed-chunk-31" width="50%" style="display: block; margin: auto;" />
+<img src="img/summarise.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="50%" style="display: block; margin: auto;" />
 
 Schauen wir uns das mal mit echten Daten an. Der Datensatz `TeachingRatings` ist schon in R eingebaut, so dass wir in nicht extra laden müssen. Ganz praktisch. Dazu fragen wir den Inspektor `inspect`, der würde uns auch noch verraten wie die nominalen Variablen sich so verteilen -- wenn wir hier welche hätten.
 
@@ -763,7 +767,7 @@ library(corrplot)
 corrplot(cor(TR2))
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-39-1.png" title="plot of chunk unnamed-chunk-39" alt="plot of chunk unnamed-chunk-39" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-38-1.png" title="plot of chunk unnamed-chunk-38" alt="plot of chunk unnamed-chunk-38" width="70%" style="display: block; margin: auto;" />
 
 Je intensiver die Farbe, desto höher die Korrelation. Hier gibt es unzählige Einstellmöglichkeiten, siehe `?corrplot` bzw. für Beispiele:
 
@@ -781,7 +785,7 @@ library(corrgram)
 corrgram(TR2)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-40-1.png" title="plot of chunk unnamed-chunk-40" alt="plot of chunk unnamed-chunk-40" width="70%" style="display: block; margin: auto;" />
 
 Am schönsten, meiner Meinung nach, sieht es mit dem Paket `GGally` aus:
 
@@ -792,7 +796,7 @@ ggcorr(TR2)
 ggpairs(TR2)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-42-1.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-42-2.png" title="plot of chunk unnamed-chunk-42" alt="plot of chunk unnamed-chunk-42" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-41-1.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-41-2.png" title="plot of chunk unnamed-chunk-41" alt="plot of chunk unnamed-chunk-41" width="70%" style="display: block; margin: auto;" />
 
 
 ### Nominale Variablen
@@ -939,7 +943,7 @@ Sortieren Sie `TeachingRatings` *gleichzeitig* nach Schönheit und Bewertungserg
 Ein Bild sagt bekanntlich mehr als 1000 Worte. Betrachten Sie dazu "Anscombes Quartett":
 
 
-<img src="https://sebastiansauer.github.io/images/2017-05-16/figure/anscombe.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" width="50%" style="display: block; margin: auto;" />
+<img src="img/anscombe.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="50%" style="display: block; margin: auto;" />
 
 
 Diese vier Datensätze sehen ganz unterschiedlich aus, nicht wahr? Aber ihre zentralen deskriptiven Statistiken sind praktisch gleich! Ohne Diagramm wäre uns diese Unterschiedlichkeit nicht (so leicht) aufgefallen!
@@ -967,7 +971,7 @@ data(mtcars)
 gf_point(eval ~ gender, data = TeachingRatings)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-49-1.png" title="plot of chunk unnamed-chunk-49" alt="plot of chunk unnamed-chunk-49" width="70%" style="display: block; margin: auto;" />
 
 Easy, oder?
 
@@ -978,7 +982,7 @@ Ein anderes Geom:
 gf_boxplot(eval ~ gender, data = TeachingRatings)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-50-1.png" title="plot of chunk unnamed-chunk-50" alt="plot of chunk unnamed-chunk-50" width="70%" style="display: block; margin: auto;" />
 
 
 ⚠️ Beachten Sie, dass  nur dann *mehrere Boxplots* gezeichnet werden, wenn auf der X-Achse eine nominal skalierte Variable steht.
@@ -992,7 +996,7 @@ Oder mal nur *eine* Variable (ihre Verteilung) malen:
 gf_histogram(~eval, data = TeachingRatings)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-52-1.png" title="plot of chunk unnamed-chunk-52" alt="plot of chunk unnamed-chunk-52" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-51-1.png" title="plot of chunk unnamed-chunk-51" alt="plot of chunk unnamed-chunk-51" width="70%" style="display: block; margin: auto;" />
 
 💡 Geben wir keine Y-Variable an, nimmt R eigenständig die Häufigkeit pro X-Wert!
 
@@ -1014,7 +1018,7 @@ Was nicht so schön bei diesem Diagramm ist, ist, dass viele Punkte sich  gegens
 gf_jitter(eval ~ gender, data = TeachingRatings)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-53-1.png" title="plot of chunk unnamed-chunk-53" alt="plot of chunk unnamed-chunk-53" width="70%" style="display: block; margin: auto;" />
 
 Möchte man die Punkte etwas enger haben, so kann man den Parameter `width` hinzufügen:
 
@@ -1023,7 +1027,7 @@ Möchte man die Punkte etwas enger haben, so kann man den Parameter `width` hinz
 gf_jitter(eval ~ gender, data = TeachingRatings, width = .1)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-54-1.png" title="plot of chunk unnamed-chunk-54" alt="plot of chunk unnamed-chunk-54" width="70%" style="display: block; margin: auto;" />
 
 
 💡 Die Reihenfolge der Parameter in einem R-Befehl ist egal, solange man die Parameter benennt (width, data,...).
@@ -1051,7 +1055,7 @@ gf_point(eval ~ gender,
          size = 5)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-56-1.png" title="plot of chunk unnamed-chunk-56" alt="plot of chunk unnamed-chunk-56" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-55-1.png" title="plot of chunk unnamed-chunk-55" alt="plot of chunk unnamed-chunk-55" width="70%" style="display: block; margin: auto;" />
 
 Überprüfen wir mal, ob die Punkte beim Mittelwert liegen:
 
@@ -1077,7 +1081,7 @@ gf_point(eval ~ gender,
          color = "red", size = 5)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-58-1.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-57-1.png" title="plot of chunk unnamed-chunk-57" alt="plot of chunk unnamed-chunk-57" width="70%" style="display: block; margin: auto;" />
 
 
 Wir können auch mehrere Gruppen in "Teil-Bildchen" vergleichen, dazu nehmen wir den Operator `|`; das kann man sich gut merken, wenn man sich vorstellt, dieser vertikale Strich grenzt das linke vom rechten Bild ab:
@@ -1091,7 +1095,7 @@ gf_point(eval ~ gender | minority,
          color = "red", size = 5)
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-59-1.png" title="plot of chunk unnamed-chunk-59" alt="plot of chunk unnamed-chunk-59" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-58-1.png" title="plot of chunk unnamed-chunk-58" alt="plot of chunk unnamed-chunk-58" width="70%" style="display: block; margin: auto;" />
 
 
 
@@ -1137,7 +1141,7 @@ gf_bar(~ gender, data = TeachingRatings)
 gf_bar(~ gender, data = TeachingRatings, fill = ~minority, position = "fill")
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-61-1.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-61-2.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-61-3.png" title="plot of chunk unnamed-chunk-61" alt="plot of chunk unnamed-chunk-61" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-60-1.png" title="plot of chunk unnamed-chunk-60" alt="plot of chunk unnamed-chunk-60" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-60-2.png" title="plot of chunk unnamed-chunk-60" alt="plot of chunk unnamed-chunk-60" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-60-3.png" title="plot of chunk unnamed-chunk-60" alt="plot of chunk unnamed-chunk-60" width="70%" style="display: block; margin: auto;" />
 
 Die "Füllstände" von Minderheiten (in Türkis) bei Frauen und Männer sind unterschiedlich, wie man in der Grafik sieht. Folglich gehen wir davon aus, dass es einen Zusammenhang gibt.
 
@@ -1185,7 +1189,7 @@ Etwas präziser ausgedrückt:
 
 Gut am p-Wert ist, dass er ein Entscheidungsmaß bietet. Die Gefahr am p-Wert ist, dass man ihn missversteht: Der p-Wert gibt *nicht* (Sie haben richtig gelesen: *nicht*) die Wahrscheinlichkeit an, mit der die H0 gilt. Er gibt auch nicht an, wie wahrscheinlich die H1 ist. Er gibt auch nicht an, ob das Ergebnis praktisch bedeutsam ist.
 
-🔖 Lesen Sie hier weiter, um Ihr Wissen zu vertiefen zu diesem Thema: [Vertiefung zum p-Wert](https://sebastiansauer.github.io/Praxis_der_Datenanalyse/der-p-wert-inferenzstatistik-und-alternativen.html#der-p-wert-sagt-nicht-das-was-viele-denken
+🔖 Lesen Sie hier weiter, um Ihr Wissen zu vertiefen zu diesem Thema: [Vertiefung zum p-Wert](https://sebastiansauer.github.io/Praxis_der_Datenanalyse/der-p-wert-inferenzstatistik-und-alternativen.html#der-p-wert-sagt-nicht-das-was-viele-denken).
 
 
 
@@ -1291,7 +1295,7 @@ gf_point(eval ~ beauty,
   gf_lm()
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-65-1.png" title="plot of chunk unnamed-chunk-65" alt="plot of chunk unnamed-chunk-65" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-64-1.png" title="plot of chunk unnamed-chunk-64" alt="plot of chunk unnamed-chunk-64" width="70%" style="display: block; margin: auto;" />
 
 Mit `gf_lm` bekommen wir eine Anpassungslinie, die mit dem `lm`-Befehl (also der normalen Regression) im Hintergrund durch erstellt wird, und zwar pro Stufe von Geschlecht (d.h. eine für Frauen und eine für Männer).
 
@@ -1431,6 +1435,21 @@ gf_bar(~gender, fill = ~tenure, data = TeachingRatings) %>%
           y = "Anzahl")
 ```
 
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-71-1.png" title="plot of chunk unnamed-chunk-71" alt="plot of chunk unnamed-chunk-71" width="70%" style="display: block; margin: auto;" />
+
+Oder noch schöner mit "gleich hohen" Balken, was man durch den Parameter `position = "fill"` erreicht:
+
+
+
+```r
+gf_bar(~gender, fill = ~tenure,
+       data = TeachingRatings,
+       position = "fill") %>%
+  gf_labs(title = "Zusammenhangsmaße für nominal skalierte Variablen",
+          x = "Geschlecht",
+          y = "Anzahl")
+```
+
 <img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-72-1.png" title="plot of chunk unnamed-chunk-72" alt="plot of chunk unnamed-chunk-72" width="70%" style="display: block; margin: auto;" />
 
 
@@ -1517,6 +1536,7 @@ t.test(~age, data = TeachingRatings, alternative="less", mu = 40)
 __Beispiel (Trinkgeld-Datensatz)__  
 Es ist zu prüfen $H_{0}:$ Männer und Frauen geben gleich viel Trinkgeld ($H_{0}: \mu(tip_{Männer})-\mu(tip_{Frauen})= 0$). Es empfiehlt sich, zunächst mit einer grafischen Darstellung sowie deskriptiven Statistiken zu starten. Als grafische Darstellungen bieten sich Boxplots und Mittelwertplots an.
 
+
 ```r
 gf_boxplot(eval ~ gender, data = TeachingRatings) # Boxplot
 gf_point(eval ~ gender, data = TeachingRatings, stat = "summary") # Mittelwertplot
@@ -1526,7 +1546,7 @@ favstats(eval ~ gender, data = TeachingRatings) # deskriptive Statistiken
 #> 2   male 2.1 3.7   4.15 4.5 5.0 4.069030 0.5566518 268       0
 ```
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-77-1.png" title="plot of chunk unnamed-chunk-77" alt="plot of chunk unnamed-chunk-77" width="70%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-77-2.png" title="plot of chunk unnamed-chunk-77" alt="plot of chunk unnamed-chunk-77" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-77-1.png" title="plot of chunk unnamed-chunk-77" alt="plot of chunk unnamed-chunk-77" width="45%" style="display: block; margin: auto;" /><img src="https://sebastiansauer.github.io/images/2017-09-12/unnamed-chunk-77-2.png" title="plot of chunk unnamed-chunk-77" alt="plot of chunk unnamed-chunk-77" width="45%" style="display: block; margin: auto;" />
 
 Nun kann der t-Test durchgeführt werden.
 
@@ -1755,7 +1775,7 @@ Wäre das nicht cool: Jegliches Formatieren wird automatisch übernommen und sog
 
 
 # Versionshinweise
-* Datum erstellt: 2017-09-22
+* Datum erstellt: 2017-09-24
 * R Version: 3.4.0
 * `mosaic` Version: 1.1.0
 * `dplyr` Version: 0.7.3
