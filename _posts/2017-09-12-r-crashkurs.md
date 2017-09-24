@@ -67,7 +67,7 @@ Beide Programme sind kostenlos.
 
 Wenn alles läuft, sieht es etwa so aus:
 
-<img src="https://sebastiansauer.github.io/images/2017-09-12/Rstudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/RStudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
 
 ## Hilfe
 
