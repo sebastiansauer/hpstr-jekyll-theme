@@ -67,7 +67,7 @@ Beide Programme sind kostenlos.
 
 Wenn alles läuft, sieht es etwa so aus:
 
-<img src="img/Rstudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/Rstudio.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" style="display: block; margin: auto;" />
 
 ## Hilfe
 
@@ -117,7 +117,7 @@ library(corrplot)  # Korrelationsdiagramme
 Oder Sie klicken den Namen des Pakets hier an:
 
 
-<img src="img/packages_load.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/packages_load.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -127,7 +127,7 @@ Wir gehen im Folgenden davon aus, dass Sie diese beiden Pakete geladen haben.
 
 ⚠️ Um ein Paket zu laden, muss es installiert sein. Klicken Sie zum Installieren auf den Button "Install" unter dem Reiter "Packages" in RStudio:
 
-<img src="img/install_packages.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/install_packages.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -155,7 +155,7 @@ Wir verwenden in diesem Kurs diese Datensätze:
 
 # Über sieben Brücken musst Du gehen - Die Schritte der Datenanalyse
 
-<img src="img/Peter_Maffay.jpg" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="20%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/Peter_Maffay.jpg" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="20%" style="display: block; margin: auto;" />
 
 
 
@@ -164,7 +164,7 @@ Lizenz: André D Conrad, CC BY SA 3.0 De, https://de.wikipedia.org/wiki/Peter_Ma
 Man kann (wenn man will) die Datenanalyse in ~~sieben~~ fünf Brücken oder Schritte einteilen, angelehnt dem Song von Peter Maffay "Über sieben Brücken musst du gehen". Wir werden nacheinander alle Schritte bearbeiten: Sieben Mal wirst Du die Asche sein. Aber einmal auch der helle Schein.
 
 
-<img src="img/Prozess.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/Prozess.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -225,7 +225,7 @@ Der einfachste Weg, Daten einzulesen, ist über den Button "Import Dataset" in R
 
 Haben Sie also eine "deutsche" CSV-Datei, müssen Sie in der Import-Maske von RStudio als *delimiter* ein *semicolon* auswählen.
 
-<img src="img/delimiter.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/delimiter.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -256,7 +256,7 @@ Alternativ können Sie natürlich eine XLS- oder XLSX-Datei importieren. Am einf
 
 Damit Sie in R vernünftig mit Ihren Daten arbeiten können, sollten die Daten "tidy" sein, d.h. in *Normalform*. Was ist Normalform? Betrachten Sie folgende Abbildung - so sieht eine Tabelle in Normalform aus.
 
-<img src="img/Normalform.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/Normalform.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="50%" style="display: block; margin: auto;" />
 
 Übrigens heißen Tabellen (mit Spaltennamen) in R *Dataframes*.
 
@@ -273,7 +273,7 @@ Die goldene Regel der Normalform einer Tabelle lautet also:
 
 Sie denken, dass Ihre Daten immer/auf jeden Fall in Normalform sind? Dann schauen Sie sich mal dieses Bild an:
 
-<img src="img/breit_lang.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/breit_lang.png" title="plot of chunk unnamed-chunk-20" alt="plot of chunk unnamed-chunk-20" width="50%" style="display: block; margin: auto;" />
 
 
 Wir werden in diesem Kurs nicht bearbeiten, wie man Daten von "breit" auf "lang" (=tidy) umformatiert. Aber lesen Sie bei Interesse doch z.B. [hier](https://sebastiansauer.github.io/facial_beauty/) nach.
@@ -402,7 +402,7 @@ Der Schritt des Aufbereitens ist häufig der zeitintensivste Schritt. In diesem 
 
 ⚠️ Ein häufiger Fehler ist, dass die Daten nicht richtig eingelesen werden. Zum Beispiel werden die Spaltentrennzeichen nicht richtig erkannt. Das kann dann so aussehen:
 
-<img src="img/delimiter_wrong.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/delimiter_wrong.png" title="plot of chunk unnamed-chunk-25" alt="plot of chunk unnamed-chunk-25" width="50%" style="display: block; margin: auto;" />
 
 
 
@@ -600,7 +600,7 @@ inspect(Dozimodels)
 
 Deskriptive Statistik ist letztlich nichts anderes, als Daten geschickt zusammenzufassen. Praktisch wird meistens eine Spalte einer Tabelle zu einer Zahl zusammengefasst.
 
-<img src="img/summarise.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/summarise.png" title="plot of chunk unnamed-chunk-30" alt="plot of chunk unnamed-chunk-30" width="50%" style="display: block; margin: auto;" />
 
 Schauen wir uns das mal mit echten Daten an. Der Datensatz `TeachingRatings` ist schon in R eingebaut, so dass wir in nicht extra laden müssen. Ganz praktisch. Dazu fragen wir den Inspektor `inspect`, der würde uns auch noch verraten wie die nominalen Variablen sich so verteilen -- wenn wir hier welche hätten.
 
@@ -943,7 +943,7 @@ Sortieren Sie `TeachingRatings` *gleichzeitig* nach Schönheit und Bewertungserg
 Ein Bild sagt bekanntlich mehr als 1000 Worte. Betrachten Sie dazu "Anscombes Quartett":
 
 
-<img src="img/anscombe.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="50%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-09-12/anscombe.png" title="plot of chunk unnamed-chunk-48" alt="plot of chunk unnamed-chunk-48" width="50%" style="display: block; margin: auto;" />
 
 
 Diese vier Datensätze sehen ganz unterschiedlich aus, nicht wahr? Aber ihre zentralen deskriptiven Statistiken sind praktisch gleich! Ohne Diagramm wäre uns diese Unterschiedlichkeit nicht (so leicht) aufgefallen!
