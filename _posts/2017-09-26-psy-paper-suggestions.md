@@ -17,12 +17,12 @@ I am unsure about compilations of 'must read' psych articles, but I have found s
 - [Frontiers in Psychology](http://journal.frontiersin.org/journal/psychology) (click on 'most cited')
 
 # Social psychology
-- [Meta-Milgram: An Empirical Synthesis of the Obedience Experiments](www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0093927)
-- [Behavioral Priming: It's All in the Mind, but Whose Mind?](journals.plos.org/plosone/article?id=10.1371/journal.pone.0029081)
-- [Always Gamble on an Empty Stomach: Hunger Is Associated with Advantageous Decision Making](journals.plos.org/plosone/article?id=10.1371/journal.pone.0111081)
-- [A Virtual Reprise of the Stanley Milgram Obedience Experiments](journals.plos.org/plosone/article?id=10.1371/journal.pone.0000039)
-- [The Power of Kawaii: Viewing Cute Images Promotes a Careful Behavior and Narrows Attentional Focus](journals.plos.org/plosone/article?id=10.1371/journal.pone.0046362)
-- [Non-Disruptive Tactics of Suppression Are Superior in Countering Terrorism, Insurgency, and Financial Panics](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0018545)
+- [Meta-Milgram: An Empirical Synthesis of the Obedience Experiments](http://www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0093927)
+- [Behavioral Priming: It's All in the Mind, but Whose Mind?](http://www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0029081)
+- [Always Gamble on an Empty Stomach: Hunger Is Associated with Advantageous Decision Making](http://www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0111081)
+- [A Virtual Reprise of the Stanley Milgram Obedience Experiments](http://www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0000039)
+- [The Power of Kawaii: Viewing Cute Images Promotes a Careful Behavior and Narrows Attentional Focus](http://www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0046362)
+- [Non-Disruptive Tactics of Suppression Are Superior in Countering Terrorism, Insurgency, and Financial Panics](http://www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0018545)
 
 
 

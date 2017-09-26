@@ -281,7 +281,7 @@ Wir werden in diesem Kurs nicht bearbeiten, wie man Daten von "breit" auf "lang"
 
 ## Daten anschauen
 
-Es empfiehlt sich, zu Beginn einne Blick auf die Daten zu werfen, um zu prüfen, ob alles augenscheinlich seine Richtigkeit hat. Tun Sie das immer, viel Ärger lässt sich so ersparen.
+Es empfiehlt sich, zu Beginn einen Blick auf die Daten zu werfen, um zu prüfen, ob alles augenscheinlich seine Richtigkeit hat. Tun Sie das immer, viel Ärger lässt sich so ersparen.
 
 
 ```r
@@ -445,14 +445,14 @@ Der R-Zuweisungspfeil `<-` bzw. `->` funktioniert in beide Richtungen; er darf n
 
 💻 AUFGABE:
 
-- Benennen Sie in `TeachingRatings` die Spalte `native` in `Muttersprachler` um; speichern Sie aber das Ergebnis in einem neuen Datagframe.
+- Benennen Sie in `TeachingRatings` die Spalte `native` in `Muttersprachler` um; speichern Sie aber das Ergebnis in einem neuen Dataframe.
 - Suchen Sie sich noch zwei weitere Spalten, und benennen Sie die Spaltennamen nach eigenen Vorstellungen um!
 
 
 
 ## Umkodieren
 
-Gerade bei der Analyse von Fragebogendaten ist es immer wieder nötig, Daten umzukodieren. Klassisches Beispiel: Ein Item ist negativ kodiert. Zum Beispiel das Item "Ich bin ein Couch-Potator" in einem Fragebogen für Extraversion.
+Gerade bei der Analyse von Fragebogendaten ist es immer wieder nötig, Daten umzukodieren. Klassisches Beispiel: Ein Item ist negativ kodiert. Zum Beispiel das Item "Ich bin ein Couch-Potato" in einem Fragebogen für Extraversion.
 
 Nehmen wir an, das Item "i04" hat die Werte 1 ("stimme überhaupt nicht zu") bis 4 ("stimme voll und ganz zu"). Kreuzt jemand das Couch-Potato-Item mit 4 an, so sollte er nicht die maximale Extraversion-Punktzahl (4), sondern die *minimale* Extraversion-Punktzahl (1) erhalten. Also
 
@@ -1011,7 +1011,7 @@ gf_point(eval ~ gender, data = TeachingRatings)
 ```
 
 
-Was nicht so schön bei diesem Diagramm ist, ist, dass viele Punkte sich  gegenseitig überdecken. Dieses Überdecken bezeichnet man auch als "Overplotting" (hört sich cooler an). Besser wäre es, wenn sich die Punkte nicht überdecken würden, dann würde man besser erkennen, wie viele Puntke wo liegen. Eine einfache Lösung bestünde darin, das Bild etwas zu "schütteln" oder zu "wackeln", so dass die Punkte etwas verwackelt würden und damit nebeneinander zu liegen kämen. Das kann mit man mit dem Geom `jitter` (eng. für wackeln) erreichen:
+Was nicht so schön bei diesem Diagramm ist, ist, dass viele Punkte sich  gegenseitig überdecken. Dieses Überdecken bezeichnet man auch als "Overplotting" (hört sich cooler an). Besser wäre es, wenn sich die Punkte nicht überdecken würden, dann würde man besser erkennen, wie viele Punkte wo liegen. Eine einfache Lösung bestünde darin, das Bild etwas zu "schütteln" oder zu "wackeln", so dass die Punkte etwas verwackelt würden und damit nebeneinander zu liegen kämen. Das kann mit man mit dem Geom `jitter` (eng. für wackeln) erreichen:
 
 
 ```r
@@ -1283,7 +1283,7 @@ In diesem Fall sehen wir, dass Schönheit einen positiven Koeffizienten aufweist
 
 Aber es könnte es nicht sein, dass Schönheit bei Männern *wichtiger* ist als bei Frauen? Das würde bedeuten, dass jedes bisschen (=jeder Punkt) Schönheit zu *mehr* Punkten in der Bewertung führt. Es ist also denkbar, dass die Steigung der Regressionsgeraden bei Männern steiler ist als bei Frauen.
 
->    *Wenn* die Geraden also unterschiedlich steil sind (nicht parallel, mit anderne Worten), so liegt ein Interaktionseffekt vor; ansonsten nicht.
+>    *Wenn* die Geraden also unterschiedlich steil sind (nicht parallel, mit anderen Worten), so liegt ein Interaktionseffekt vor; ansonsten nicht.
 
 Kann man nicht eine Regressionsgerade für Männer und eine für Frauen bekommen. Ja, das geht. Aber schauen wir uns vielleicht erstmal ein Bildchen dazu an, das macht die Sache klarer:
 
@@ -1509,7 +1509,7 @@ Die Funktion `t.test` in der Voreinstellung einen *zwei*seitigen Test durch. Sol
 
 __Beispiel (Trinkgeld-Datensatz)__  
 Es ist zu prüfen $H_{0}:$ Die Dozenten sind im Mittel gleich oder jünger als 40 Jahre ($H_{0}: \mu(age) \le 40$)
-Laut der Beschreibung der Funktionshilfe erwartet R die Sepzifikation der Alternativhypothese. Der zugehörige Übergabeparameter lautet `alternative="less"` und damit lautet der R-Befehl:
+Laut der Beschreibung der Funktionshilfe erwartet R die Spezifikation der Alternativhypothese. Der zugehörige Übergabeparameter lautet `alternative="less"` und damit lautet der R-Befehl:
 
 ```r
 t.test(~age, data = TeachingRatings, alternative="less", mu = 40)
