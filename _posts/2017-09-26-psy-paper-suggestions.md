@@ -17,7 +17,7 @@ I am unsure about compilations of 'must read' psych articles, but I have found s
 - [Frontiers in Psychology](http://journal.frontiersin.org/journal/psychology) (click on 'most cited')
 
 # Social psychology
-- [Meta-Milgram: An Empirical Synthesis of the Obedience Experiments](journals.plos.org/plosone/article?id=10.1371/journal.pone.0093927)
+- [Meta-Milgram: An Empirical Synthesis of the Obedience Experiments](www.journals.plos.org/plosone/article?id=10.1371/journal.pone.0093927)
 - [Behavioral Priming: It's All in the Mind, but Whose Mind?](journals.plos.org/plosone/article?id=10.1371/journal.pone.0029081)
 - [Always Gamble on an Empty Stomach: Hunger Is Associated with Advantageous Decision Making](journals.plos.org/plosone/article?id=10.1371/journal.pone.0111081)
 - [A Virtual Reprise of the Stanley Milgram Obedience Experiments](journals.plos.org/plosone/article?id=10.1371/journal.pone.0000039)
@@ -48,6 +48,3 @@ I am unsure about compilations of 'must read' psych articles, but I have found s
 - [Online social integration is associated with reduced mortality risk](http://www.pnas.org/content/113/46/12980.full)
 - [Private traits and attributes are predictable from digital records of human behavior](http://www.pnas.org/content/110/15/5802.full)
 - [Computer-based personality judgments are more accurate than those made by humans](http://www.pnas.org/content/112/4/1036.abstract)
-
-
-
