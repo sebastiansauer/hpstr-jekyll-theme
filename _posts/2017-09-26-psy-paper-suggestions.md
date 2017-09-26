@@ -8,7 +8,7 @@ tags: [psychology, science, openaccess]
 
 
 
-This post presents a compilation of links to psychology papers; I have chosen papers I find intriguing particularly for working in class. All papers are open access which renders classroom work easier. The papers are collected from a broad range of topics but mostly with focus on general interest. The perspective is an applied one; I have not tried to select based on methodological rigor. All papers are drawn from open access journals, or a from open access repositories. The collection is structured along the well-known classification of psychological work: social, personality, cognitive. I have added 'social media/ psychoinformatics' as this reflects a topic I am quite interested in.
+This post presents a compilation of links to psychology papers; I have chosen papers I find intriguing particularly for working in class. All papers are open access (or a from open access repositories) which renders classroom work easier. The papers are collected from a broad range of topics but mostly with focus on general interest. The perspective is an applied one; I have not tried to select based on methodological rigor.  The collection is structured along the well-known classification of psychological work: social, personality, cognitive. I have added 'social media/ psychoinformatics' as this reflects a topic I am quite interested in.
 
 I am unsure about compilations of 'must read' psych articles, but I have found some. Such sites may provide a more succinct and broader perspective on much read or influential or interesting or high-qualitative science papers. Here's a short list:
 
