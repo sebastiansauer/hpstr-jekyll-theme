@@ -33,6 +33,13 @@ Dieser Crashkurs ist für Studierende oder Anfänger der Datenanalyse gedacht, d
 Ok, let's dance 🕺.
 
 
+---
+Die PDF-Version dieses Kurses finden Sie [hier](https://sebastiansauer.github.io/download/r-crashkurs_01.pdf).
+
+---
+
+
+
 
 
 
