@@ -26,7 +26,7 @@ output:
 
 # Willkommen zum R-Crashkurs
 
-Nicht jeder liebt Datenanalyse und Statistik... in gleichem Maße! Das ist zumindest meine Erfahrung aus dem Unterricht 🔥. Crashkurse zu R sind vergleichbar zu Tanzkursen vor der Hochzeit: Hat schon vielen das Leben gerettet, aber ersetzt nicht ein Semester in der Pariser Tanzakademie (man beachte den Vergleich zum Unterricht an der FOM).
+Nicht jeder liebt Datenanalyse und Statistik... in gleichem Maße! Das ist zumindest meine Erfahrung aus dem Unterricht 🔥. Crashkurse zu R sind vergleichbar zu Tanzkursen vor der Hochzeit: Hat schon vielen das Leben gerettet, aber ersetzt nicht ein Semester in der Pariser Tanzakademie (man beachte den Vergleich zum Unterricht an der Hochschule).
 
 Dieser Crashkurs ist für Studierende oder Anfänger der Datenanalyse gedacht, die in kurzer Zeit einen verzweifelten Versuch ... äh ... einen grundständigen Überblick über die Datenanalyse erwerben wollen.
 
@@ -92,7 +92,7 @@ R will nicht so, wie ich wohl will? [Hier](https://sebastiansauer.github.io/Prax
 
 ### Warum RStudio?
 
-RStudio ist eine integrierte Entwicklungsumgebung (IDE), die die Verwendung von R für Anänfäger und Experten erleichtert.
+RStudio ist eine integrierte Entwicklungsumgebung (IDE), die die Verwendung von R für Anfänger und Experten erleichtert.
 
 
 ## Erweiterungen (Pakete, engl. packages)
@@ -440,7 +440,7 @@ In Pseudo-R könnte man schreiben:
 benenne_spalte_um(meine_tabelle, neuer_name = altername) -> meine_neue_tabelle
 ```
 
-Der R-Zufweisungspfeil `<-` bzw. `->` funktioniert in beide Richtungen; er darf nach links oder rechts zeigen. In jedem Fall wird das Objekt, auf das er zeigt, "befüllt" mit den Inhalten die auf der anderen Seite stehen.
+Der R-Zuweisungspfeil `<-` bzw. `->` funktioniert in beide Richtungen; er darf nach links oder rechts zeigen. In jedem Fall wird das Objekt, auf das er zeigt, "befüllt" mit den Inhalten die auf der anderen Seite stehen.
 
 
 💻 AUFGABE:
