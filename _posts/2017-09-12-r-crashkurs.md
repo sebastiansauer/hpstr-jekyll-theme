@@ -104,9 +104,31 @@ RStudio ist eine integrierte Entwicklungsumgebung (IDE), die die Verwendung von 
 
 ## Erweiterungen (Pakete, engl. packages)
 
+### Pakete installieren
+
+R macht reichlichen Gebrauch von Erweiterungen, also "Zusatz-Software", welches die Funktionen von R erweitern. Diese Erweiterungen nennt man "Pakete" (engl. packages). Am Anfang kann es verwirren oder verwundern, warum in R so viele Pakete verwendet werden. Tatsächlich ist das eine große Stärke von R: Alle, die sich berufen fühlen, können ein R-Paket entwickeln und alle, die sich berufen fühlen, können ein R-Paket herunterladen. Alles kostenlos und transparent. Und in einem "Appstore" vereint ("CRAN").
+
+Praktisch bedeutet das, dass Sie ein paar Pakete installieren müssen, um in den Genuss von Zusatz-Funktionen zu kommen. Am einfachsten geht die Installation in RStudio über den Reiter "Packages" und dem Button "Install Packages":
+
+<img src="https://sebastiansauer.github.io/images/2017-09-12/install_packages.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" style="display: block; margin: auto;" />
+
+>   Um einen Befehl zu verwenden, der in einem "Zusatz-Paket wohnt", müssen Sie zuerst dieses Paket installieren.
+
+Wir werden in diesem Kurs mit folgenden Paketen arbeiten; *bitte installieren Sie sie vorab*:
+
+- `mosaic`  # Zugpferd
+- `effects` # Effektplots für ANOVA-Modelle
+- `openxlsx`  # Excel-Dateien schreiben
+- `corrgram`  # Korrelationsdiagramme
+- `GGally`  # Korrelationsdiagramme
+- `corrplot` # Korrelationsdiagramme
 
 
-Um einen Befehl zu verwenden, der *nicht* im Standard-R, sondern in einer Erweiterung von R ("Paket") wohnt, müssen sie dieses Paket erst starten (laden). Dazu können Sie den Befehl `library` verwenden. Wir benötigen diese Pakete; bitte laden (d.h. Code ausführen); starten Sie jetzt diese Erweiterungen (per Klick oder mit folgenden Befehlen).
+Wie jede Software, müssen Sie ein Paket nur einmal installieren; dann ist es auf Ihrem Computer vorhanden.
+
+### Pakete starten
+
+Um einen Befehl zu verwenden, der *nicht* im Standard-R, sondern in einer Erweiterung von R ("Paket") wohnt, müssen sie dieses Paket erst starten (laden). Es hört sich trivial an: Sie können nur Pakete laden, die auf Ihrem Computer installiert sind (es ist trivial; aber manchmal vergisst man es). Um ein Paket zu laden, können Sie den Befehl `library()` verwenden. Wir benötigen die folgenden Pakete; bitte laden:
 
 
 
@@ -201,7 +223,7 @@ Für Grafiken gilt:
 
 Generell gilt:
 
-`y ~ x | z`
+**y ~ x \| z**
 
 DAs kann in der Regel gelesen werden **y wird modelliert von (oder hängt ab von) x gruppiert nach den Stufen von z**.
 
