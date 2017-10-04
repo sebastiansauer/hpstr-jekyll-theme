@@ -205,7 +205,7 @@ Das Paket `mosaic` wird unser Zugpferd für alle folgenden Analysen ein. Es hat 
 
 Die folgende Syntax
 
-> Zielbefehl(y ~ x | z, data=...)
+>     Zielbefehl(y ~ x \| z, data=...)
 
 wird verwendet für
 
