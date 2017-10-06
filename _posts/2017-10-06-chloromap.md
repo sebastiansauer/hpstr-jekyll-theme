@@ -118,16 +118,16 @@ de_plz <- paste0(my_path, my_plz)
 file.exists(de_plz)
 #> [1] TRUE
 
-plz_df <- read_tsv(file = de_plz, col_names = FALSE)  # tab separated data 
+plz_df <- read_tsv(file = de_plz, col_names = FALSE)  # tab separated data
 ```
 
 In the help file from the downloaded data, we find some explanation as to the columns:
 
 
 ```r
-plz_df <- plz_df %>% 
+plz_df <- plz_df %>%
   rename(country_code = X1,
-         postal_code = X2, 
+         postal_code = X2,
          place_name = X3,
          state = X4,
          state_code = X5,
@@ -160,7 +160,7 @@ glimpse(plz_df)
 
 ## Test it
 
-Now, enough of grey theory! Unfortunately, I don't know any nice Hamlet citation here, which would certainly be impressing.
+Now, enough of grey theory! Unfortunately, I don't know any nice Hamlet citation here, which would certainly be impressive.
 
 
 ```r
@@ -169,14 +169,14 @@ plot(de_shape[c("PLZ99", "geometry")],
      col = brewer.pal(7, "Greens")[my_col], border = F)
 ```
 
-<img src="figure/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-06/unnamed-chunk-8-1.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="70%" style="display: block; margin: auto;" />
 
 
 ## Filter Bavaria
 
 
 ```r
-plz_bavaria <- plz_df %>% 
+plz_bavaria <- plz_df %>%
   filter(state == "Bayern")
 
 plz_bavaria_vec <- plz_bavaria$postal_code
@@ -203,7 +203,7 @@ plot(bav_data,
      col = brewer.pal(7, "Oranges")[my_col], border = F)
 ```
 
-<img src="figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-06/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
 
 ## Now plot with ggplot2
 
@@ -211,8 +211,8 @@ plot(bav_data,
 ```r
 
 bav_data$PLZ2 <- str_extract(bav_data$PLZ99, "\\d\\d")
-  
-  
+
+
 ggplot(data = bav_data) +
   geom_sf(aes(fill = PLZ2)) +
   scale_fill_viridis_d() +
@@ -220,7 +220,7 @@ ggplot(data = bav_data) +
 p_bavaria
 ```
 
-<img src="figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-06/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
 
 
 ## Sample some counties
@@ -244,7 +244,7 @@ ggplot(data = bav_data) +
 p_bavaria2
 ```
 
-<img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-06/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
 
 Let's define our own palette:
 
@@ -262,7 +262,7 @@ ggplot(data = bav_data) +
 p_bavaria3
 ```
 
-<img src="figure/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-06/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="70%" style="display: block; margin: auto;" />
 
 
 # Bigger visual chunks
@@ -280,7 +280,7 @@ ggplot(data = bav_data) +
 p_bavaria4
 ```
 
-<img src="figure/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-06/unnamed-chunk-15-1.png" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="70%" style="display: block; margin: auto;" />
 
 
 Happy map painting!
