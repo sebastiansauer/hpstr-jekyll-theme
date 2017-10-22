@@ -68,12 +68,12 @@ glimpse(wahlkreise_shp)
 
 
 ```r
-wahlkreise_shp %>% 
+wahlkreise_shp %>%
   ggplot() +
   geom_sf()
 ```
 
-<img src="figure/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-4-1.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="70%" style="display: block; margin: auto;" />
 
 That was easy, right? The `sf` package fits nicely with the tidyverse. Hence not much to learn in that regard. I am not saying that geo data is simple, quite the contrary. But luckily the R functions fit in a well known schema.
 
@@ -95,15 +95,15 @@ file.exists(foreign_file)
 #> [1] TRUE
 
 
-foreign_raw <- read_delim(foreign_file, 
-    ";", escape_double = FALSE, 
-    locale = locale(decimal_mark = ",", 
-        grouping_mark = "."), 
-    trim_ws = TRUE, 
+foreign_raw <- read_delim(foreign_file,
+    ";", escape_double = FALSE,
+    locale = locale(decimal_mark = ",",
+        grouping_mark = "."),
+    trim_ws = TRUE,
     skip = 8)  # skipt the first 8 rows
 
 #glimpse(foreign_raw)
-  
+
 ```
 
 Jezz, we need to do some cleansing before we can work with this dataset.
@@ -121,7 +121,7 @@ The important columns are:
 
 
 ```r
-foreign_df <- foreign_df %>% 
+foreign_df <- foreign_df %>%
   rename(state = V1,
          area_nr = V2,
          area_name = V3,
@@ -161,13 +161,13 @@ The secondary vote refers to the party, that's what we are interested in (column
 
 ```r
 # names(elec_results)
-afd_prop <- elec_results %>% 
-  select(1, 2, 46, 18) %>% 
+afd_prop <- elec_results %>%
+  select(1, 2, 46, 18) %>%
   rename(afd_votes = AfD3,
          area_nr = Nr,
          area_name = Gebiet,
-         votes_total = Waehler_gueltige_Zweitstimmen_vorlauefig) %>% 
-  mutate(afd_prop = afd_votes / votes_total) %>% 
+         votes_total = Waehler_gueltige_Zweitstimmen_vorlauefig) %>%
+  mutate(afd_prop = afd_votes / votes_total) %>%
   na.omit
 ```
 
@@ -178,8 +178,8 @@ In the previous step, we have selected the columns of interest, changed their na
 
 
 ```r
-wahlkreise_shp %>% 
-  left_join(foreign_df, by = c("WKR_NR" = "area_nr")) %>% 
+wahlkreise_shp %>%
+  left_join(foreign_df, by = c("WKR_NR" = "area_nr")) %>%
   left_join(afd_prop, by = "area_name") -> chloro_data
 ```
 
@@ -188,13 +188,13 @@ wahlkreise_shp %>%
 
 
 ```r
-chloro_data %>% 
+chloro_data %>%
   ggplot() +
   geom_sf(aes(fill = afd_prop)) -> p1
 p1
 ```
 
-<img src="figure/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-11-1.png" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="70%" style="display: block; margin: auto;" />
 
 We might want to play with the fill color, or clean up the map (remove axis etc.)
 
@@ -206,15 +206,15 @@ p1 + scale_fill_distiller(palette = "Spectral") +
   theme_void()
 ```
 
-<img src="figure/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-12-1.png" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="70%" style="display: block; margin: auto;" />
 
 
 
-# Geo map (of election areas) with foreign national data 
+# Geo map (of election areas) with foreign national data
 
 
 ```r
-chloro_data %>% 
+chloro_data %>%
   ggplot() +
   geom_sf(aes(fill = for_prop)) +
   scale_fill_distiller(palette = "Spectral") +
@@ -222,7 +222,7 @@ chloro_data %>%
 p2
 ```
 
-<img src="figure/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-13-1.png" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="70%" style="display: block; margin: auto;" />
 
 As can be seen from the previous figure, foreign nationals are relatively rare in the East, but tend to concentrate on the big cities such as Munich, Frankfurt, and the Ruhr area.
 
@@ -234,25 +234,25 @@ In a similar vein, we could compute the ratio of AfD votes and foreigner quote. 
 
 
 ```r
-chloro_data %>% 
+chloro_data %>%
   mutate(afd_for_dens = afd_prop / (for_prop/100)) -> chloro_data
-  
-chloro_data %>% 
+
+chloro_data %>%
   ggplot +
   geom_sf(aes(fill = afd_for_dens)) +
   theme_void() +
   scale_fill_viridis()
 ```
 
-<img src="figure/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-14-1.png" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="70%" style="display: block; margin: auto;" />
 
 Let's check that.
 
 
 ```r
-chloro_data %>% 
-  select(afd_for_dens, afd_prop, for_prop) %>% 
-  as.data.frame %>% 
+chloro_data %>%
+  select(afd_for_dens, afd_prop, for_prop) %>%
+  as.data.frame %>%
   slice(1:3)
 #> # A tibble: 3 x 4
 #>   afd_for_dens afd_prop for_prop          geometry
@@ -271,26 +271,26 @@ A simple, straight-forward and well-known approach to devise association strengt
 
 
 ```r
-chloro_data %>% 
-  select(for_prop, afd_prop, area_name) %>% 
+chloro_data %>%
+  select(for_prop, afd_prop, area_name) %>%
   ggplot +
   aes(x = for_prop, y = afd_prop) +
   geom_point() +
   geom_smooth()
 ```
 
-<img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="70%" style="display: block; margin: auto;" />
 
 
 The pattern exhibited is quite striking: What we see might easily fit an exponential distribution: When foreigner rate begins to augment, the AfD success *shrinks* strongly, but this trend comes to an end as soon as some "saturation" process starts, maybe around some 8% of foreign national quote. It would surely be simplistic to speak of a "healthy proportion of around 8% foreigners", to fence populism. However, the available data shows a quite obvious pattern.
 
-The correlation itself is 
+The correlation itself is
 
 ```r
-chloro_data %>% 
-  select(for_prop, afd_prop, area_name) %>% 
-  as.data.frame %T>% 
-  summarise(cor_afd_foreigners = cor(afd_prop, for_prop)) %>% 
+chloro_data %>%
+  select(for_prop, afd_prop, area_name) %>%
+  as.data.frame %T>%
+  summarise(cor_afd_foreigners = cor(afd_prop, for_prop)) %>%
   do(tidy(cor.test(.$afd_prop, .$for_prop)))
 #>   estimate statistic  p.value parameter conf.low conf.high
 #> 1   -0.465     -9.05 1.98e-17       297   -0.549    -0.371
@@ -320,7 +320,7 @@ tidy(lm2)
 #> 2    for_prop -0.00471   0.00052     -9.05 1.98e-17
 
 
-chloro_data %>% 
+chloro_data %>%
   mutate(afd_lm2 = lm(afd_prop ~ for_prop, data = .)$residuals) -> chloro_data
 ```
 
@@ -331,15 +331,15 @@ And now plot the residuals:
 
 
 ```r
-chloro_data %>% 
-  select(afd_lm2) %>% 
+chloro_data %>%
+  select(afd_lm2) %>%
   ggplot() +
   geom_sf(aes(fill = afd_lm2)) +
   scale_fill_gradient2() +
   theme_void()
 ```
 
-<img src="figure/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-10-22/unnamed-chunk-19-1.png" title="plot of chunk unnamed-chunk-19" alt="plot of chunk unnamed-chunk-19" width="70%" style="display: block; margin: auto;" />
 
 
 Interesting! This model shows a clear-cut picture: The eastern part is too "afd-ic" for its foreigner ratio; the North-West is less afd-ic than what would be expected by the foreigner rate. The rest (middle and south) parts over-and-above show the AfD levels that would be expected by their foreigner rate.
@@ -348,5 +348,3 @@ Interesting! This model shows a clear-cut picture: The eastern part is too "afd-
 # Conclusion
 
 The regression model provides a quite clear-cut picture. The story of the data may thus be summarized in easy words: The higher the foreigner ratio, the *lower* the AfD ratio. However, this is only *part* of the story. The foreigner explains a rather small fraction of AfD votes. Yet, given the multitude of potential influences on voting behavior, a correlation coefficient of -.46 is strikingly strong.
-
-
