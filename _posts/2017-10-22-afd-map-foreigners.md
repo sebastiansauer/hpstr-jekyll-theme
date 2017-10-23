@@ -14,7 +14,14 @@ In a previous post, we have shed some light on the idea that populism - as manif
 
 In this post, we test the hypothesis that AfD election results are *negatively* associated with the proportion of foreign nationals in a Wahlkreis. The idea is this: Many foreigners in your neighborhood, and you will get used to it. You will perceive those type of people as normal. To the contrary, if there are few of them, they are perceived as rather alien.
 
-To be honest, this idea is rather vague; and it maybe built on the simple fact that in the eastern part of Germany, there are (relatively) few foreign nationals, as compared to the western parts of the country. However, animosity towards foreign nationals and AfD results are particularly strong in the East. Put shortly, much more theory would be needed to understand causal pathways explaining populism flourishing in some regions of Germany, particularly in Sachsen (Saxonia).
+
+---
+The idea for this post, is not mine, but comes from my colleague, [Sandra Sülzenbrück](https://twitter.com/ssuelzenbrueck)(@ssuelzenbrueck). Sandra, many thanks for sharing your thoughts!
+
+---
+
+
+To be honest, my theoretical foundation here is rather vague; and it maybe built on the simple fact that in the eastern part of Germany, there are (relatively) few foreign nationals, as compared to the western parts of the country. However, animosity towards foreign nationals and AfD results are particularly strong in the East. Put shortly, much more theory would be needed to understand causal pathways explaining populism flourishing in some regions of Germany, particularly in Sachsen (Saxonia).
 
 
 
