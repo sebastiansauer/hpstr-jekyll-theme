@@ -7,9 +7,6 @@ tags: [data, rstats, politics]
 
 
 
-
-
-
 On September 2017, the 19. German Bundestag has been elected. As of this writing, the parties are still busy sorting out whether they want to part of the government, with whom, and maybe whether they even want to form a government at all. This post is about providing the data in machine friendly form, and in English language.
 
 All data presented in this post regarding this (and previous) elections are published by the Bundeswahlleiter. The data may be used without restriction as long as it is credited duely.
@@ -28,7 +25,7 @@ https://www.bundeswahlleiter.de/info/impressum.html
 
 The contribution by me is only to render the data more machine friendly, as the presented CSVs have multiple header lines, German Umlaute, non-UTF8 coding, and some other minor hickups.
 
-Of course, data itself has not been touched by me; I hae only changed some wordings and the structure of the dataset in order to render analysis more comfortable. Analysists can easily access the raw data and check the correctness.
+Of course, data itself has not been touched by me; I hae only changed some wordings and the structure of the dataset in order to render analysis more comfortable. Analysts can easily access the raw data and check the correctness.
 
 
 
@@ -42,7 +39,7 @@ library(tidyverse)
 
 # Package `prada` contains the data
 
-Maybe the easiest way is to use my package `prada`, which can be downloaeded/installed from Github:
+Maybe the easiest way is to use my package `prada`, which can be downloaded/installed from Github:
 
 Install the package once:
 
@@ -181,7 +178,7 @@ head(socec)
 #> #   V46 <dbl>, V47 <dbl>, V48 <dbl>, V49 <dbl>, V50 <dbl>, V51 <dbl>
 ```
 
-The names of the indicators can be accessed via the dictionnary `socec_dict` or via the documentation of `socec`. In addition, of course, the Bundeswahlleiter provides this information.
+The names of the indicators can be accessed via the dictionary `socec_dict` or via the documentation of `socec`. In addition, of course, the Bundeswahlleiter provides this information.
 
 
 ```r
@@ -195,7 +192,7 @@ glimpse(socec_dict)
 
 
 
-You can use the data eg., for determining association of right-wing (AfD) results with unemployment rate per electoral disctrict - see [here](https://sebastiansauer.github.io/afd-map-foreigners/) for an example.
+You can use the data eg., for determining association of right-wing (AfD) results with unemployment rate per electoral district - see [here](https://sebastiansauer.github.io/afd-map-foreigners/) for an example.
 
 
 Of course those data can easily be saved as csv:
@@ -222,4 +219,4 @@ Data are provided in csv and RData form.
 # Concluding
 
 
-It was quite fun to me to play around with the data, and I think quite some valuable insights can be inferred. Of course, electoral data has a unique value as it features the most important action of a democraty.
+It was quite fun to me to play around with the data, and I think quite some valuable insights can be inferred. Of course, electoral data has a unique value as it features the most important action of a democracy.
