@@ -1,7 +1,6 @@
 ---
 title: "Two R plot side by side in .Rmd-Files"
 author: "Sebastian Sauer"
-date: "12 10 2017"
 layout: post
 tags: [rstats, knitr]
 ---
