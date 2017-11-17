@@ -83,7 +83,7 @@ Hm, deutlich ungenauer.
 
 Die Flughafenbetreiber beschweren sich. Die Stichprobe sei "nicht repräsentativ"; es sei "dumm gelaufen".
 
-Wie repräsentativ ist die Stichprobe? Keine Ahnung. Dazu müssten wir die Grundgesamtheit kennen. Die kennt man normalerweiß nicht.
+Wie repräsentativ ist die Stichprobe? Keine Ahnung. Dazu müssten wir die Grundgesamtheit kennen. Die kennt man normalerweiße nicht.
 
 In diesem Fall ausnahmsweise schon:
 
@@ -111,7 +111,7 @@ Ob die Stichprobe überhaupt echt ist?
 
 Sie ziehen viele vergleichbare Stichprobe aus der Grundgesamtheit (`flights`) und schauen, wie oft so ein Wert wie 42 als Mittelwert vorkommt!
 
-Sagen wir, wir ziehen 10000 Stichproben und rechnen jeweils die mittlere Verspätung aus. 
+Sagen wir, wir ziehen 10000 Stichproben und rechnen jeweils die mittlere Verspätung aus.
 
 >   In wie vielen Stichproben ist die Verspätung 42 Minuten oder noch größer???
 
@@ -132,15 +132,15 @@ Schauen wir, wie oft 42 vorkommt:
 gf_histogram(~mean, data = flights_vtlg)
 ```
 
-<img src="figure/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-11-17/figure/unnamed-chunk-9-1.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="70%" style="display: block; margin: auto;" />
 
 Praktisch nie! Fast keine Stichprobe hatte eine mittlere Verspätung von 42 Minuten.
 
-Wir könenn mit hoher Sicherheit *ausschließen*, dass die Stichprobe echt ist! Der Bürgermeister überlegt öffentlich, Ihnen einen Orden zu verpassen (aber keine Gehaltserhöhung).
+Wir können mit hoher Sicherheit *ausschließen*, dass die Stichprobe echt ist! Der Bürgermeister überlegt öffentlich, Ihnen einen Orden zu verpassen (aber keine Gehaltserhöhung).
 
 ## Das nennt man eine Stichprobenverteilung
 
-Das Histogramm oben zeigt die Verteilung der 10000 Stichproben, die wir gerade gezogen haben (Danke, R). Man nennt es eine Stichprobenverteilung. 
+Das Histogramm oben zeigt die Verteilung der 10000 Stichproben, die wir gerade gezogen haben (Danke, R). Man nennt es eine Stichprobenverteilung.
 
 Die genauen Kennwerte dieser Stichprobenverteilung lauten:
 
@@ -158,7 +158,7 @@ favstats(~mean, data = flights_vtlg, na.rm = TRUE)
 
 ## Die "typische" Stichprobe
 
-Jetzt können wir genau sagen, wie die typische Stichprobe an New Yorker Verspätungne aussieht: Mittlere Verspätung: Etwa 7 Minuten (arith. Mittel); sd beträgt etwa 5 Minuten.
+Jetzt können wir genau sagen, wie die typische Stichprobe an New Yorker Verspätungen aussieht: Mittlere Verspätung: Etwa 7 Minuten (arith. Mittel); sd beträgt etwa 5 Minuten.
 
 
 ## Die "ungewöhnlichen" Stichproben
@@ -167,9 +167,9 @@ Sagen wir, die 2.5% Stichproben mit der *geringsten* und die 2.5% Stichproben mi
 
 
 ```r
-quantile(~mean, data= flights_vtlg, 
+quantile(~mean, data= flights_vtlg,
          probs = c(.025, .975))
-#>      2.5%     97.5% 
+#>      2.5%     97.5%
 #> -1.234694 16.394142
 ```
 
@@ -185,12 +185,12 @@ Nettes Beispiel. Aber in Wirklichkeit haben wir praktisch *nie* die Grundgesamth
 - Mittlere Zufriedenheit bei 100 befragten Nutzer: 4.2 von 5. Zufriedenheit aller Nutzer der Webseite? Unbekannt.
 
 
->   Die Grundgesamtheit ist in der Praxis oft unbekannt. 
+>   Die Grundgesamtheit ist in der Praxis oft unbekannt.
 
 
 # Durch einen Trick kann man die Grundgesamtheit schätzen
 
-Der Trick lautet: Wir tun so, als sei unsere einzige Stichprobe die Grundgesamtheit. Dann machen wir weiter wie gerade: Wir ziehen viele Stichproben aus ihr. 
+Der Trick lautet: Wir tun so, als sei unsere einzige Stichprobe die Grundgesamtheit. Dann machen wir weiter wie gerade: Wir ziehen viele Stichproben aus ihr.
 
 ## Das nennt man Bootstrapping
 
@@ -244,7 +244,7 @@ Und schauen uns das Histogramm an:
 gf_histogram(~mean, data = flights_boot)
 ```
 
-<img src="figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="70%" style="display: block; margin: auto;" />
+<img src="https://sebastiansauer.github.io/images/2017-11-17/figure/unnamed-chunk-16-1.png" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="70%" style="display: block; margin: auto;" />
 
 Die genauen Statistiken sehen so aus:
 
@@ -266,7 +266,7 @@ Hey, wie durch Zauberei haben wir mit unserer Bootstrap-Methode eine Verteilung 
 
 ```r
 quantile(~mean, data= flights_boot, probs = c(.025, .975))
-#>      2.5%     97.5% 
+#>      2.5%     97.5%
 #> -5.316582  6.909258
 ```
 
@@ -286,4 +286,3 @@ So die Pressemitteilung, die der Bürgermeister schließlich herausgibt. Er läs
 # Fazit
 
 Mit der Bootverteilung kann man einschätzen, wie "typisch" eine Stichprobe für eine Grundgesamtheit ist. Außerdem kann man sagen, ob eine Stichprobe "ungewöhnlich" für eine Grundgesamtheit ist.
-
