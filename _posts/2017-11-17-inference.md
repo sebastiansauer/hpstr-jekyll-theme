@@ -83,7 +83,7 @@ Hm, deutlich ungenauer.
 
 Die Flughafenbetreiber beschweren sich. Die Stichprobe sei "nicht repräsentativ"; es sei "dumm gelaufen".
 
-Wie repräsentativ ist die Stichprobe? Keine Ahnung. Dazu müssten wir die Grundgesamtheit kennen. Die kennt man normalerweiße nicht.
+Wie repräsentativ ist die Stichprobe? Keine Ahnung. Dazu müssten wir die Grundgesamtheit kennen. Die kennt man normalerweiß nicht.
 
 In diesem Fall ausnahmsweise schon:
 
@@ -119,8 +119,7 @@ Sagen wir, wir ziehen 10000 Stichproben und rechnen jeweils die mittlere Verspä
 
 ```r
 do(10000) * mean(sample(flights$arr_delay,
-                        size = 100,
-                        replace = TRUE),
+                        size = 100),
                  na.rm = TRUE) -> flights_vtlg
 ```
 
@@ -136,7 +135,7 @@ gf_histogram(~mean, data = flights_vtlg)
 
 Praktisch nie! Fast keine Stichprobe hatte eine mittlere Verspätung von 42 Minuten.
 
-Wir können mit hoher Sicherheit *ausschließen*, dass die Stichprobe echt ist! Der Bürgermeister überlegt öffentlich, Ihnen einen Orden zu verpassen (aber keine Gehaltserhöhung).
+Wir könenn mit hoher Sicherheit *ausschließen*, dass die Stichprobe echt ist! Der Bürgermeister überlegt öffentlich, Ihnen einen Orden zu verpassen (aber keine Gehaltserhöhung).
 
 ## Das nennt man eine Stichprobenverteilung
 
@@ -158,7 +157,7 @@ favstats(~mean, data = flights_vtlg, na.rm = TRUE)
 
 ## Die "typische" Stichprobe
 
-Jetzt können wir genau sagen, wie die typische Stichprobe an New Yorker Verspätungen aussieht: Mittlere Verspätung: Etwa 7 Minuten (arith. Mittel); sd beträgt etwa 5 Minuten.
+Jetzt können wir genau sagen, wie die typische Stichprobe an New Yorker Verspätungne aussieht: Mittlere Verspätung: Etwa 7 Minuten (arith. Mittel); sd beträgt etwa 5 Minuten.
 
 
 ## Die "ungewöhnlichen" Stichproben
