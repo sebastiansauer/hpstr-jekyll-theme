@@ -1,5 +1,8 @@
 # Sebastian Sauer's stats blog 
 
+online at <https://sebastiansauer.github.io/>
+
+
 A blog on research methods with a focus on computational methods using R
 
 
