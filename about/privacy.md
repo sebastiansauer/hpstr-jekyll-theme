@@ -1,3 +1,15 @@
+
+layout: page
+title: Datenschutzerklärung
+subtitle: German
+comments: false
+modified: 2018-07-19
+---
+
+
+
+
+
 # Datenschutzerklärung
 
 
